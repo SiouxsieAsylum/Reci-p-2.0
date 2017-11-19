@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS recipes (
 
 --possibility of unique constraint later on
 --https://dba.stackexchange.com/questions/170622/sql-insert-multiple-values-with-unique-constraint
---to avoid errors
+--to avoid errors.
 
 
 CREATE TABLE IF NOT EXISTS ingredients (
