@@ -1,3 +1,4 @@
+
 CREATE TABLE IF NOT EXISTS recipes (
   id SERIAL PRIMARY KEY,
   name VARCHAR(255),
