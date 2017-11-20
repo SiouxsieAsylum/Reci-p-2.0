@@ -1,7 +1,7 @@
 {
   "name": "Recipe-Shopper",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "repository": "https://git.generalassemb.ly/sjciasullo/project3-recipe-shopper.git",
   "author": "Steven Ciasullo <sjciasullo@gmail.com>",
   "license": "MIT",
