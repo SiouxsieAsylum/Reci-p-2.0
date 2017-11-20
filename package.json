@@ -1,0 +1,15 @@
+{
+  "name": "shoppr",
+  "version": "1.0.0",
+  "description": "shopping list creation app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.generalassemb.ly/SiouxsieAsylum/project3-recipe-shopper.git"
+  },
+  "author": "Andrea McKenzie",
+  "license": "ISC"
+}
