@@ -1,15 +1,25 @@
 {
-  "name": "shoppr",
+  "name": "Recipe-Shopper",
   "version": "1.0.0",
-  "description": "shopping list creation app",
-  "main": "server.js",
+  "main": "index.js",
+  "repository": "https://git.generalassemb.ly/sjciasullo/project3-recipe-shopper.git",
+  "author": "Steven Ciasullo <sjciasullo@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "morgan": "^1.9.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "pg-promise": "^7.3.2"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://git.generalassemb.ly/SiouxsieAsylum/project3-recipe-shopper.git"
-  },
-  "author": "Andrea McKenzie",
-  "license": "ISC"
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "debugger": "DEBUG=*:* nodemon server.js"
+  }
 }
