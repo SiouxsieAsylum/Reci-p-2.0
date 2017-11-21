@@ -50,6 +50,10 @@ table {
 STYLES BEGIN BELOW
 
 */
+#root{
+  height: 100%;
+  width: 100%;
+}
 
 html {
   height: 100%;
@@ -66,6 +70,7 @@ div{
 }
 
 .App{
+  height: 100%;
   display: flex;
 }
 
@@ -88,12 +93,13 @@ div{
 
 
 .thumbnail{
-  height: 200px;
-  width: 200px;
+  height: 220px;
+  width: 220px;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   display: inline-block;
+  margin: 10px;
 }
 
 .thumbnail-title{
@@ -109,8 +115,6 @@ div{
   justify-content: space-around;
   flex-wrap: wrap;
 }
-
-
 
 
 
