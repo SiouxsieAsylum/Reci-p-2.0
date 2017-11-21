@@ -17,4 +17,7 @@ Notes to self:
 ** DATABASE NAME HAS BEEN LEFT BLANK WITH "PLEASE FILL ME IN" as a placeholder **
 
 ##11/21/17 10:30 Steve
-1. Fix React Template
+1. Fix React 
+
+##11/21/17 11:00 Ozzy
+1. Makes MainDisplay Component
