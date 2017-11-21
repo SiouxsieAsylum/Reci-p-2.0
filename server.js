@@ -43,8 +43,8 @@ app.get('/', (req, res) => {
 // app.use('/api/auth', authRouter);
 // const listRouter = require('./routes/list-routes');
 // app.use('/api/list', listRouter);
-// const recipeRouter = require('./routes/recipe-routes');
-// app.use('/api/recipe', recipeRouter);
+const recipeRouter = require('./routes/recipe-routes');
+app.use('/api/recipe', recipeRouter);
 
 app.use('*', (req, res) => {
   res.status(400).json({
