@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import RecipeList from './RecipeList';
 
 
 class MainDisplay extends Component{
@@ -17,6 +18,7 @@ class MainDisplay extends Component{
     return(
       <div className="main-display">
       <h1>MainDisplay</h1>
+      <RecipeList />
       </div>
     )
   }//end of render
