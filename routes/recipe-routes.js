@@ -6,7 +6,7 @@ const recipeControllers = require('../controllers/recipe-controllers.js');
 
 recipeRoutes.get('/', recipeControllers.index);
 
-recipeRoutes.post('/:shoppingList_id', recipeControllers.create);
+recipeRoutes.post('/:shoppingList_id', recipeControllers.addRecipeToShopping);
 
 
 

@@ -74,13 +74,13 @@ Recipe.createJoinList = recipeData => {
 //   })
 // }
 
-Recipe.create = (recipe_id, shoppingList_id ) => {
-  return db.oneOrNone(`
+Recipe.addRecipeToShopping = (shoppingList_id, recipe_id) => {
+  return db.one(`
     INSERT INTO shopping_lists
-    ()
+    (id, recipe_id)
     VALUES($1, $2)
     RETURNING *
-    `, [recipe_id, shoppingList_id]);
+    `, [shoppingList_id, recipe_id ]);
 }
 
 module.exports = Recipe;
