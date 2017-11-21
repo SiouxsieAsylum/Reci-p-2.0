@@ -45,6 +45,19 @@ table {
   border-spacing: 0;
 }
 
+/*
+
+STYLES BEGIN BELOW
+
+*/
+
+
 div{
   border: 1px solid #BBB;
+}
+
+
+.thumbnail{
+  height: 400px;
+  width: 400px;
 }

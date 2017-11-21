@@ -43,6 +43,8 @@ for(let i = 0; i < 5; i++){
   recipes.push(recipe);
 }
 
-const recipesJson = JSON.stringify(recipes);
+const recipesJson = recipes;
+// const recipesJson = JSON.stringify(recipes);
+
 
 module.exports = recipesJson;
