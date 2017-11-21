@@ -19,6 +19,10 @@ Notes to self:
 ##11/21/17 10:30 Steve
 1. Fix React
 
+## 11/21/17 10:53 Luz
+- created schema-documentation.md 
+- documented schema in detail
+
 ##11/21/17 11:00 Ozzy
 1. Makes MainDisplay Component
 
@@ -27,3 +31,6 @@ Notes to self:
 
 ##11/21/17 12:40 Ozmang
 1. Made recipethumbnail and attached it to recipe list
+
+
+ 
