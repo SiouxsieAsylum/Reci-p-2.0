@@ -2,7 +2,7 @@ const express = require('express');
 
 const recipeRoutes = express.Router();
 
-const RecipeController = require('../controllers/recipeControllers.js');
+const recipeControllers = require('../controllers/recipe-controllers.js');
 
 recipeRoutes.get('/', recipeControllers.index);
 

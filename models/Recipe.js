@@ -4,7 +4,7 @@ const db = require('../db/config');
 const Recipe ={};
 
 Recipe.findAll = () => {
-  return db.query('SELECT * FROM Recipe');
+  return db.query('SELECT * FROM recipes');
 }
 
 Recipe.create = recipe => {
@@ -67,6 +67,4 @@ Recipe.create = recipe => {
 //   })
 // }
 
-
->>>>>>> submitted for testing
 module.exports = Recipe;

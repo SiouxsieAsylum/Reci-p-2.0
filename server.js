@@ -39,7 +39,7 @@ app.get('/', (req, res) => {
   res.send('Hello World');
 });
 
-const recipeController = require('./controllers/recipe-controller');
+const recipeController = require('./controllers/api-controller');
 recipeController.addRecipes();
 
 
