@@ -19,10 +19,10 @@ class MainDisplay extends Component{
       <h1>MainDisplay</h1>
       </div>
     )
-  }
+  }//end of render
 
 
-};//End of  Component
+};//End of  Component MainDisplay
 
 
 export default MainDisplay;
