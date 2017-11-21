@@ -2,12 +2,20 @@ import React, { Component } from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import './App.css';
 
+//-----------imported components----------------//
+import MainDisplay from './components/MainDisplay';
+
+
+
+
 class App extends Component {
   render() {
     return (
       <Router>
         <div className="App">
+          <MainDisplay />
         </div>
+
       </Router>
     );
   }
