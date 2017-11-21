@@ -8,9 +8,16 @@ Recipe.findAll = () => {
 }
 
 Recipe.create = recipe => {
- db.one(`INSERT INTO recipes (name,image,serving_size) VALUES ($1,$2,$3) RETURNING *`,[recipe.title,recipe.image,recipe.serving_size]);
+ return db.one(`INSERT INTO recipes (name,image,serving_size) VALUES ($1,$2,$3) RETURNING *`,[recipe.title,recipe.image,recipe.serving_size]);
 }
 
+Recipe.addIngredients = recipe => {
+  return db.one(`INSERT INTO ingredients (name) VALUES ($1) RETURNING *`,[recipe.name])
+}
+
+Recipe.createJoinList = recipeData => {
+  return db.manyOrNone(`INSERT INTO ingredient_lists (recipe_id,ingredient_id) VALUES ($1,$2)`,[recipeData.recipe_id,recipeData.ingredient_id])
+}
 // Recipe.addIngredients = recipe => {
 //   for (let ingredient of recipe.ingredients){
 //       db.none(`INSERT INTO ingredients (name) VALUES ($1)`,[ingredient.text])
