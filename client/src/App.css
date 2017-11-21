@@ -50,15 +50,47 @@ table {
 STYLES BEGIN BELOW
 
 */
+#root{
+  height: 100%;
+  width: 100%;
+}
 
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+}
 
 div{
   border: 1px solid #BBB;
 }
 
+.App{
+  height: 100%;
+  display: flex;
+}
+
+.main-display{
+  flex: 3;
+  display: inline-block;
+  width: auto;
+}
+
+.list-container{
+  flex:1;
+  display: inline-block;
+  width: 200px;
+  float: right;
+}
+
 .recipe-thumbnail{
   display: inline-block;
 }
+
 
 .thumbnail{
   height: 200px;
@@ -67,6 +99,7 @@ div{
   background-position: center;
   background-size: cover;
   display: inline-block;
+  margin: 10px;
 }
 
 .thumbnail-title{
@@ -83,10 +116,13 @@ div{
   flex-wrap: wrap;
 }
 
+.soft-title{
+  text-align: center;
+}
 
-
-
-
+.single-ingredient{
+  
+}
 
 
 
