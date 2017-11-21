@@ -10,7 +10,7 @@ function RecipeList(props){
   return(
     <div className="recipe-list">
       {dummyData.map(item => {
-        return <RecipeThumbnail recipe={item.recipe}/>
+        return <RecipeThumbnail recipe={item.recipe} recipeToList={props.recipeToList}/>
       })}
     </div>
   )

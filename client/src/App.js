@@ -14,13 +14,20 @@ class App extends Component {
       listIndex: 1, //this will be dynamic maybe based on user
       listRecipes: [],
     }
+
+    this.recipeToList = this.recipeToList.bind(this);
+  }
+
+  recipeToList(recipeId){
+    console.log('this was called and listIndex is: ', this.state.listIndex);
+    console.log('recipeid is: ', recipeId);
   }
 
   render() {
     return (
       <Router>
         <div className="App">
-          <MainDisplay />
+          <MainDisplay recipeToList={this.recipeToList}/>
           <List />
         </div>
 
