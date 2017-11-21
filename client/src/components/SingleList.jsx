@@ -8,9 +8,6 @@ function SingleList (props) {
       {ingredient.ingredientLines.map(item => {
        return  <p>{item}</p>
       })}
-      <form>
-        <input type="text" />
-      </form>
     </div>
   )
 }
