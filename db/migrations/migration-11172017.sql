@@ -1,5 +1,5 @@
 
-CREATE TABLE IF NOT EXISTS recipes (
+CREATE TABLE IF NOT EXISTS recipes(
   id SERIAL PRIMARY KEY,
   name VARCHAR(255),
   serving_size INTEGER
@@ -10,18 +10,18 @@ CREATE TABLE IF NOT EXISTS recipes (
 --to avoid errors.
 
 
-CREATE TABLE IF NOT EXISTS ingredients (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR(255)
-);
+-- CREATE TABLE IF NOT EXISTS ingredients(
+--   id SERIAL PRIMARY KEY,
+--   name VARCHAR(255)
+-- );
 
-CREATE TABLE IF NOT EXISTS ingredient_lists(
-  id SERIAL PRIMARY KEY,
-  recipe_id INTEGER REFERENCES recipes,
-  ingredient_id INTEGER REFERENCES ingredients,
-  amount INTEGER,
-  unit VARCHAR(255)
-);
+-- CREATE TABLE IF NOT EXISTS ingredient_lists(
+--   id SERIAL PRIMARY KEY,
+--   recipe_id INTEGER REFERENCES recipes,
+--   ingredient_id INTEGER REFERENCES ingredients,
+--   amount INTEGER,
+--   unit VARCHAR(255)
+-- );
 
 CREATE TABLE IF NOT EXISTS users(
   id SERIAL PRIMARY KEY,
@@ -50,7 +50,6 @@ CREATE TABLE IF NOT EXISTS user_lists(
 );
 
 CREATE TABLE IF NOT EXISTS shopping_lists(
-  user_id INTEGER REFERENCES users,
   id INTEGER REFERENCES user_lists,
   ingredient_id INTEGER REFERENCES ingredients,
   amount INTEGER,
