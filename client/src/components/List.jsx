@@ -23,7 +23,7 @@ class List extends Component{
           return <SingleList ingredient={item.recipe}/>
 
         })}
-        <form>
+        <form className="ingredient-form">
           <input type="text" name="addIngredient" value={this.state.addIngredientValue} placeholder="Add ingredient"/>
           <input type ="submit" value="Add" />
         </form>
