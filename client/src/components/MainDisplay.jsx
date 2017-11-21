@@ -17,7 +17,7 @@ class MainDisplay extends Component{
   render(){
     return(
       <div className="main-display">
-      <h1>MainDisplay</h1>
+      <h1>MainDisplay RECIPENESS</h1>
       <RecipeList />
       </div>
     )

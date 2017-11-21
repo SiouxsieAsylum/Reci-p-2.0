@@ -6,7 +6,7 @@ function SingleList (props) {
   return(
     <div className="single-list">
       {ingredient.ingredientLines.map(item => {
-       return  <p>{item}</p>
+       return  <p className="single-ingredient">{item}</p>
       })}
     </div>
   )

@@ -93,8 +93,8 @@ div{
 
 
 .thumbnail{
-  height: 220px;
-  width: 220px;
+  height: 200px;
+  width: 200px;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -116,9 +116,13 @@ div{
   flex-wrap: wrap;
 }
 
+.soft-title{
+  text-align: center;
+}
 
-
-
+.single-ingredient{
+  
+}
 
 
 

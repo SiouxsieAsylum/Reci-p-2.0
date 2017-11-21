@@ -18,7 +18,7 @@ class List extends Component{
   render(){
     return(
       <div className="list-container">
-        <p>List Component</p>
+        <h3 className="soft-title">Ingredients list</h3>
         {dummyData.map(item => {
           return <SingleList ingredient={item.recipe}/>
 
