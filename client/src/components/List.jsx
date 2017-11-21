@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import SingleList from './SingleList'
 
+const dummyData = require('./dummyJSON') // PLACEHOLDER DATA
 
 class List extends Component{
   constructor(props){
@@ -13,6 +15,10 @@ class List extends Component{
     return(
       <div className="list-container">
         <p>List Component</p>
+        {dummyData.map(item => {
+          return <SingleList ingredient={item.recipe}/>
+
+        })}
       </div>
     )
 
