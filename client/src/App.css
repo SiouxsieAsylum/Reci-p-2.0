@@ -58,8 +58,8 @@ div{
 
 
 .thumbnail{
-  height: 400px;
-  width: 400px;
+  height: 200px;
+  width: 200px;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -68,7 +68,7 @@ div{
 .thumbnail-title{
   text-align: center;
   color: white;
-  font-size: 25px;
+  font-size: 20px;
   background-color: rgba(0,0,0,0.7);
   line-height: 60px;
 }
