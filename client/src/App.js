@@ -6,9 +6,16 @@ import './App.css';
 import MainDisplay from './components/MainDisplay';
 import List from './components/List'
 
-
-
 class App extends Component {
+  constuctor(){
+    super();
+    this.state={
+      //will need user logged in
+      currentList: 1, //this will be dynamic maybe based on user
+      
+    }
+  }
+
   render() {
     return (
       <Router>
