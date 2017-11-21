@@ -56,6 +56,9 @@ div{
   border: 1px solid #BBB;
 }
 
+.recipe-thumbnail{
+  display: inline-block;
+}
 
 .thumbnail{
   height: 200px;
@@ -63,6 +66,7 @@ div{
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  display: inline-block;
 }
 
 .thumbnail-title{
@@ -73,6 +77,11 @@ div{
   line-height: 60px;
 }
 
+.recipe-list{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
 
 
 

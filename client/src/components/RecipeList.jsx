@@ -9,7 +9,9 @@ console.log('dummy data works and is: ', dummyData);
 function RecipeList(props){
   return(
     <div className="recipe-list">
-      <RecipeThumbnail recipe={dummyData[0].recipe}/>
+      {dummyData.map(item => {
+        return <RecipeThumbnail recipe={item.recipe}/>
+      })}
     </div>
   )
 }
