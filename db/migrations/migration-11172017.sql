@@ -1,23 +1,19 @@
 
-CREATE TABLE IF NOT EXISTS recipes (
+CREATE TABLE IF NOT EXISTS recipes(
   id SERIAL PRIMARY KEY,
   name VARCHAR(255),
-  serving_size INTEGER
+  serving_size INTEGER,
+  image VARCHAR(255)
 );
 
---possibility of unique constraint later on
---https://dba.stackexchange.com/questions/170622/sql-insert-multiple-values-with-unique-constraint
---to avoid errors.
-
-
-CREATE TABLE IF NOT EXISTS ingredients (
+CREATE TABLE IF NOT EXISTS ingredients(
   id SERIAL PRIMARY KEY,
-  name VARCHAR(255),
-  typical_unit VARCHAR(255)
+  name VARCHAR(255) UNIQUE
 );
 
 CREATE TABLE IF NOT EXISTS ingredient_lists(
-  recipe_id INTEGER PRIMARY KEY REFERENCES recipes,
+  id SERIAL PRIMARY KEY,
+  recipe_id INTEGER REFERENCES recipes,
   ingredient_id INTEGER REFERENCES ingredients,
   amount INTEGER,
   unit VARCHAR(255)
@@ -36,10 +32,11 @@ CREATE TABLE IF NOT EXISTS users(
 --Insert ... select looks like it's going to be our best friend for most of this.
 --figure out the joins tomorrow
 
-CREATE table IF NOT EXISTS user_recipies(
-  user_id INTEGER PRIMARY KEY REFERENCES users,
-  recipe_id INTEGER REFERENCES recipies,
-  favorited BOOLEAN,
+CREATE table IF NOT EXISTS user_recipes(
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users,
+  recipe_id INTEGER REFERENCES recipes,
+  favorited BOOLEAN
 );
 
 CREATE TABLE IF NOT EXISTS user_lists(
@@ -49,12 +46,21 @@ CREATE TABLE IF NOT EXISTS user_lists(
 );
 
 CREATE TABLE IF NOT EXISTS shopping_lists(
-  user_id INTEGER REFERENCES users,
-  id INTEGER PRIMARY KEY REFERENCES user_lists,
-  ingredient_id INTEGER REFERENCES ingredients,
-  amount INTEGER,
-  unit VARCHAR(255)
+  id INTEGER REFERENCES user_lists,
+  recipe_id INTEGER REFERENCES recipes
 );
 
+--TEST QUERIES
+--create new shopping lists
+--INSERT INTO user_lists (user_id,name) values (user.id,list.name)
 
+--to add all ingredients from a recipe to a shopping list
+--INSERT INTO recipes (name,serving_size) values (recipe.name,recipe.yeild);
+--INSERT INTO ingredients_list(recipe_id,ingredient_id,amount,unit) (SELECT id from RECIPES ORDER BY id DESC LIMIT 1),[sql loop though and create # of new primary keys],[parseInt(ingredient '^\S*\s')],[ingredient('^\s*\s')]
+--INSERT INTO ingredients(name) values (recipe.ingredients[0][loop?])
+--INSERT INTO shopping_lists (user_id,ingredient_id,amount,unit) SELECT user_recipes.user_id,ingredients.id,ingredient_lists.amount, ingredient_lists.unit FROM ingredient_lists JOIN user_recipes ON ingredient_lists.recipe_id = user_recipes.recipe_id JOIN ingredients ON ingredients.id = ingredient_lists.ingredient_id WHERE ingredient_lists.recipe_id = 1;
 
+--to add an ingredient to a shopping list
+--https://stackoverflow.com/questions/20971680/sql-server-insert-if-not-exist except if exists, select the thing.
+
+--multiple queries into one transaction

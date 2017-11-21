@@ -7,10 +7,11 @@ RecipeController.index = (req, res, next) => {
     .then(recipes => {
       res.json({
         message: 'ok',
-        data:{recipes};
+        data:{ recipes }
       });
   }).catch(next)
 };
+
 
 
 module.exports = RecipeController;

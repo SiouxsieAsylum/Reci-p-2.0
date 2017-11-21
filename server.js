@@ -39,6 +39,10 @@ app.get('/', (req, res) => {
   res.send('Hello World');
 });
 
+const recipeController = require('./controllers/api-controller');
+recipeController.addRecipes();
+
+
 // const authRouter = require('./routes/auth-routes');
 // app.use('/api/auth', authRouter);
 // const listRouter = require('./routes/list-routes');
