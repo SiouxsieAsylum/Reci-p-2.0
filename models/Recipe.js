@@ -74,4 +74,11 @@ Recipe.createJoinList = recipeData => {
 //   })
 // }
 
+Recipe.findById = (id) => {
+  return db.oneOrNone(`
+    SELECT * FROM recipes
+    WHERE id = $1
+    `, [id]);
+}
+
 module.exports = Recipe;

@@ -12,6 +12,16 @@ RecipeController.index = (req, res, next) => {
   }).catch(next)
 };
 
+RecipeController.show = (req, res, next) => {
+  Recipe.findById(req.params.id)
+  .then(recipe => {
+    res.json({
+      message: 'ok',
+      data: {recipe},
+    });
+  }).catch(next);
+};
+
 
 
 module.exports = RecipeController;
