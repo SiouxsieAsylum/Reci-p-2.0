@@ -45,6 +45,50 @@ table {
   border-spacing: 0;
 }
 
+/*
+
+STYLES BEGIN BELOW
+
+*/
+
+
 div{
   border: 1px solid #BBB;
 }
+
+.recipe-thumbnail{
+  display: inline-block;
+}
+
+.thumbnail{
+  height: 200px;
+  width: 200px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: inline-block;
+}
+
+.thumbnail-title{
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  background-color: rgba(0,0,0,0.7);
+  line-height: 60px;
+}
+
+.recipe-list{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+
+
+
+
+
+
+
+
+/**/

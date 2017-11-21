@@ -24,3 +24,6 @@ Notes to self:
 
 ##11/21/17 11:46 Steven
 1. Make recipelist component w dummy data
+
+##11/21/17 12:40 Ozmang
+1. Made recipethumbnail and attached it to recipe list
