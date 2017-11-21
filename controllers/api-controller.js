@@ -10,7 +10,7 @@ recipeApiController.addIngredients = (res) => {
     })
   })
   // TODO: pass all ingredients
-  return Recipe.addIngredients(ingredientData[0][0]);
+  return Recipe.addIngredients(ingredientData[0]);
 }
 
 recipeApiController.createRecipe = (res) => {
@@ -20,6 +20,7 @@ recipeApiController.createRecipe = (res) => {
   return Recipe.create(recipeData[0]);
 }
 
+// TODO: make function to create master dictionary object
 
 recipeApiController.addRecipes = () => {
   api.getRecipes()
@@ -28,7 +29,7 @@ recipeApiController.addRecipes = () => {
     const ingredientPromise = recipeApiController.addIngredients(res);
     Promise.all(recipePromise,ingredientPromise)
     .then(allData => {
-      console.log(allData)
+      console.log(allData, res.extendedIngredients)
     })
     // return ingredientPromise
   })

@@ -11,8 +11,12 @@ Recipe.create = recipe => {
  return db.one(`INSERT INTO recipes (name,image,serving_size) VALUES ($1,$2,$3) RETURNING *`,[recipe.title,recipe.image,recipe.serving_size]);
 }
 
+// TODO build a string of each ibgredient to be submitted in place of recipe.name
 Recipe.addIngredients = recipe => {
-  return db.one(`INSERT INTO ingredients (name) VALUES ($1) RETURNING *`,[recipe.name])
+  // return db.oneOrMany()
+
+  const query = `INSERT INTO ingredients (name) VALUES ${} RETURNING *`
+
 }
 
 Recipe.createJoinList = recipeData => {
