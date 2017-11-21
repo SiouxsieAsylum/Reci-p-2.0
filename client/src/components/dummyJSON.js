@@ -44,6 +44,5 @@ for(let i = 0; i < 5; i++){
 }
 
 const recipesJson = JSON.stringify(recipes);
-console.log(recipesJson);
 
 module.exports = recipesJson;
