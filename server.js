@@ -39,7 +39,8 @@ app.get('/', (req, res) => {
   res.send('Hello World');
 });
 
-// const controller = require('./controllers/recipe-controller');
+const recipeController = require('./controllers/recipe-controller');
+recipeController.addRecipes();
 
 
 // const authRouter = require('./routes/auth-routes');

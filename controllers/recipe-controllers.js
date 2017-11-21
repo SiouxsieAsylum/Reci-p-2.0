@@ -33,6 +33,4 @@ recipeApiController.addRecipes = () => {
   })
 }
 
-recipeApiController.addRecipes();
-
 module.exports = recipeApiController;
