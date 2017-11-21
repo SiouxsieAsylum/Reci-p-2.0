@@ -7,17 +7,20 @@ RecipeController.index = (req, res, next) => {
     .then(recipes => {
       res.json({
         message: 'ok',
-        data:{ recipes }
+        data:{ recipes },
       });
   }).catch(next)
 };
 
-RecipeController.show = (req, res, next) => {
-  Recipe.findById(req.params.id)
+RecipeController.create = (req, res, next) => {
+  Recipe.create({
+    recipe_id: req.body.recipe_id,
+    shopppingList_id: req.params.shopppingList_id
+  })
   .then(recipe => {
     res.json({
       message: 'ok',
-      data: {recipe},
+      data: { recipe },
     });
   }).catch(next);
 };
@@ -25,3 +28,23 @@ RecipeController.show = (req, res, next) => {
 
 
 module.exports = RecipeController;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
