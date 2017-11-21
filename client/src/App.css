@@ -60,4 +60,26 @@ div{
 .thumbnail{
   height: 400px;
   width: 400px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
+
+.thumbnail-title{
+  text-align: center;
+  color: white;
+  font-size: 25px;
+  background-color: rgba(0,0,0,0.7);
+  line-height: 60px;
+}
+
+
+
+
+
+
+
+
+
+
+/**/

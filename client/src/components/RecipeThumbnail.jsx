@@ -5,8 +5,8 @@ function RecipeThumbnail (props) {
   console.log(recipe.image)
   return(
     <div className="recipe-thumbnail">
-      <div className="thumbnail" style={{background: `url(${recipe.image})`}}>
-        <h3>{recipe.label}</h3>
+      <div className="thumbnail" style={{backgroundImage: `url(${recipe.image})`}}>
+        <h3 className="thumbnail-title">{recipe.label}</h3>
       </div>
     </div>
   )
