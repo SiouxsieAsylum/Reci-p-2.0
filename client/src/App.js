@@ -4,7 +4,7 @@ import './App.css';
 
 //-----------imported components----------------//
 import MainDisplay from './components/MainDisplay';
-
+import List from './components/List'
 
 
 
@@ -14,6 +14,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <MainDisplay />
+          <List />
         </div>
 
       </Router>
