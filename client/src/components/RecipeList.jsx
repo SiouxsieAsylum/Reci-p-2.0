@@ -9,8 +9,10 @@ const dummyData = require('./dummyJSON')
 function RecipeList(props){
   return(
     <div className="recipe-list">
-      {dummyData.map(item => {
-        return <RecipeThumbnail recipe={item.recipe} recipeToList={props.recipeToList}/>
+      {dummyData.map( (item, index) => {
+        return <RecipeThumbnail recipe={item.recipe} key={index}
+        recipeToList={props.recipeToList}
+      />
       })}
     </div>
   )

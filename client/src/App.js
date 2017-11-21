@@ -19,8 +19,17 @@ class App extends Component {
   }
 
   recipeToList(recipeId){
-    console.log('this was called and listIndex is: ', this.state.listIndex);
-    console.log('recipeid is: ', recipeId);
+    fetch(`/api/recipe/${this.state.listIndex}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({recipe_id: recipeId})
+    }).then(res => res.json())
+    .then(res => {
+      console.log(res);
+
+    }).catch(err => console.log(err));
   }
 
   render() {
