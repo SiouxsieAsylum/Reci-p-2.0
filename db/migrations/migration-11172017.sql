@@ -2,17 +2,13 @@
 CREATE TABLE IF NOT EXISTS recipes(
   id SERIAL PRIMARY KEY,
   name VARCHAR(255),
-  serving_size INTEGER
+  serving_size INTEGER,
+  image VARCHAR(255)
 );
-
---possibility of unique constraint later on
---https://dba.stackexchange.com/questions/170622/sql-insert-multiple-values-with-unique-constraint
---to avoid errors.
-
 
 CREATE TABLE IF NOT EXISTS ingredients(
   id SERIAL PRIMARY KEY,
-  name VARCHAR(255) UNIQUE,
+  name VARCHAR(255) UNIQUE
 );
 
 CREATE TABLE IF NOT EXISTS ingredient_lists(
@@ -40,7 +36,7 @@ CREATE table IF NOT EXISTS user_recipes(
   id SERIAL PRIMARY KEY,
   user_id INTEGER REFERENCES users,
   recipe_id INTEGER REFERENCES recipes,
-  favorited BOOLEAN,
+  favorited BOOLEAN
 );
 
 CREATE TABLE IF NOT EXISTS user_lists(

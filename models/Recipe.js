@@ -8,7 +8,8 @@ Recipe.findAll = () => {
 }
 
 Recipe.create = recipe => {
- db.one(`INSERT INTO recipes (name,image) VALUES ($1,$2) RETURNING *`,[recipe.title,recipe.image]);
+ db.one(`INSERT INTO recipes (name,image,serving_size) VALUES ($1,$2,$3) RETURNING *`,[recipe.title,recipe.image,recipe.serving_size]);
+
 }
 
 // Recipe.addIngredients = recipe => {

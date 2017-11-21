@@ -20,12 +20,13 @@ recipeApiController.addRecipes = () => {
   api.getRecipes()
   .then((res) => {
     const recipeData = res.map(food => {
-      return {name: food.title, image: food.image};
+      return {title: food.title, image: food.image, serving_size: food.servings};
     })
     return recipeData;
   })
   .then(recipeData => {
-    return Recipe.create(recipeData);
+      // console.log(recipeData[0])
+    return Recipe.create(recipeData[0]);
   })
   .catch(err => {
     console.log(err)
