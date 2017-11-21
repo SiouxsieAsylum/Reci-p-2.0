@@ -17,8 +17,8 @@ class MainDisplay extends Component{
   render(){
     return(
       <div className="main-display">
-      <h1>MainDisplay RECIPENESS</h1>
-      <RecipeList />
+        <h1>MainDisplay RECIPENESS</h1>
+        <RecipeList recipeToList={this.props.recipeToList}/>
       </div>
     )
   }//end of render
