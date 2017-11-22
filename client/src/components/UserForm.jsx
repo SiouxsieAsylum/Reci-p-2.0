@@ -43,8 +43,8 @@ class UserForm extends Component {
   render(){
     return(
     <div>
-      <h1>{this.props.postType} form</h1>
       <form onSubmit={this.handleSubmit}>
+        <span>{this.props.postType} form</span>
         <input type="text" name="username" value={this.state.username}
           onChange={this.handleInputChange} placeholder="Username"
         />
