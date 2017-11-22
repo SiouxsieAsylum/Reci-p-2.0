@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 import RecipeList from './RecipeList';
-import RegisterForm from './RegisterForm'
+import Nav from './Nav';
 
 
 class MainDisplay extends Component{
@@ -22,11 +22,7 @@ class MainDisplay extends Component{
   render(){
     return(
       <div className="main-display">
-        <button >Register</button>
-        <button>Login</button>
-
-        <RegisterForm  />
-
+        <Nav />
         <h1>MainDisplay RECIPENESS</h1>
         <RecipeList recipeToList={this.props.recipeToList}/>
       </div>
