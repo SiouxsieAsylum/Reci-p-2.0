@@ -43,8 +43,8 @@ const recipeController = require('./controllers/api-controller');
 // recipeController.addRecipes();
 
 
-// const authRouter = require('./routes/auth-routes');
-// app.use('/api/auth', authRouter);
+const authRouter = require('./routes/auth-routes');
+app.use('/api/auth', authRouter);
 // const listRouter = require('./routes/list-routes');
 // app.use('/api/list', listRouter);
 const recipeRouter = require('./routes/recipe-routes');
@@ -63,8 +63,3 @@ app.use((err, req, res, next) =>{
     message: err.message,
   });
 });
-
-
-
-
-
