@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class RegisterForm extends Component {
+class UserForm extends Component {
   constructor(props){
     super(props)
     this.state={
@@ -8,6 +8,7 @@ class RegisterForm extends Component {
       password: "",
     }
     this.handleInputChange = this.handleInputChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleInputChange(event){
@@ -18,12 +19,16 @@ class RegisterForm extends Component {
     })
   }
 
+  handleSubmit(){
+    fetch('api/auth')
+  }
+
 
   render(){
     return(
     <div>
-      <h1>Register</h1>
-      <form>
+      <h1>User form</h1>
+      <form >
         <input type="text" name="username" />
         <input type="password" name="password" />
         <input type="submit" value="Register" />
@@ -34,4 +39,4 @@ class RegisterForm extends Component {
 
 }//END OF RECIPEFORM COMPONENT
 
-export default RegisterForm;
+export default UserForm;

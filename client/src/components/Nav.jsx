@@ -1,13 +1,13 @@
 import React from 'react';
 
-import RegisterForm from './RegisterForm';
+import UserForm from './UserForm';
 
 function Nav(props) {
   return(
     <div className="nav">
       <button >Register</button>
       <button>Login</button>
-      <RegisterForm  />
+      <UserForm  />
     </div>
   )
 }
