@@ -5,8 +5,8 @@ function SingleList (props) {
   console.log("ingredient DATA " + props)
   return(
     <div className="single-list">
-      {ingredient.ingredientLines.map(item => {
-       return  <p className="single-ingredient">{item}</p>
+      {ingredient.ingredientLines.map((item,index) => {
+       return  <p key={index} className="single-ingredient">{item}</p>
       })}
     </div>
   )

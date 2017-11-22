@@ -11,7 +11,7 @@ class List extends Component{
     super(props)
     this.state={
       apiLoaded:false,
-      addIngredientValue: null,
+      addIngredientValue: "",
     }
   }
 
