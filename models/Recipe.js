@@ -15,12 +15,18 @@ Recipe.create = recipe => {
 Recipe.addIngredients = recipe => {
   // return db.oneOrMany()
 
-  const query = `INSERT INTO ingredients (name) VALUES ${} RETURNING *`
+  const query = `INSERT INTO ingredients (name) VALUES ${recipe} RETURNING *`
+  return db.many(query)
 
 }
 
 Recipe.createJoinList = recipeData => {
-  return db.manyOrNone(`INSERT INTO ingredient_lists (recipe_id,ingredient_id) VALUES ($1,$2)`,[recipeData.recipe_id,recipeData.ingredient_id])
+  // return db.manyOrNone(`INSERT INTO ingredient_lists (recipe_id,ingredient_id) VALUES ($1,$2)`,[recipeData.recipe_id,recipeData.ingredient_id])
+
+  const query = `INSERT INTO ingredient_lists (recipe_id,ingredient_id,amount,unit) VALUES ${recipeData} RETURNING *`
+  return db.many(query)
+
+
 }
 // Recipe.addIngredients = recipe => {
 //   for (let ingredient of recipe.ingredients){
