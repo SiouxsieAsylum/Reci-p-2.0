@@ -35,4 +35,14 @@ Made recipethumbnail and attached it to recipe list
 
 1. Made recipethumbnail and attached it to recipe list
 
+##11/22/17 Andrea McKenzie
+
+Completed model for adding recipes from api to database. Structure is as follows:
+
+-`RAC.addIngredients` is a nested loop that takes the response object creates an array of objects that contain names of ingredients. We call `RAC.sql` to convert that array into a string with that object surrounded by perentheses to be passed into the Recipe model's `addIngredients` function. We then return the`Promise.all` that resolves all the promises returned by the model's `addIngredients` function, which adds to the ingredients table. 
+
+-`RAC.createRecipe` is mapping over the response object and returning an array objects containing the recipe names, image urls, and serving sizes. We then return the`Promise.all` that resolves all the promises returned by the model's `create` function, which adds to the recipe table.
+
+-`RAC.addRecipes` is where the magic happens. `api.getRecipes`is the helper that calls the initial fetch. The response is passed both through `RAC.createRecipe` and `RAC.addIngredients` and set to let resolve together within `Promise.all`. Then, the data is seperated into its two halves (recipes and ingredients) and each is made into an array. A loop is then used to associate the correct recipe wih ingredient list by id inside of a container array. Lastly, we loop over that container array, where for each we loop through the ingredient list for that pairing. this loop, like the `RAC.sql`, creates multiple strings in parentheses that constain the recipe id, the ingredient id, the amount of that ingredient, and the unit. That is then passed to the Recipe model's `createJoinList` method to add those all to the `ingredientList` table.
+
 
