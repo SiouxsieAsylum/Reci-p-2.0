@@ -49,3 +49,6 @@ Completed model for adding recipes from api to database. Structure is as follows
 - set up login and register nav, fix path through db to user so that user can register and login correctly.
 - dynamically renders nav components (and userform underneath)
 - todo: potentially lift state from main display so that app can have the userid and name, render a different nav for logged in
+
+## 11/22/17 1400 steve
+- some small react practice fixes
