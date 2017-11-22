@@ -26,9 +26,9 @@ class  Nav extends Component {
   }
 
   render(){
-    let navContent = null;
+    let navLogin = null;
     if(!this.props.auth){
-      navContent = (
+      navLogin = (
         <div className="nav">
           <button onClick={this.registerForm}>Register</button>
           <button onClick={this.loginForm}>Login</button>
@@ -40,7 +40,7 @@ class  Nav extends Component {
         </div>
       )
     } else {
-      navContent = (
+      navLogin = (
         <div className="nav">
           <button>Logout</button>
         </div>
@@ -49,7 +49,7 @@ class  Nav extends Component {
 
     return(
       <div className="nav">
-        {navContent}
+        {navLogin}
       </div>
     )
   }
