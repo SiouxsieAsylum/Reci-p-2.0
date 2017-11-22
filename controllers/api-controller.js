@@ -28,23 +28,29 @@ recipeApiController.sql = (ingredientData) => {
 }
 
 recipeApiController.addIngredients = (res) => {
-  console.log("ingredients")
+  let ingredientArray = []
   const ingredientData = res.map(food => {
-    // return {name: food.extendedIngredients.name}
     return food.extendedIngredients.map(ingred => {
       return {name: ingred.name}
     })
   })
   // TODO: pass all ingredients
-  return Recipe.addIngredients(recipeApiController.sql(ingredientData[0]));
+  for(let ingredient of ingredientData){
+    ingredientArray.push(Recipe.addIngredients(recipeApiController.sql(ingredient)));
+  }
+  return Promise.all(ingredientArray)
 }
 
 recipeApiController.createRecipe = (res) => {
-  console.log("recipe")
+  let recipeArray = []
   const recipeData = res.map(food => {
     return {title: food.title, image: food.image, serving_size: food.servings};
     })
-  return Recipe.create(recipeData[0]);
+  // let recipe = {title:res.title, image: res.image, serving_size:res.servings}
+  for (let recipe of recipeData){
+    recipeArray.push(Recipe.create(recipe))
+  }
+  return Promise.all(recipeArray)
 }
 
 // TODO: make function to create master dictionary object
@@ -53,27 +59,32 @@ recipeApiController.createRecipe = (res) => {
 recipeApiController.addRecipes = () => {
   api.getRecipes()
   .then((res) => {
-    // const recipePromise = recipeApiController.createRecipe(res);
-    console.log("inbetween")
-    // const ingredientPromise = recipeApiController.addIngredients(res);
-    console.log("after")
-    Promise.all([recipeApiController.createRecipe(res),recipeApiController.addIngredients(res)])
+      // console.log(recipeApiController.createRecipe(res))
+      // console.log(recipeApiController.addIngredients(res))
+
+      Promise.all([recipeApiController.createRecipe(res),recipeApiController.addIngredients(res)])
     .then(allData => {
-      // res.map(food => {
-      const bigJson =
-      allData[1].map((food,i) => {
-        Recipe.createJoinList("\(" + allData[0].id +","+food.id+","+parseInt(JSON.stringify(res[0].extendedIngredients[i].amount))+","+"\'"+res[0].extendedIngredients[i].unitLong+"\'"+"\)")
-      })
-    })
-    .catch(err => {
-      console.log(err)
+      let recipeData = Object.values(allData[0]);
+      let ingredientData = Object.values(allData[1]);
+      let allDataArray = []
 
-    })
+      for (let i = 0; i < recipeData.length; i++){
+        allDataArray.push([recipeData[i],ingredientData[i]])
+      }
+
+        allDataArray.map((food,j) => {
+          Object.values(food[1]).map((ingred,k) => {
+            Recipe.createJoinList("\(" + food[0].id +","+ ingred.id+","+parseInt(JSON.stringify(res[j].extendedIngredients[k].amount))+","+"\'"+res[j].extendedIngredients[k].unitLong+"\'"+"\)")
+          })
+        })
+      // })
+
+        }).catch(err => {
+          console.log(err)
+        })
+    // }
   })
-  // .then(ingredientPromise => {
-  //     console.log(ingredientPromise)
 
-  // })
   .catch(err => {
     console.log(err)
   })

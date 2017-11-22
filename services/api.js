@@ -7,12 +7,6 @@ api.getRecipes = () => {
   return Promise.resolve(apiReturn);
 }
 
-// api.grabExtended = (stuff) => {
-//   const dictionary = {}
-//   for (let s of stuff) {
-//     dictionary[s] =
-//   }
-// }
 
 // module.exports = getRecipes;
 module.exports = api;
