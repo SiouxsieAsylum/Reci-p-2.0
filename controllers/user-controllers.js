@@ -11,7 +11,7 @@ usersController.create = (req, res, next) => {
   const hash = bcrypt.hashSync(req.body.password, salt);
   User.create({
     username: req.body.username,
-    password_digest: hash,
+    password_hash: hash,
   }).then(user => {
     req.login(user, (err) => {
       if (err) return next(err);

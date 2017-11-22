@@ -11,10 +11,10 @@ User.findByUserName = userName => {
 
 User.create = user => {
   return db.oneOrNone(`INSERT INTO users
-  (username, password_digest)
+  (username, password_hash)
   VALUES ($1, $2)
   RETURNING *
-  `, [user.username, user.password_digest]);
+  `, [user.username, user.password_hash]);
 };
 
 module.exports = User;
