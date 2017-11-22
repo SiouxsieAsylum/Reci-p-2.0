@@ -30,7 +30,7 @@ class UserForm extends Component {
       body: JSON.stringify(this.state)
     }).then(res => res.json())
       .then(res => {
-        // console.log(res.data);
+        console.log(res.data);
         if(this.props.postType === "register"){
           this.props.loginForm();
         }else if(this.props.postType === "login"){
@@ -43,8 +43,8 @@ class UserForm extends Component {
   render(){
     return(
     <div>
-      <h1>{this.props.postType} form</h1>
       <form onSubmit={this.handleSubmit}>
+        {/* <span>{this.props.postType} form</span> */}
         <input type="text" name="username" value={this.state.username}
           onChange={this.handleInputChange} placeholder="Username"
         />

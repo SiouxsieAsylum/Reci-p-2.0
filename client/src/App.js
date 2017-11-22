@@ -10,16 +10,16 @@ class App extends Component {
   constructor(){
     super();
     this.state={
-      auth: null,
-      user: null,
-      //will need user logged in
-      listIndex: 1, //this will be dynamic maybe based on user
+      auth: false,
+      username: "",
+      userid: 1,
+      listIndex: 1, // TODO this will be dynamic maybe based on user
       listRecipes: [],
-
-      // TO DO WILL THIS NEED AUTH, USER, LISTINDEX?
     }
 
     this.recipeToList = this.recipeToList.bind(this);
+    this.loginUser = this.loginUser.bind(this)
+    
   }
 
   recipeToList(recipeId){
@@ -36,11 +36,22 @@ class App extends Component {
     }).catch(err => console.log(err));
   }
 
+  loginUser(username, id){
+    console.log('user is loggin in to main:', username, id);
+    this.setState({
+      auth:true,
+      username: username,
+      userid: id,
+    })
+  }
+
   render() {
     return (
       <Router>
         <div className="App">
-          <MainDisplay recipeToList={this.recipeToList}/>
+          <MainDisplay loginUser={this.loginUser} recipeToList={this.recipeToList}
+            auth={this.state.auth}
+          />
           <List />
         </div>
 

@@ -10,7 +10,6 @@ class  Nav extends Component {
     }
     this.registerForm = this.registerForm.bind(this)
     this.loginForm = this.loginForm.bind(this)
-
   }
 
   registerForm(){
@@ -26,16 +25,30 @@ class  Nav extends Component {
   }
 
   render(){
+    let navLogin = null;
+    if(!this.props.auth){
+      navLogin = (
+        <div className="nav">
+          <button onClick={this.registerForm}>Register</button>
+          <button onClick={this.loginForm}>Login</button>
+          {this.state.postType ? (
+            <UserForm loginForm={this.loginForm} postType={this.state.postType}
+              loginUser={this.props.loginUser}
+            />
+          ) : null}
+        </div>
+      )
+    } else {
+      navLogin = (
+        <div className="nav">
+          <button>Logout</button>
+        </div>
+      )
+    }
 
     return(
       <div className="nav">
-        <button onClick={this.registerForm}>Register</button>
-        <button onClick={this.loginForm}>Login</button>
-        {this.state.postType ? (
-          <UserForm loginForm={this.loginForm} postType={this.state.postType}
-            loginUser={this.props.loginUser}
-          />
-        ) : null}
+        {navLogin}
       </div>
     )
   }
