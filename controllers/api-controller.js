@@ -12,8 +12,7 @@ recipeApiController.getDictionary = (res) => {
   return dictionary;
 }
 
-// if on ingredient promise, ingred
-// if on extended ingred. ingred.name
+//adds "("")" all ingredient names into a string
 recipeApiController.sql = (ingredientData) => {
   let string = "";
   for (let i = 0; i < ingredientData.length; i++){
