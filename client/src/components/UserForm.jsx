@@ -26,17 +26,16 @@ class UserForm extends Component {
       headers: {
         'Content-Type': 'application/json',
       },
-      // credentials: 'include',
+      credentials: 'include',
       body: JSON.stringify(this.state)
     }).then(res => res.json())
       .then(res => {
-        console.log(res.data);
-        // if(this.props.postType === "register"){
-        //   this.props.loginForm();
-        // }else if(this.props.postType === "login"){
-        //   this.props.loginUser(res.data.user);
-        //
-        // }
+        // console.log(res.data);
+        if(this.props.postType === "register"){
+          this.props.loginForm();
+        }else if(this.props.postType === "login"){
+          this.props.loginUser(res.data.user.username, res.data.user.id);
+        }
       }).catch(err => console.log(err));
   }
 

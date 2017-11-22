@@ -13,23 +13,25 @@ class MainDisplay extends Component{
       apiData:null,
       apiLoaded:false,
       auth: false,
-      user: null,
+      username: null,
+      userid: 1,
     }
     this.loginUser = this.loginUser.bind(this)
   };
 
-
-  loginUser(id){
+  loginUser(username, id){
+    console.log('user is loggin in to main:', username, id);
     this.setState({
       auth:true,
-      user: id,
+      username: username,
+      userid: id,
     })
   }
 
   render(){
     return(
       <div className="main-display">
-        <Nav user={this.state.user}/>
+        <Nav user={this.state.username} loginUser={this.loginUser}/>
         <h1>MainDisplay RECIPENESS</h1>
         <RecipeList recipeToList={this.props.recipeToList}/>
       </div>

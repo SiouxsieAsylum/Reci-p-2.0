@@ -31,7 +31,11 @@ class  Nav extends Component {
       <div className="nav">
         <button onClick={this.registerForm}>Register</button>
         <button onClick={this.loginForm}>Login</button>
-        {this.state.postType ? <UserForm loginForm={this.loginForm} postType={this.state.postType} /> : null}
+        {this.state.postType ? (
+          <UserForm loginForm={this.loginForm} postType={this.state.postType}
+            loginUser={this.props.loginUser}
+          />
+        ) : null}
       </div>
     )
   }
