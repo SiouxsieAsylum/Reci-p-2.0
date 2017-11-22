@@ -9,6 +9,7 @@ class MainDisplay extends Component{
     this.state={
       apiData:null,
       apiLoaded:false,
+      showRegister: false,
 
     }
 
@@ -17,6 +18,11 @@ class MainDisplay extends Component{
   render(){
     return(
       <div className="main-display">
+        <button onClick={} >Register</button>
+        <button>Login</button>
+
+        <RegisterForm showRegister={this.state.showRegister} />
+
         <h1>MainDisplay RECIPENESS</h1>
         <RecipeList recipeToList={this.props.recipeToList}/>
       </div>
