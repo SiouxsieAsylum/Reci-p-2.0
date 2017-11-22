@@ -52,3 +52,6 @@ Completed model for adding recipes from api to database. Structure is as follows
 
 ## 11/22/17 1400 steve
 - some small react practice fixes
+
+## 11/22/17 1600 steve+ox
+- conditional nav fixing
