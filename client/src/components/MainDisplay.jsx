@@ -14,15 +14,22 @@ class MainDisplay extends Component{
       apiLoaded:false,
       auth: false,
       user: null,
-
     }
-
+    this.loginUser = this.loginUser.bind(this)
   };
+
+
+  loginUser(id){
+    this.setState({
+      auth:true,
+      user: id,
+    })
+  }
 
   render(){
     return(
       <div className="main-display">
-        <Nav />
+        <Nav user={this.state.user}/>
         <h1>MainDisplay RECIPENESS</h1>
         <RecipeList recipeToList={this.props.recipeToList}/>
       </div>

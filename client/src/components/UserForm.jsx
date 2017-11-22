@@ -19,9 +19,27 @@ class UserForm extends Component {
     })
   }
 
-  handleSubmit(){
-    fetch('api/auth')
+  handleSubmit(event){
+    event.preventDefault();
+    fetch(`api/auth/${this.props.postType}`,{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify(this.state)
+    }).then(res => res.json())
+      .then(res => {
+        console.log(res.data);
+        // if(this.props.postType === "register"){
+        //   this.props.loginForm();
+        // }else if(this.props.postType === "login"){
+        //   this.props.loginUser(res.data.user);
+        //
+        // }
+      }).catch(err => console.log(err));
   }
+
 
   render(){
     return(
