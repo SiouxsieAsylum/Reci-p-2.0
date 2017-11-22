@@ -26,16 +26,30 @@ class  Nav extends Component {
   }
 
   render(){
+    let navContent = null;
+    if(!this.props.auth){
+      navContent = (
+        <div className="nav">
+          <button onClick={this.registerForm}>Register</button>
+          <button onClick={this.loginForm}>Login</button>
+          {this.state.postType ? (
+            <UserForm loginForm={this.loginForm} postType={this.state.postType}
+              loginUser={this.props.loginUser}
+            />
+          ) : null}
+        </div>
+      )
+    } else {
+      navContent = (
+        <div className="nav">
+          <button>Logout</button>
+        </div>
+      )
+    }
 
     return(
       <div className="nav">
-        <button onClick={this.registerForm}>Register</button>
-        <button onClick={this.loginForm}>Login</button>
-        {this.state.postType ? (
-          <UserForm loginForm={this.loginForm} postType={this.state.postType}
-            loginUser={this.props.loginUser}
-          />
-        ) : null}
+        {navContent}
       </div>
     )
   }

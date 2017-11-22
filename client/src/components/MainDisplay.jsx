@@ -31,7 +31,7 @@ class MainDisplay extends Component{
   render(){
     return(
       <div className="main-display">
-        <Nav user={this.state.username} loginUser={this.loginUser}/>
+        <Nav auth={this.state.auth} loginUser={this.loginUser}/>
         <h1>MainDisplay RECIPENESS</h1>
         <RecipeList recipeToList={this.props.recipeToList}/>
       </div>
