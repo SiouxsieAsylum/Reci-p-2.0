@@ -13,11 +13,8 @@ class App extends Component {
       auth: false,
       username: "",
       userid: 1,
-      //will need user logged in
-      listIndex: 1, //this will be dynamic maybe based on user
+      listIndex: 1, // TODO this will be dynamic maybe based on user
       listRecipes: [],
-
-      // TO DO WILL THIS NEED AUTH, USER, LISTINDEX?
     }
 
     this.recipeToList = this.recipeToList.bind(this);
