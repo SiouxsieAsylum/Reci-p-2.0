@@ -19,9 +19,8 @@ class List extends Component{
     return(
       <div className="list-container">
         <h3 className="soft-title">Ingredients list</h3>
-        {dummyData.map(item => {
-          return <SingleList ingredient={item.recipe}/>
-
+        {dummyData.map((item,index) => {
+          return <SingleList key={index} ingredient={item.recipe}/>
         })}
         <form className="ingredient-form">
           <input type="text" name="addIngredient" value={this.state.addIngredientValue} placeholder="Add ingredient"/>
