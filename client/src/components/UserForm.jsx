@@ -8,7 +8,7 @@ class UserForm extends Component {
       password: "",
     }
     this.handleInputChange = this.handleInputChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleInputChange(event){
@@ -23,15 +23,14 @@ class UserForm extends Component {
     fetch('api/auth')
   }
 
-
   render(){
     return(
     <div>
-      <h1>User form</h1>
+      <h1>{this.props.postType} form</h1>
       <form >
         <input type="text" name="username" />
         <input type="password" name="password" />
-        <input type="submit" value="Register" />
+        <input type="submit" value={this.props.postType} />
       </form>
     </div>
     )
