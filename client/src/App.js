@@ -10,9 +10,13 @@ class App extends Component {
   constructor(){
     super();
     this.state={
+      auth: null,
+      user: null,
       //will need user logged in
       listIndex: 1, //this will be dynamic maybe based on user
       listRecipes: [],
+
+      // TO DO WILL THIS NEED AUTH, USER, LISTINDEX?
     }
 
     this.recipeToList = this.recipeToList.bind(this);
