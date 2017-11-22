@@ -10,7 +10,6 @@ class  Nav extends Component {
     }
     this.registerForm = this.registerForm.bind(this)
     this.loginForm = this.loginForm.bind(this)
-
   }
 
   registerForm(){

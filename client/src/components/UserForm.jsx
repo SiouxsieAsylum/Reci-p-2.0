@@ -30,7 +30,7 @@ class UserForm extends Component {
       body: JSON.stringify(this.state)
     }).then(res => res.json())
       .then(res => {
-        // console.log(res.data);
+        console.log(res.data);
         if(this.props.postType === "register"){
           this.props.loginForm();
         }else if(this.props.postType === "login"){
