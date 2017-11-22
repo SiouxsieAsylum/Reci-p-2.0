@@ -13,7 +13,7 @@ class MainDisplay extends Component{
       apiData:null,
       apiLoaded:false,
       auth: false,
-      username: null,
+      username: "",
       userid: 1,
     }
     this.loginUser = this.loginUser.bind(this)
