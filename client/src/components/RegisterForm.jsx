@@ -7,7 +7,7 @@ class RegisterForm extends Component {
       username: "",
       password: "",
     }
-    this.showDisplay = this.showDisplay.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this)
   }
 
   handleInputChange(event){
@@ -21,12 +21,14 @@ class RegisterForm extends Component {
 
   render(){
     return(
+    <div>
       <h1>Register</h1>
       <form>
         <input type="text" name="username" />
         <input type="password" name="password" />
         <input type="submit" value="Register" />
       </form>
+    </div>
     )
   }
 

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+
 import RecipeList from './RecipeList';
+import RegisterForm from './RegisterForm'
 
 
 class MainDisplay extends Component{
@@ -9,7 +12,8 @@ class MainDisplay extends Component{
     this.state={
       apiData:null,
       apiLoaded:false,
-      showRegister: false,
+      auth: false,
+      user: null,
 
     }
 
@@ -18,10 +22,10 @@ class MainDisplay extends Component{
   render(){
     return(
       <div className="main-display">
-        <button onClick={} >Register</button>
+        <button >Register</button>
         <button>Login</button>
 
-        <RegisterForm showRegister={this.state.showRegister} />
+        <RegisterForm  />
 
         <h1>MainDisplay RECIPENESS</h1>
         <RecipeList recipeToList={this.props.recipeToList}/>
