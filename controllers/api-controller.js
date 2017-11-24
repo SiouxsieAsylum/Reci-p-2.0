@@ -1,5 +1,6 @@
 const api = require('../services/api')
 const Recipe = require('../models/Recipe')
+const fetch = require('node-fetch')
 const recipeApiController = {};
 
 recipeApiController.getDictionary = (res) => {
@@ -56,12 +57,16 @@ recipeApiController.createRecipe = (res) => {
 
 
 recipeApiController.addRecipes = () => {
-  api.getRecipes()
-  .then((res) => {
-      // console.log(recipeApiController.createRecipe(res))
-      // console.log(recipeApiController.addIngredients(res))
+  fetch('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=false&number=8',
+  {headers:
+    {
+      "X-Mashape-Key":process.env.API_KEY,
+      "Accept":"application/json"}})
+  .then(res => res.json())
+  .then((json) => {
+    recipes = json.recipes;
 
-      Promise.all([recipeApiController.createRecipe(res),recipeApiController.addIngredients(res)])
+    Promise.all([recipeApiController.createRecipe(recipes),recipeApiController.addIngredients(recipes)])
     .then(allData => {
       let recipeData = Object.values(allData[0]);
       let ingredientData = Object.values(allData[1]);
@@ -71,19 +76,16 @@ recipeApiController.addRecipes = () => {
         allDataArray.push([recipeData[i],ingredientData[i]])
       }
 
-        allDataArray.map((food,j) => {
-          Object.values(food[1]).map((ingred,k) => {
-            Recipe.createJoinList("\(" + food[0].id +","+ ingred.id+","+parseInt(JSON.stringify(res[j].extendedIngredients[k].amount))+","+"\'"+res[j].extendedIngredients[k].unitLong+"\'"+"\)")
-          })
+      allDataArray.map((food,j) => {
+        Object.values(food[1]).map((ingred,k) => {
+          Recipe.createJoinList("\(" + food[0].id +","+ ingred.id+","+parseInt(JSON.stringify(recipes[j].extendedIngredients[k].amount))+","+"\'"+recipes[j].extendedIngredients[k].unitLong+"\'"+"\)")
         })
-      // })
+      })
 
-        }).catch(err => {
+    }).catch(err => {
           console.log(err)
-        })
-    // }
+    })
   })
-
   .catch(err => {
     console.log(err)
   })
