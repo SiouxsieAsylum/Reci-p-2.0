@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
 });
 
 const recipeController = require('./controllers/api-controller');
-recipeController.addRecipes();
+//recipeController.addRecipes();
 
 
 // const authRouter = require('./routes/auth-routes');
