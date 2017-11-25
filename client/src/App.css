@@ -122,7 +122,7 @@ div{
 }
 
 .single-ingredient{
-  
+
 }
 
 .nav{
@@ -130,5 +130,17 @@ div{
   flex-direction: row;
 }
 
+.nav-links{
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-button{
+  height: 20px;
+}
+
+.inner-header{
+  width: 100%;
+}
 
 /**/

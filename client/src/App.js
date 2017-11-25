@@ -19,7 +19,7 @@ class App extends Component {
 
     this.recipeToList = this.recipeToList.bind(this);
     this.loginUser = this.loginUser.bind(this)
-    
+
   }
 
   recipeToList(recipeId){
