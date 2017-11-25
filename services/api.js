@@ -12,9 +12,6 @@ fetch('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random
   "Accept":"application/json"}})
 .then(res => res.json())
 .then(json => {
-  // other options for returns
-  // return (JSON.stringify(json.recipes))
-  // return json;
   console.log(JSON.stringify(json.recipes))
   return json.recipes;
 })
