@@ -22,7 +22,7 @@ class MainDisplay extends Component{
     return(
       <div className="main-display">
         <Nav auth={this.props.auth} loginUser={this.props.loginUser}/>
-        <h1>MainDisplay RECIPENESS</h1>
+
         <RecipeList recipeToList={this.props.recipeToList}/>
       </div>
     )
