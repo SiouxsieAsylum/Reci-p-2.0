@@ -6,15 +6,17 @@ import Nav from './Nav';
 
 
 class MainDisplay extends Component{
+
   constructor(props){
     super(props);
+    /* Prop-list */
+    //auth, username
+    // loginUser(logs in user in nav), 
+    // recipeToList(adds recipe id to shopping list)
 
     this.state={
       apiData:null,
       apiLoaded:false,
-      auth: false,
-      username: "",
-      userid: 1,
     }
   };
 

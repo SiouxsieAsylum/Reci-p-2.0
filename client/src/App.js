@@ -50,7 +50,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <MainDisplay loginUser={this.loginUser} recipeToList={this.recipeToList}
-            auth={this.state.auth}
+            auth={this.state.auth} username={this.state.username}
           />
           <List />
         </div>
