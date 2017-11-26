@@ -31,32 +31,15 @@ Recipe.createJoinList = recipeData => {
 //   }
 // }
 
-// db.query('query')
-//   .then(first => db.query('second'))
-//   .then(second => second)
 
 
-// db.query('query')
-//   .then(first => {
-//     return db.query('second query')
-//       .then(second => {
-//         return {
-//           first: first,
-//           second: second,
-//         }
-//       })
-//   })
-//   .then(firstTwo => {
+Recipe.findById = id => {
+  return db.one(`SELECT * FROM recipes WHERE id = $1`, [id]);
+}
 
-//   })
-
-// Recipe.findById = id => {
-//   return db.one(`SELECT * FROM recipes WHERE id = $1`, [id]);
-// }
-
-// Recipe.findAll = () => {
-//   return db.query(`SELECT * FROM recipes`, [id]);
-// }
+Recipe.findAll = () => {
+  return db.query(`SELECT * FROM recipes`, [id]);
+}
 
 // Recipe.update = (recipe, id) => {
 //   db.none(`UPDATE recipes SET name = $1, serving_size = $2`,[recipe.name,recipe.yeild])
@@ -81,13 +64,13 @@ Recipe.createJoinList = recipeData => {
 //   })
 // }
 
-Recipe.addRecipeToShopping = (shoppingList_id, recipe_id) => {
-  return db.one(`
-    INSERT INTO shopping_lists
-    (id, recipe_id)
-    VALUES($1, $2)
-    RETURNING *
-    `, [shoppingList_id, recipe_id ]);
-}
+// Recipe.addRecipeToShopping = (shoppingList_id, recipe_id) => {
+//   return db.one(`
+//     INSERT INTO shopping_lists
+//     (id, recipe_id)
+//     VALUES($1, $2)
+//     RETURNING *
+//     `, [shoppingList_id, recipe_id ]);
+// }
 
 module.exports = Recipe;

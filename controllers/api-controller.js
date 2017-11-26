@@ -23,7 +23,6 @@ recipeApiController.sql = (ingredientData) => {
       string = string + "(\'" + ingredientData[i].name + "\'),"
     }
   }
-  // console.log(string);
   return string;
 }
 
@@ -34,7 +33,6 @@ recipeApiController.addIngredients = (res) => {
       return {name: ingred.name}
     })
   })
-  // TODO: pass all ingredients
   for(let ingredient of ingredientData){
     ingredientArray.push(Recipe.addIngredients(recipeApiController.sql(ingredient)));
   }
@@ -46,7 +44,6 @@ recipeApiController.createRecipe = (res) => {
   const recipeData = res.map(food => {
     return {title: food.title, image: food.image, serving_size: food.servings};
     })
-  // let recipe = {title:res.title, image: res.image, serving_size:res.servings}
   for (let recipe of recipeData){
     recipeArray.push(Recipe.create(recipe))
   }
@@ -61,7 +58,9 @@ recipeApiController.addRecipes = () => {
   {headers:
     {
       "X-Mashape-Key":process.env.API_KEY,
-      "Accept":"application/json"}})
+      "Accept":"application/json"
+    }
+  })
   .then(res => res.json())
   .then((json) => {
     recipes = json.recipes;
@@ -70,7 +69,7 @@ recipeApiController.addRecipes = () => {
     .then(allData => {
       let recipeData = Object.values(allData[0]);
       let ingredientData = Object.values(allData[1]);
-      let allDataArray = []
+      let allDataArray = [];
 
       for (let i = 0; i < recipeData.length; i++){
         allDataArray.push([recipeData[i],ingredientData[i]])
@@ -90,6 +89,5 @@ recipeApiController.addRecipes = () => {
     console.log(err)
   })
 }
-
 
 module.exports = recipeApiController;
