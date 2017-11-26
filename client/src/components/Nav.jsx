@@ -53,7 +53,7 @@ class  Nav extends Component {
       <div className='nav'>
         <div className="logo">LOGO</div>
         {this.props.auth && navLinks}
-        {!this.props.auth ? login : <button>Logout</button>}
+        {!this.props.auth ? login : <button onClick={this.props.logout}>Logout</button>}
       </div>
     )
   }

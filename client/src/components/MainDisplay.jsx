@@ -23,7 +23,7 @@ class MainDisplay extends Component{
   render(){
     return(
       <div className="main-display">
-        <Nav auth={this.props.auth} loginUser={this.props.loginUser}/>
+        <Nav auth={this.props.auth} loginUser={this.props.loginUser} logout={this.props.logout}/>
 
         <RecipeList recipeToList={this.props.recipeToList}/>
       </div>
