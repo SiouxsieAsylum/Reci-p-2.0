@@ -63,3 +63,7 @@ Completed model for adding recipes from api to database. Structure is as follows
 ## 11/26/17 1315 steve and oz
 - register button doesn't show up on left side of login div when register is selected
 - create fetch in MainDisplay to display data to RecipeList component
+
+## 11/26/17 Andrea McKenzie
+	-Wrote and rewrote recipe and List routes
+

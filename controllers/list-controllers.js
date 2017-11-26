@@ -3,7 +3,8 @@ const Recipe = require('../models/Recipe')
 const ListController = {};
 
 ListController.index = (req,res,next) => {
-  List.findAll()
+
+  List.findAll(req.user.id)
   .then(lists => {
     res.json({
       message:'all user lists found',
@@ -61,7 +62,5 @@ ListController.delete = (req,res,next) => {
   })
   .catch(next);
 }
-
-
 
 module.exports = ListController;
