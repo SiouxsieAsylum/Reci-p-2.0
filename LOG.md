@@ -60,5 +60,6 @@ Completed model for adding recipes from api to database. Structure is as follows
 - refactor nav and edit styles
 - add logout functionality
 
-## 11/26/17 1315 steve and oz nav register button change
+## 11/26/17 1315 steve and oz
 - register button doesn't show up on left side of login div when register is selected
+- create fetch in MainDisplay to display data to RecipeList component
