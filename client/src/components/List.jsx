@@ -3,8 +3,6 @@ import SingleList from './SingleList'
 
 const dummyData = require('./dummyJSON') // PLACEHOLDER DATA
 
-console.log('dummy data works from LIST COMPONENT: ', dummyData);
-
 
 class List extends Component{
   constructor(props){

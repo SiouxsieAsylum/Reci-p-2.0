@@ -2,15 +2,12 @@ import React from 'react';
 import RecipeThumbnail from './RecipeThumbnail'
 
 
-const dummyData = require('./dummyJSON')
-
-// console.log('dummy data works and is: ', dummyData);
-
 function RecipeList(props){
+  const recipes = props.recipes;
   return(
     <div className="recipe-list">
-      {dummyData.map( (item, index) => {
-        return <RecipeThumbnail recipe={item.recipe} key={index}
+      {recipes.map( (recipe, index) => {
+        return <RecipeThumbnail recipe={recipe} key={index}
         recipeToList={props.recipeToList}
       />
       })}

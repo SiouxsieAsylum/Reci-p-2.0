@@ -5,11 +5,11 @@ function RecipeThumbnail (props) {
   const recipeToList = props.recipeToList;
   const id = props.recipe.id;
   return(
-    <div className="thumbnail" 
+    <div className="thumbnail"
       style={{backgroundImage: `url(${recipe.image})`}}
       onClick={() => recipeToList(id)}
     >
-        <h3 className="thumbnail-title">{recipe.label}</h3>
+        <h3 className="thumbnail-title">{recipe.name}</h3>
     </div>
   )
 

@@ -11,21 +11,44 @@ class MainDisplay extends Component{
     super(props);
     /* Prop-list */
     //auth, username
-    // loginUser(logs in user in nav), 
+    // loginUser(logs in user in nav),
     // recipeToList(adds recipe id to shopping list)
 
     this.state={
       apiData:null,
       apiLoaded:false,
     }
+    this.getAllRecipes = this.getAllRecipes.bind(this)
   };
+
+  componentDidMount(){
+    this.getAllRecipes()
+  }
+
+  getAllRecipes(){
+    fetch('/api/recipe',{
+      method : "GET",
+    }).then(res => res.json()
+  ).then(json => {
+      this.setState({
+        apiData: json.data.recipes,
+        apiLoaded: true,
+      })
+    }).catch(err => console.log(err))
+  }
 
   render(){
     return(
       <div className="main-display">
         <Nav auth={this.props.auth} loginUser={this.props.loginUser} logout={this.props.logout}/>
 
-        <RecipeList recipeToList={this.props.recipeToList}/>
+        {this.state.apiLoaded  && (
+          <RecipeList
+            recipeToList={this.props.recipeToList}
+            recipes={this.state.apiData}
+          />
+        )}
+
       </div>
     )
   }//end of render
