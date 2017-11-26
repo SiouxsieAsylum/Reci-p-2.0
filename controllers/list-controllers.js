@@ -1,7 +1,9 @@
 const List = require('../models/List')
+const Recipe = require('../models/Recipe')
 const ListController = {};
 
 ListController.index = (req,res,next) => {
+
   List.findAll(req.user.id)
   .then(lists => {
     res.json({
@@ -50,6 +52,7 @@ ListController.update = (req,res,next)=> {
   })
   .catch(next)
 }
+
 ListController.delete = (req,res,next) => {
   List.delete(req.params.id)
   .then(() => {

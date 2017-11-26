@@ -14,7 +14,7 @@ RecipeController.index = (req, res, next) => {
 };
 
 RecipeController.addRecipeToShopping = (req, res, next) => {
-  Recipe.addRecipeToShopping(parseInt(req.params.shoppingList_id), req.body.recipe_id )
+  Recipe.addRecipeToShopping(parseInt(req.params.shoppingList_id), req.params.id )
     .then(recipe => {
       res.json({
         message: 'recipe added',
@@ -46,7 +46,9 @@ RecipeController.update = (req,res,next) => {
 RecipeController.delete = (req,res,next) => {
   Recipe.delete(req.params.id)
   .then(() => {
-    res.redirect('/')
+    res.json({
+      message: 'list deleted'
+    })
   })
   .catch(next)
 }
