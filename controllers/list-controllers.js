@@ -12,4 +12,15 @@ ListController.index = (req,res,next) => {
   .catch(next)
 }
 
+ListController.show = (req,res,next) => {
+  List.findById(req.params.id)
+  .then(list => {
+    res.json({
+      message: 'list found',
+      data: { list }
+    })
+  })
+  .catch(next)
+}
+
 module.exports = ListController;
