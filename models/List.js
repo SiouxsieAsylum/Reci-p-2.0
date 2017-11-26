@@ -9,8 +9,8 @@ List.findById = id => {
   return db.one(`SELECT * FROM shopping_lists WHERE id = $1`, [id]);
 }
 
-List.findAll = () => {
-  return db.query(`SELECT * FROM shopping_lists`, [id]);
+List.findAll = (userId) => {
+  return db.query(`SELECT * FROM user_lists WHERE user_id = $1 `, [userId]);
 }
 
 List.update = (list, id) => {
