@@ -30,9 +30,9 @@ class MainDisplay extends Component{
       method : "GET",
     }).then(res => res.json()
   ).then(json => {
-      console.log(json)
       this.setState({
         apiData: json.data.recipes,
+        apiLoaded: true,
       })
     }).catch(err => console.log(err))
   }
@@ -42,7 +42,13 @@ class MainDisplay extends Component{
       <div className="main-display">
         <Nav auth={this.props.auth} loginUser={this.props.loginUser} logout={this.props.logout}/>
 
-        <RecipeList recipeToList={this.props.recipeToList}/>
+        {this.state.apiLoaded  && (
+          <RecipeList
+            recipeToList={this.props.recipeToList}
+            recipes={this.state.apiData}
+          />
+        )}
+
       </div>
     )
   }//end of render
