@@ -1,8 +1,8 @@
 const db = require('../db/config');
 const List = {};
 
-List.create = (userId,list) => {
-  return db.one(`INSERT INTO user_lists (user_id, list_id, name) VALUES ($1,$2,$3)`)
+List.create = (list) => {
+  return db.one(`INSERT INTO user_lists (user_id, name) VALUES ($1,$2) RETURNING *`,[list.user_id, list.name])
 }
 
 List.findById = id => {
