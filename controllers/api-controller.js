@@ -16,11 +16,12 @@ recipeApiController.getDictionary = (res) => {
 //adds "("")" all ingredient names into a string
 recipeApiController.sql = (ingredientData) => {
   let string = "";
+  let apostrophe = /\'/gi;
   for (let i = 0; i < ingredientData.length; i++){
     if (i + 1 == ingredientData.length){
-      string = string + "(\'" + ingredientData[i].name + "\')"
+      string = string + "(\'" + ingredientData[i].name.replace(apostrophe,"") + "\')"
     } else {
-      string = string + "(\'" + ingredientData[i].name + "\'),"
+      string = string + "(\'" + ingredientData[i].name.replace(apostrophe,"") + "\'),"
     }
   }
   return string;
@@ -75,9 +76,9 @@ recipeApiController.addRecipes = () => {
         allDataArray.push([recipeData[i],ingredientData[i]])
       }
 
-      allDataArray.map((food,j) => {
-        Object.values(food[1]).map((ingred,k) => {
-          Recipe.createJoinList("\(" + food[0].id +","+ ingred.id+","+parseInt(JSON.stringify(recipes[j].extendedIngredients[k].amount))+","+"\'"+recipes[j].extendedIngredients[k].unitLong+"\'"+"\)")
+      allDataArray.map((food,food_id) => {
+        Object.values(food[1]).map((ingred,ingredient_id) => {
+          Recipe.createJoinList("\(" + food[0].id +","+ ingred.id+","+parseFloat(JSON.stringify(recipes[food_id].extendedIngredients[ingredient_id].amount))+","+"\'"+recipes[food_id].extendedIngredients[ingredient_id].unitLong+"\'"+"\)")
         })
       })
 
