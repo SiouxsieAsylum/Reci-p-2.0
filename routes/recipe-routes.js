@@ -13,7 +13,7 @@ recipeRoutes.get('/:id', recipeControllers.show);
 // process the edit
 // recipeRoutes.put('/:id',recipeControllers.update)
 
-recipeRoutes.post('/:id/:shoppingList_id', recipeControllers.addRecipeToShopping);
+recipeRoutes.post('/:recipe_id/:shoppingList_id', recipeControllers.addRecipeToShopping);
 
 recipeRoutes.delete('/:id',recipeControllers.delete)
 

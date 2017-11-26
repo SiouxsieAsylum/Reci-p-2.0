@@ -14,7 +14,7 @@ RecipeController.index = (req, res, next) => {
 };
 
 RecipeController.addRecipeToShopping = (req, res, next) => {
-  Recipe.addRecipeToShopping(parseInt(req.params.shoppingList_id), req.params.id )
+  Recipe.addRecipeToShopping(req.params.shoppingList_id, req.params.recipe_id)
     .then(recipe => {
       res.json({
         message: 'recipe added',
