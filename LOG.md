@@ -59,3 +59,6 @@ Completed model for adding recipes from api to database. Structure is as follows
 ## 11/25/17 1800 steve and oz pair prog
 - refactor nav and edit styles
 - add logout functionality
+
+## 11/26/17 1315 steve and oz nav register button change
+- register button doesn't show up on left side of login div when register is selected
