@@ -5,22 +5,10 @@ const RecipeController = {};
 RecipeController.index = (req, res, next) => {
   Recipe.findAllRecipes()
   .then(recipes => {
-
-
-
-
-
-
-
-    // Promise.all([recipes,recipes.map(recipe => {
-    //   Recipe.findIngredients(recipe.id)
-    // })])
-    // .then(completedRecipes => {
-    //   res.json({
-    //     message: 'all recipes found',
-    //     data: { completedRecipes }
-    //   })
-    // })
+    res.json({
+      message: 'all recipes found',
+      data: { recipes }
+    })
   })
   .catch(next)
 };
