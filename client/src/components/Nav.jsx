@@ -26,25 +26,37 @@ class  Nav extends Component {
   }
 
   render(){
-    return(
-      <div className="nav">
-        <h1>Recipeness</h1>
-        <button className="nav-button" onClick={this.registerForm}>Register</button>
-        <button className="nav-button" onClick={this.loginForm}>Login</button>
-        {this.state.postType ? (
-          <div className="inner-header">
-            <div className="nav-links">
-              <p>home</p>
-              <p>add recipe</p>
-              <p>favorites</p>
-              <p>lists</p>
-            </div>
-
+    let navLogin = null;
+    if(!this.props.auth){
+      navLogin = (
+        <div className="nav">
+          <div className='logo'>LOGO</div>
+          <button onClick={this.registerForm}>Register</button>
+          <button onClick={this.loginForm}>Login</button>
+          {this.state.postType ? (
             <UserForm loginForm={this.loginForm} postType={this.state.postType}
               loginUser={this.props.loginUser}
             />
+          ) : null}
+        </div>
+      )
+    } else {
+      navLogin = (
+        <div className="nav">
+          <div className="logo">LOGO</div>
+          <div className="nav-links">
+            <div>add recipe</div>
+            <div>favorites</div>
+            <div>lists</div>
           </div>
-        ) : null}
+          <button>Logout</button>
+        </div>
+      )
+    }
+
+    return(
+      <div className="nav">
+        {navLogin}
       </div>
     )
   }
