@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS ingredient_lists(
   id SERIAL PRIMARY KEY,
   recipe_id INTEGER REFERENCES recipes,
   ingredient_id INTEGER REFERENCES ingredients,
-  amount INTEGER,
+  amount FLOAT,
   unit VARCHAR(255)
 );
 
