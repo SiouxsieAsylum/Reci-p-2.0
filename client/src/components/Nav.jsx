@@ -36,7 +36,10 @@ class  Nav extends Component {
 
     const login=(
       <div className='login'>
-        <button onClick={this.registerForm}>Register</button>
+        {this.state.postType !== 'Register' && (
+          <button onClick={this.registerForm}>Register</button>
+        )}
+        
         {this.state.postType !== 'Login' && (
           <button onClick={this.loginForm}>Login</button>
         )}
@@ -45,7 +48,7 @@ class  Nav extends Component {
           <UserForm loginForm={this.loginForm} 
             postType={this.state.postType} loginUser={this.props.loginUser}
           />
-      ) : null}
+        ) : null}
       </div>
     )
 
