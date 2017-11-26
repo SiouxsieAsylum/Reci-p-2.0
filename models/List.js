@@ -12,7 +12,7 @@ List.findById = id => {
 
 List.findAll = (userId) => {
   return db.query(`SELECT * FROM user_lists WHERE user_id = $1 `, [userId]);
-
+}
 
 List.update = (list, id) => {
 

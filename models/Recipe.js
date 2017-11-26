@@ -12,35 +12,38 @@ Recipe.create = recipe => {
 }
 
 Recipe.addIngredients = recipe => {
-
   const query = `INSERT INTO ingredients (name) VALUES ${recipe} RETURNING *`
   return db.many(query)
+}
 
+Recipe.newRecipeIngredients = ingred => {
+  return db.one(`INSERT INTO ingredients (name) VALUES ($1) RETURNING *`,[ingred.name])
+}
+
+Recipe.addUserRecipe = (userId,recipe_id) => {
+  return db.one(`INSERT INTO user_recipes (user_id,recipe_id) VALUES ($1,$2)`, [userId,recipe_id])
 }
 
 // edit name if ingredient in recipe
-Recipe.editIngredient = (ingredient,recipe) => {
-  return db.one(`UPDATE ingredients SET name=$1 JOIN ingredient_lists ON ingredients.id = ingredent_lists.ingredient_id JOIN recipe ON recipe.id = ingredient_lists.recipe_id WHERE recipe.id=$2 AND ingredent.id=$3 RETURNING *`,[ingredient.name,recipe.id,ingredient.id])
-}
+// Recipe.editIngredient = (ingredient,recipe) => {
+//   return db.one(`UPDATE ingredients SET name=$1 JOIN ingredient_lists ON ingredients.id = ingredent_lists.ingredient_id JOIN recipe ON recipe.id = ingredient_lists.recipe_id WHERE recipe.id=$2 AND ingredent.id=$3 RETURNING *`,[ingredient.name,recipe.id,ingredient.id])
+// }
 
-// edit amount/unit of ingredient in recipe
-Recipe.editIngredientList = (ingredient,recipe) => {
-  return db.one(`UPDATE ingredient_lists SET amount=$1, unit =$2 JOIN recipes no ingredient_lists.recipe_id = recipe.id WHERE ingredient_id = $3 AND recipe.id = $3 RETURNING *`,[ingredient.amount, ingredient.unit,ingredient.id,recipe.id])
-}
+// // edit amount/unit of ingredient in recipe
+// Recipe.editIngredientList = (ingredient,recipe) => {
+//   return db.one(`UPDATE ingredient_lists SET amount=$1, unit =$2 JOIN recipes no ingredient_lists.recipe_id = recipe.id WHERE ingredient_id = $3 AND recipe.id = $3 RETURNING *`,[ingredient.amount, ingredient.unit,ingredient.id,recipe.id])
+// }
 
-// remove ingredient from recipe
-Recipe.removeIngredient = (ingredient,recipe) => {
-  return db.one(`DELETE FROM ingredient_lists WHERE ingredient_lists.ingredient_id = $1 AND ingredient_lists.recipe_id=$2`,[ingredient.id,recipe.id])
-}
+// // remove ingredient from recipe
+// Recipe.removeIngredient = (ingredient,recipe) => {
+//   return db.one(`DELETE FROM ingredient_lists WHERE ingredient_lists.ingredient_id = $1 AND ingredient_lists.recipe_id=$2`,[ingredient.id,recipe.id])
+// }
 
 
 Recipe.createJoinList = recipeData => {
-
   const query = `INSERT INTO ingredient_lists (recipe_id,ingredient_id,amount,unit) VALUES ${recipeData} RETURNING *`
   return db.many(query)
 }
-
-
 
 Recipe.findRecipe = id => {
   return db.one(`SELECT * FROM recipes WHERE id = $1`,[id])
