@@ -5,7 +5,7 @@ const usersController = {};
 
 usersController.create = (req, res, next) => {
   debugger;
-  console.log(req)
+  // console.log(req)
 
   const salt = bcrypt.genSaltSync();
   const hash = bcrypt.hashSync(req.body.password, salt);

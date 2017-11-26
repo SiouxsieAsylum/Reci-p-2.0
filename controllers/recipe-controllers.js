@@ -38,6 +38,7 @@ RecipeController.show = (req,res,next) => {
 // recipe.editIngredientList(amount,unit);
 // recipe.removeIngredient(removes from ingredient_lists by ingredient.id and recipe_id)
 // need to see how the form will be formatted
+// two forms: action/recipes (create recipe) action/recipe/:id ingredients
 RecipeController.update = (req,res,next) => {
 
 }
