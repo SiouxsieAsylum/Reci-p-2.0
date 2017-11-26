@@ -18,14 +18,23 @@ class MainDisplay extends Component{
       apiData:null,
       apiLoaded:false,
     }
+    this.getAllRecipes = this.getAllRecipes.bind(this)
   };
+
+  componentDidMount(){
+    this.getAllRecipes()
+  }
 
   getAllRecipes(){
     fetch('/api/recipe',{
       method : "GET",
-
-    }).then((res) => console.log(res)
-    ).catch(err => console.log(err))
+    }).then(res => res.json()
+  ).then(json => {
+      console.log(json)
+      this.setState({
+        apiData: json.data.recipes,
+      })
+    }).catch(err => console.log(err))
   }
 
   render(){
