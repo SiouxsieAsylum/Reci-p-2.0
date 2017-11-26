@@ -7,8 +7,9 @@ function RecipeThumbnail (props) {
   return(
     <div className="thumbnail"
       style={{backgroundImage: `url(${recipe.image})`}}
-      onClick={() => recipeToList(id)}
+
     >
+        <div className="add-recipe-button" onClick={() => recipeToList(id)}>+</div>
         <h3 className="thumbnail-title">{recipe.name}</h3>
     </div>
   )

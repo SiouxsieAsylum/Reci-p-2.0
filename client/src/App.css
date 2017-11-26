@@ -150,4 +150,19 @@ div{
   width: 100%;
 }
 
+.add-recipe-button {
+  width: 25px;
+  margin: 0 auto;
+  border: 2px solid white;
+  border-radius: 50%;
+  font-size: 25px;
+  color: white;
+  text-align: center;
+}
+
+.add-recipe-button:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
 /**/
