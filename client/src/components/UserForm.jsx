@@ -31,9 +31,9 @@ class UserForm extends Component {
     }).then(res => res.json())
       .then(res => {
         console.log(res.data);
-        if(this.props.postType === "register"){
+        if(this.props.postType === "Register"){
           this.props.loginForm();
-        }else if(this.props.postType === "login"){
+        }else if(this.props.postType === "Login"){
           this.props.loginUser(res.data.user.username, res.data.user.id);
         }
       }).catch(err => console.log(err));

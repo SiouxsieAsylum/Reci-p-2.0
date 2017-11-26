@@ -15,13 +15,13 @@ class  Nav extends Component {
 
   registerForm(){
     this.setState({
-      postType: "register"
+      postType: "Register"
     })
   }
 
   loginForm(){
     this.setState({
-      postType: "login"
+      postType: "Login"
     })
   }
 
@@ -37,7 +37,10 @@ class  Nav extends Component {
     const login=(
       <div className='login'>
         <button onClick={this.registerForm}>Register</button>
-        <button onClick={this.loginForm}>Login</button>
+        {this.state.postType !== 'Login' && (
+          <button onClick={this.loginForm}>Login</button>
+        )}
+        
         {this.state.postType ? (
           <UserForm loginForm={this.loginForm} 
             postType={this.state.postType} loginUser={this.props.loginUser}

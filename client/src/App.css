@@ -125,12 +125,7 @@ div{
 
 }
 
-.nav-container{
-
-}
-
 .nav{
-  
   display: flex;
   flex: 1;
   flex-direction: row;
@@ -144,6 +139,11 @@ div{
 
 .nav-button{
   height: 20px;
+}
+
+.login{
+  display: flex;
+  flex-direction: row;
 }
 
 .inner-header{
