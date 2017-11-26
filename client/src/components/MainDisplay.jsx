@@ -11,7 +11,7 @@ class MainDisplay extends Component{
     super(props);
     /* Prop-list */
     //auth, username
-    // loginUser(logs in user in nav), 
+    // loginUser(logs in user in nav),
     // recipeToList(adds recipe id to shopping list)
 
     this.state={
@@ -19,6 +19,14 @@ class MainDisplay extends Component{
       apiLoaded:false,
     }
   };
+
+  getAllRecipes(){
+    fetch('/api/recipe',{
+      method : "GET",
+
+    }).then((res) => console.log(res)
+    ).catch(err => console.log(err))
+  }
 
   render(){
     return(
