@@ -18,7 +18,8 @@ class MainDisplay extends Component{
       apiData:null,
       apiLoaded:false,
     }
-    this.getAllRecipes = this.getAllRecipes.bind(this)
+    this.getAllRecipes = this.getAllRecipes.bind(this);
+    this.getSingleRecipe = this.getSingleRecipe.bind(this);
   };
 
   componentDidMount(){
@@ -35,6 +36,22 @@ class MainDisplay extends Component{
         apiLoaded: true,
       })
     }).catch(err => console.log(err))
+  }
+
+  getSingleRecipe(id){
+    fetch(`api/recipe/${id}`,{
+      method: "GET",
+    }).then(res => res.json()
+    ).then(json => {
+      this.setState({
+        apiData: json.data.recipes,
+        apiLoaded: true,
+      })
+    }).catch(err => console.log(err))
+  }
+
+  displaySingle(){
+    
   }
 
   render(){
