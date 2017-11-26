@@ -2,7 +2,8 @@ const db = require('../db/config');
 const List = {};
 
 List.create = (userId,list) => {
-  return db.one(`INSERT INTO user_lists (user_id, name) VALUES ($1,$2)`,[userId,list.name])
+  return db.one(`INSERT INTO user_lists (user_id, name) VALUES ($1,$2) RETURNING *`,[userId,list.name])
+
 }
 
 List.findById = id => {
@@ -10,7 +11,7 @@ List.findById = id => {
 }
 
 List.findAll = (userId) => {
-  return db.query(`SELECT * FROM user_lists WHERE user_id = $1 `, [userId]);
+   return db.query(`SELECT * FROM user_lists WHERE user_id = $1 `, [userId]);
 }
 
 List.update = (list, id) => {
