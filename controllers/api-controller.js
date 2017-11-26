@@ -16,14 +16,14 @@ recipeApiController.getDictionary = (res) => {
 //adds "("")" all ingredient names into a string
 recipeApiController.sql = (ingredientData) => {
   let string = "";
+  let apostrophe = /\'/gi;
   for (let i = 0; i < ingredientData.length; i++){
     if (i + 1 == ingredientData.length){
-      string = string + "(\'" + ingredientData[i].name + "\')"
+      string = string + "(\'" + ingredientData[i].name.replace(apostrophe,"") + "\')"
     } else {
-      string = string + "(\'" + ingredientData[i].name + "\'),"
+      string = string + "(\'" + ingredientData[i].name.replace(apostrophe,"") + "\'),"
     }
   }
-  // console.log(string);
   return string;
 }
 
@@ -34,7 +34,6 @@ recipeApiController.addIngredients = (res) => {
       return {name: ingred.name}
     })
   })
-  // TODO: pass all ingredients
   for(let ingredient of ingredientData){
     ingredientArray.push(Recipe.addIngredients(recipeApiController.sql(ingredient)));
   }
@@ -46,7 +45,6 @@ recipeApiController.createRecipe = (res) => {
   const recipeData = res.map(food => {
     return {title: food.title, image: food.image, serving_size: food.servings};
     })
-  // let recipe = {title:res.title, image: res.image, serving_size:res.servings}
   for (let recipe of recipeData){
     recipeArray.push(Recipe.create(recipe))
   }
@@ -61,7 +59,9 @@ recipeApiController.addRecipes = () => {
   {headers:
     {
       "X-Mashape-Key":process.env.API_KEY,
-      "Accept":"application/json"}})
+      "Accept":"application/json"
+    }
+  })
   .then(res => res.json())
   .then((json) => {
     recipes = json.recipes;
@@ -70,15 +70,15 @@ recipeApiController.addRecipes = () => {
     .then(allData => {
       let recipeData = Object.values(allData[0]);
       let ingredientData = Object.values(allData[1]);
-      let allDataArray = []
+      let allDataArray = [];
 
       for (let i = 0; i < recipeData.length; i++){
         allDataArray.push([recipeData[i],ingredientData[i]])
       }
 
-      allDataArray.map((food,j) => {
-        Object.values(food[1]).map((ingred,k) => {
-          Recipe.createJoinList("\(" + food[0].id +","+ ingred.id+","+parseInt(JSON.stringify(recipes[j].extendedIngredients[k].amount))+","+"\'"+recipes[j].extendedIngredients[k].unitLong+"\'"+"\)")
+      allDataArray.map((food,food_id) => {
+        Object.values(food[1]).map((ingred,ingredient_id) => {
+          Recipe.createJoinList("\(" + food[0].id +","+ ingred.id+","+parseFloat(JSON.stringify(recipes[food_id].extendedIngredients[ingredient_id].amount))+","+"\'"+recipes[food_id].extendedIngredients[ingredient_id].unitLong+"\'"+"\)")
         })
       })
 
@@ -90,6 +90,5 @@ recipeApiController.addRecipes = () => {
     console.log(err)
   })
 }
-
 
 module.exports = recipeApiController;
