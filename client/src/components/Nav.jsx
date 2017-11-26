@@ -26,37 +26,31 @@ class  Nav extends Component {
   }
 
   render(){
-    let navLogin = null;
-    if(!this.props.auth){
-      navLogin = (
-        <div className="nav">
-          <div className='logo'>LOGO</div>
-          <button onClick={this.registerForm}>Register</button>
-          <button onClick={this.loginForm}>Login</button>
-          {this.state.postType ? (
-            <UserForm loginForm={this.loginForm} postType={this.state.postType}
-              loginUser={this.props.loginUser}
-            />
-          ) : null}
-        </div>
-      )
-    } else {
-      navLogin = (
-        <div className="nav">
-          <div className="logo">LOGO</div>
-          <div className="nav-links">
-            <div>add recipe</div>
-            <div>favorites</div>
-            <div>lists</div>
-          </div>
-          <button>Logout</button>
-        </div>
-      )
-    }
+    const navLinks= (
+      <div className="nav-links">
+        <div>add recipe</div>
+        <div>favorites</div>
+        <div>lists</div>
+      </div>
+    )
+
+    const login=(
+      <div className='login'>
+        <button onClick={this.registerForm}>Register</button>
+        <button onClick={this.loginForm}>Login</button>
+        {this.state.postType ? (
+          <UserForm loginForm={this.loginForm} 
+            postType={this.state.postType} loginUser={this.props.loginUser}
+          />
+      ) : null}
+      </div>
+    )
 
     return(
-      <div className="nav">
-        {navLogin}
+      <div className='nav'>
+        <div className="logo">LOGO</div>
+        {this.props.auth && navLinks}
+        {!this.props.auth ? login : <button>Logout</button>}
       </div>
     )
   }

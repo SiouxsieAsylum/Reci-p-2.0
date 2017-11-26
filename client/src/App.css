@@ -125,9 +125,16 @@ div{
 
 }
 
+.nav-container{
+
+}
+
 .nav{
+  
   display: flex;
+  flex: 1;
   flex-direction: row;
+  justify-content: space-between;
 }
 
 .nav-links{
