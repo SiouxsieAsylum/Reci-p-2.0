@@ -1,16 +1,17 @@
 const db = require('../db/config');
 const List = {};
 
-List.create = (userId,list) => {
-  return db.one(`INSERT INTO user_lists (user_id, list_id, name) VALUES ($1,$2,$3)`)
+List.create = (list) => {
+  return db.one(`INSERT INTO user_lists (user_id, name) VALUES ($1,$2) RETURNING *`,[list.user_id, list.name])
 }
 
 List.findById = id => {
   return db.one(`SELECT * FROM shopping_lists WHERE id = $1`, [id]);
 }
-
+// pass userId through here
 List.findAll = () => {
-  return db.query(`SELECT * FROM shopping_lists`, [id]);
+  return db.query(`SELECT * FROM user_lists`);
+  // actual query(`SELECT * FROM user_lists WHERE user_id = $1`,[userId])
 }
 
 List.update = (list, id) => {
