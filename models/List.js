@@ -18,7 +18,7 @@ List.update = (list, id) => {
 }
 
 List.delete = id => {
-  db.none(`DELETE from shopping_lists WHERE id = $1`);
+  db.none(`DELETE from shopping_lists WHERE id = $1`, [id]);
 }
 
 
