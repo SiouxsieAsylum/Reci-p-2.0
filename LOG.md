@@ -55,3 +55,7 @@ Completed model for adding recipes from api to database. Structure is as follows
 
 ## 11/22/17 1600 steve+ox
 - conditional nav fixing
+
+## 11/25/17 1800 steve and oz pair prog
+- refactor nav and edit styles
+- add logout functionality

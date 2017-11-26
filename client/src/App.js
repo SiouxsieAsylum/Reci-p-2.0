@@ -18,8 +18,8 @@ class App extends Component {
     }
 
     this.recipeToList = this.recipeToList.bind(this);
-    this.loginUser = this.loginUser.bind(this)
-
+    this.loginUser = this.loginUser.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   recipeToList(recipeId){
@@ -45,12 +45,24 @@ class App extends Component {
     })
   }
 
+  logout(){
+    fetch('/api/auth/logout')
+      .then(res => res.json())
+      .then(json => {
+        this.setState({
+          auth: false,
+          username: "",
+          userid: 1,
+        })
+      }).catch(err => console.log(err));
+  }
+
   render() {
     return (
       <Router>
         <div className="App">
           <MainDisplay loginUser={this.loginUser} recipeToList={this.recipeToList}
-            auth={this.state.auth}
+            logout={this.logout} auth={this.state.auth} username={this.state.username}
           />
           <List />
         </div>

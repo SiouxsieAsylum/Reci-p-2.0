@@ -15,36 +15,45 @@ class  Nav extends Component {
 
   registerForm(){
     this.setState({
-      postType: "register"
+      postType: "Register"
     })
   }
 
   loginForm(){
     this.setState({
-      postType: "login"
+      postType: "Login"
     })
   }
 
   render(){
-    return(
-      <div className="nav">
-        <h1>Recipeness</h1>
-        <button className="nav-button" onClick={this.registerForm}>Register</button>
-        <button className="nav-button" onClick={this.loginForm}>Login</button>
-        {this.state.postType ? (
-          <div className="inner-header">
-            <div className="nav-links">
-              <p>home</p>
-              <p>add recipe</p>
-              <p>favorites</p>
-              <p>lists</p>
-            </div>
+    const navLinks= (
+      <div className="nav-links">
+        <div>add recipe</div>
+        <div>favorites</div>
+        <div>lists</div>
+      </div>
+    )
 
-            <UserForm loginForm={this.loginForm} postType={this.state.postType}
-              loginUser={this.props.loginUser}
-            />
-          </div>
-        ) : null}
+    const login=(
+      <div className='login'>
+        <button onClick={this.registerForm}>Register</button>
+        {this.state.postType !== 'Login' && (
+          <button onClick={this.loginForm}>Login</button>
+        )}
+        
+        {this.state.postType ? (
+          <UserForm loginForm={this.loginForm} 
+            postType={this.state.postType} loginUser={this.props.loginUser}
+          />
+      ) : null}
+      </div>
+    )
+
+    return(
+      <div className='nav'>
+        <div className="logo">LOGO</div>
+        {this.props.auth && navLinks}
+        {!this.props.auth ? login : <button onClick={this.props.logout}>Logout</button>}
       </div>
     )
   }
