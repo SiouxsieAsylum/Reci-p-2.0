@@ -46,7 +46,9 @@ RecipeController.update = (req,res,next) => {
 RecipeController.delete = (req,res,next) => {
   Recipe.delete(req.params.id)
   .then(() => {
-    res.redirect('/')
+    res.json({
+      message: 'list deleted'
+    })
   })
   .catch(next)
 }
