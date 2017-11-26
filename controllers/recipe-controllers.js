@@ -65,6 +65,7 @@ RecipeController.addIngredientsToNewRecipe = (req,res,next) => {
     name: req.body.name
   })
   .then((ingredient) => {
+    // will I be able to get that request body in the nested promise?
     Recipe.createJoinList({
       recipe_id: req.params.recipe_id,
       ingredient_id: ingredient.id,
