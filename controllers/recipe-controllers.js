@@ -16,10 +16,15 @@ RecipeController.index = (req, res, next) => {
 RecipeController.addRecipeToShopping = (req, res, next) => {
   Recipe.addRecipeToShopping(req.params.shoppingList_id, req.params.recipe_id)
     .then(recipe => {
-      res.json({
-        message: 'recipe added',
-        data: { recipe }
-      });
+      Recipe.addUserRecipe(req.user.id,req.params.recipe_id)
+      .then(userlink => {
+        res.json({
+          message: 'recipe added',
+          data: { recipe,userlink }
+        });
+      })
+      .catch(err => {console.log(err)})
+
     }).catch(next);
 };
 
@@ -67,7 +72,7 @@ RecipeController.addIngredientsToNewRecipe = (req,res,next) => {
   .then((ingredient) => {
     // will I be able to get that request body in the nested promise?
     Recipe.createJoinList("\(" +
-      req.params.id
+      req.params.recipe_id
       + ","+
       ingredient.id
       + ","+
@@ -81,6 +86,27 @@ RecipeController.addIngredientsToNewRecipe = (req,res,next) => {
         data: {ingredient,join}
       })
     })
+  })
+  .catch(next)
+}
+
+RecipeController.removeUserRecipe = (req,res,next) => {
+  Recipe.removeUserRecipe(req.user.id,req.params.recipe_id)
+  .then(recipe => {
+    res.json({
+      message: 'user recipe deleted',
+      data: recipe
+    })
+  })
+  .catch(next)
+}
+
+
+// remove ingredient from open recipe
+RecipeController.removeIngredient = (req,res,next) => {
+  Recipe.removeIngredient(req.params.ingredient_id,req.params.recipe_id,)
+  .then(recipe => {
+
   })
   .catch(next)
 }
