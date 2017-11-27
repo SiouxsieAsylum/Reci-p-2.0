@@ -18,11 +18,9 @@ ListController.show = (req,res,next) => {
   .then(list => {
     res.json({
       message: 'list found',
-      data:{ 
-        list: list 
+      data:{list 
       }
     })
-    next();
   })
   .catch(next)
 }
@@ -35,7 +33,7 @@ ListController.showNames = (req,res,next) => {
         recipes: recipes,
       }
     })
-  })
+  }).catch(next);
 }
 
 ListController.create = (req,res,next) => {

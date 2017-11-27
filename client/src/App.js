@@ -34,8 +34,18 @@ class App extends Component {
       console.log(json);
       this.setState({
         shoppingList: json.data.list,
-        shoppingRecipes: json.data.recipes,
       })
+
+      fetch(`/api/list/names/${this.state.listIndex}`, {
+        method: 'GET'
+      }).then(res => res.json())
+      .then(json => {
+        console.log(json)
+        this.setState({
+          shoppingRecipes: json.data.recipes,
+        })
+      })
+      
     }).catch(err => console.log(err));
       
   }
@@ -50,7 +60,7 @@ class App extends Component {
     }).then(res => res.json())
     .then(res => {
       console.log(res);
-      // this.getIngredientsList();
+      this.getIngredientsList();
     }).catch(err => console.log(err));
   }
 
