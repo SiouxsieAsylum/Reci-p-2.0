@@ -50,7 +50,7 @@ class App extends Component {
     }).then(res => res.json())
     .then(res => {
       console.log(res);
-
+      this.getIngredientsList();
     }).catch(err => console.log(err));
   }
 

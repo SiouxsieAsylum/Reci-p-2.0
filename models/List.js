@@ -11,7 +11,7 @@ List.findById = id => {
 }
 
 List.findNames = id => {
-  return db.manyOrNone(
+  return db.query(
     `SELECT recipes.name, recipes.id 
     FROM shopping_lists JOIN recipes ON recipes.id = shopping_list.recipe_id
     WHERE shopping_list.id = ($1)
