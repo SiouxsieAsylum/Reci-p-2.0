@@ -9,6 +9,7 @@ function List(props){
   const getIngredientsList = props.getIngredientsList;
   const listFormToggle = props.listFormToggle;
   const addList = props.addList;
+  const userid = props.userid;
 
   function removeRecipeFromList(recipe_id){
     fetch(`/api/list/recipe/${recipe_id}`, {
@@ -52,7 +53,7 @@ function List(props){
 
   let newList = null;
   addList ? (
-    newList = <ListAddForm listFormToggle={listFormToggle}/>
+    newList = <ListAddForm userid={userid} listFormToggle={listFormToggle}/>
   ) : (
     newList = <button onClick={listFormToggle}>Create New List!</button>
   )

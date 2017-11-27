@@ -107,6 +107,7 @@ class App extends Component {
             shoppingRecipes={this.state.shoppingRecipes} listIndex={this.state.listIndex}
             getIngredientsList={this.getIngredientsList}
             listFormToggle={this.listFormToggle} addList={this.state.addList}
+            userid={this.state.userid}
           />
         </div>
 
