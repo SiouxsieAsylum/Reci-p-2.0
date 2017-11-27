@@ -49,18 +49,26 @@ function List(props){
   }
 
   return(
-    <div className="list-container">
-      <h3 className="soft-title">Ingredients list</h3>
-      
-      <ul className='shopping-recipes'>
-        {recipes.length !== 0 && <h4>Recipes</h4>}
-        {listRecipes}
-      </ul>
-      {yourList}
-      <form className="ingredient-form">
-        <input type="text" name="addIngredient" placeholder="Add ingredient"/>
-        <input type ="submit" value="Add" />
-      </form>
+    <div className='list-container'>
+      {listIndex === 1 ? (
+        <div >
+          <p>this will be a button to form</p>
+        </div>
+      ) : (
+        <div>
+          <h3 className="soft-title">Ingredients list</h3>
+          
+          <ul className='shopping-recipes'>
+            {recipes.length !== 0 && <h4>Recipes</h4>}
+            {listRecipes}
+          </ul>
+          {yourList}
+          <form className="ingredient-form">
+            <input type="text" name="addIngredient" placeholder="Add ingredient"/>
+            <input type ="submit" value="Add" />
+          </form>
+        </div>
+      )}
     </div>
   )
 }
