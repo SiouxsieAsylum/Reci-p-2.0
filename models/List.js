@@ -10,6 +10,15 @@ List.findById = id => {
   return db.query(`SELECT ingredients.name,ingredient_lists.amount, ingredient_lists.unit FROM ingredient_lists JOIN ingredients ON ingredients.id = ingredient_lists.ingredient_id JOIN recipes ON recipes.id = ingredient_lists.recipe_id JOIN shopping_lists on recipes.id = shopping_lists.recipe_id WHERE shopping_lists.id = 3;`, [id]);
 }
 
+List.findNames = id => {
+  return db.manyOrNone(
+    `SELECT recipes.name, recipes.id 
+    FROM shopping_lists JOIN recipes ON recipes.id = shopping_list.recipe_id
+    WHERE shopping_list.id = ($1)
+    `, [id]
+  )
+}
+
 List.findAll = (userId) => {
   return db.query(`SELECT * FROM user_lists WHERE user_id = $1 `, [userId]);
 }

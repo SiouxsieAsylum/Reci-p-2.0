@@ -15,11 +15,16 @@ class App extends Component {
       userid: 1,
       listIndex: 1, // TODO this will be dynamic maybe based on user
       listRecipes: [],
+      shoppingList: [],
     }
 
     this.recipeToList = this.recipeToList.bind(this);
     this.loginUser = this.loginUser.bind(this);
     this.logout = this.logout.bind(this);
+  }
+
+  getIngredientsList(){
+    fetch(`/api/list/${this.state.listIndex}`)
   }
 
   recipeToList(recipeId){

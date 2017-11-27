@@ -20,8 +20,14 @@ ListController.show = (req,res,next) => {
       message: 'list found',
       data:{ list }
     })
+    next();
   })
   .catch(next)
+}
+
+ListController.showNames = (req,res,next) => {
+  List.findNames(req.params.id)
+  .then()
 }
 
 ListController.create = (req,res,next) => {
