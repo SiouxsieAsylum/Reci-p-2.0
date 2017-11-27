@@ -35,7 +35,7 @@ Recipe.removeUserRecipe = (userId,recipe_id) => {
 
 // // remove ingredient from recipe
 Recipe.removeIngredient = (ingredient,recipe) => {
-  return db.none(`DELETE FROM ingredient_lists WHERE ingredient_lists.ingredient_id = $1 AND ingredient_lists.recipe_id=$2`,[ingredient.id,recipe.id])
+  return db.none(`DELETE FROM ingredient_lists WHERE ingredient_lists.recipe_id=$1 AND ingredient_lists.ingredient_id = $2`,[recipe,ingredient])
 }
 
 Recipe.createJoinList = recipeData => {

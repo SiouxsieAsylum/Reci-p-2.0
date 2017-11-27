@@ -6,7 +6,7 @@ recipeRoutes.get('/', recipeControllers.index);
 recipeRoutes.get('/:id', recipeControllers.show);
 recipeRoutes.post('/:recipe_id',recipeControllers.addIngredientsToNewRecipe)
 recipeRoutes.delete('/:recipe_id',recipeControllers.removeUserRecipe)
-recipeRoutes.delete('edit/:recipe_id/:ingredient_id',recipeControllers.removeIngredient)
+recipeRoutes.delete('/:recipe_id/:ingredient_id',recipeControllers.removeIngredient)
 
 // new recipe and ingredients in new recipe
 recipeRoutes.post('/',recipeControllers.userCreateRecipe)

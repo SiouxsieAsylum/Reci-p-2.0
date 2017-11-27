@@ -122,7 +122,9 @@ RecipeController.removeUserRecipe = (req,res,next) => {
 RecipeController.removeIngredient = (req,res,next) => {
   Recipe.removeIngredient(req.params.ingredient_id,req.params.recipe_id,)
   .then(recipe => {
-
+    res.json({
+      message:'ingredient deleted'
+    })
   })
   .catch(next)
 }

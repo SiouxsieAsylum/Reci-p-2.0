@@ -38,7 +38,6 @@ class IngredientForm extends Component{
     .catch(err => console.log(err))
   }
 
-
   render(){
   return(
     <form onSubmit={this.handleSubmit}>
