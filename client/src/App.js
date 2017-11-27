@@ -94,8 +94,8 @@ class App extends Component {
             userid={this.state.userid}
           />
           <List shoppingList={this.state.shoppingList} 
-            shoppingRecipes={this.state.shoppingRecipes}
-            listIndex={this.state.listIndex}
+            shoppingRecipes={this.state.shoppingRecipes} listIndex={this.state.listIndex}
+            getIngredientsList={this.getIngredientsList}
           />
         </div>
 

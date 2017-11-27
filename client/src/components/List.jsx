@@ -5,6 +5,7 @@ function List(props){
   const list = props.shoppingList;
   const recipes = props.shoppingRecipes;
   const listIndex = props.listIndex;
+  const getIngredientsList = props.getIngredientsList;
 
   function removeRecipeFromList(recipe_id){
     fetch(`/api/list/recipe/${recipe_id}`, {
@@ -16,8 +17,10 @@ function List(props){
         list_id: listIndex,
       })
     }).then(res => res.json())
-    .then(json => console.log(json))
-    .catch(err => console.log(err));
+    .then(json => {
+      console.log(json);
+      getIngredientsList();
+    }).catch(err => console.log(err));
   }
 
   let yourList = null;
