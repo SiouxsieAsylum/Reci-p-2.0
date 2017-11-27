@@ -7,8 +7,12 @@ Recipe.findAll = () => {
   return db.query('SELECT * FROM recipes');
 }
 
-Recipe.create = recipe => {
+Recipe.apiCreate = recipe => {
  return db.one(`INSERT INTO recipes (name,image,serving_size) VALUES ($1,$2,$3) RETURNING *`,[recipe.title,recipe.image,recipe.serving_size]);
+}
+
+Recipe.inputCreate = recipe => {
+ return db.one(`INSERT INTO recipes (name,image,serving_size,created_by) VALUES ($1,$2,$3,$4) RETURNING *`,[recipe.name,recipe.image,recipe.serving_size,recipe.created_by]);
 }
 
 Recipe.addIngredients = recipe => {

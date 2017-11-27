@@ -46,7 +46,7 @@ recipeApiController.createRecipe = (res) => {
     return {title: food.title, image: food.image, serving_size: food.servings};
     })
   for (let recipe of recipeData){
-    recipeArray.push(Recipe.create(recipe))
+    recipeArray.push(Recipe.apiCreate(recipe))
   }
   return Promise.all(recipeArray)
 }

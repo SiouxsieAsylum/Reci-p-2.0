@@ -44,17 +44,33 @@ RecipeController.show = (req,res,next) => {
 // recipe.removeIngredient(removes from ingredient_lists by ingredient.id and recipe_id)
 // need to see how the form will be formatted
 // two forms: action/recipes (create recipe) action/recipe/:id ingredients
-RecipeController.createRecipe = (req,res,next) => {
-  Recipe.create({
+RecipeController.apiCreateRecipe = (req,res,next) => {
+  Recipe.apiCreate({
     name: req.body.title,
     image: req.body.image,
     serving_size: req.body.serving_size
   })
   .then(recipe => {
-    Recipe.addUserRecipe({
-      user_id: req.user.id,
-      recipe_id: recipe.id
+    Recipe.addUserRecipe(req.user.id,recipe.id)
+    .then(userRecipe => {
+      res.json({
+        message: 'recipe created',
+        data: {recipe}
+      })
     })
+  })
+  .catch(next)
+}
+
+RecipeController.userCreateRecipe = (req,res,next) => {
+  Recipe.inputCreate({
+    name: req.body.title,
+    image: req.body.image,
+    serving_size: req.body.serving_size,
+    created_by: req.body.created_by
+  })
+  .then(recipe => {
+    Recipe.addUserRecipe(req.body.created_by,recipe.id)
     .then(userRecipe => {
       res.json({
         message: 'recipe created',

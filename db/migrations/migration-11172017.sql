@@ -8,8 +8,8 @@ CREATE TABLE IF NOT EXISTS recipes(
   id SERIAL PRIMARY KEY,
   name VARCHAR(255),
   serving_size INTEGER,
-  image VARCHAR(255)
-  created_by INTEGER REFERENCES users;
+  image VARCHAR(255),
+  created_by INTEGER REFERENCES users
 );
 
 CREATE TABLE IF NOT EXISTS ingredients(

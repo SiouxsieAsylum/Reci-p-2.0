@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
-
+import RecipeForm from './RecipeForm';
 import RecipeSingle from './RecipeSingle';
 import RecipeList from './RecipeList';
 import Nav from './Nav';
@@ -20,7 +20,7 @@ class MainDisplay extends Component{
       apiData:null,
       apiSingle: null,
       apiLoaded:false,
-      show: "list",
+      show: "form",
     }
     this.getAllRecipes = this.getAllRecipes.bind(this);
     this.getSingleRecipe = this.getSingleRecipe.bind(this);
@@ -53,7 +53,7 @@ class MainDisplay extends Component{
       this.setState({
         apiSingle: json.data.recipe,
         apiLoaded: true,
-        show: 'single',
+        show: 'single'
       })
     }).catch(err => console.log(err))
   }
@@ -99,13 +99,14 @@ class MainDisplay extends Component{
           />
         )
         break;
-      case 'form':
+      case "form":
         tabShow = (
           <RecipeForm
           userid={this.props.userid}
-          setRecipe={this.setRecipeAfterAdding}
+          setRecipe={this.getSingleRecipe}
           />
           )
+        break;
       default:
         tabShow=(
           <p>This is the default in switch: please seek help with DRAKE</p>
