@@ -13,10 +13,8 @@ recipeRoutes.post('/',recipeControllers.userCreateRecipe)
 // recipeRoutes.post('/new/:recipe_id',recipeControllers.addIngredientsToNewRecipe)
 
 // add and remove ingredients
-
 recipeRoutes.post('/:recipe_id/:shoppingList_id', recipeControllers.addRecipeToShopping);
 
-recipeRoutes.delete('/:id',recipeControllers.delete)
 
 module.exports = recipeRoutes;
 

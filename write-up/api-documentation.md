@@ -33,15 +33,18 @@ This route displays a single recipe when selected from the main page, along with
 This route allows a logged-in user to add ingredients to a new recipe that has been created.
 
 <!-- DELETE RECIPE = recipeRoutes.delete('/:recipe_id',recipeControllers.removeUserRecipe) -->
-This route allows a logged-in user to delete a recipe they have created from their database.
+This route allows a logged-in user to delete a recipe they have created.
 
 <!-- DELETE INGREDIENT = recipeRoutes.delete('edit/:recipe_id/:ingredient_id',recipeControllers.removeIngredient) -->
 This route allows logged-in user to remove an ingredient from an open recipe.
 
-<!-- CREATE NEW SINGLE = recipeRoutes.post('/new',recipeControllers.createRecipe) -->
-This route allows logged-in user to create a new recipe.  
+<!-- CREATE NEW SINGLE = recipeRoutes.post('/',recipeControllers.userCreateRecipe) -->
+This route allows logged-in user to create a new recipe and add ingredients. 
 
-<!-- recipeRoutes.post('/new/:recipe_id',recipeControllers.addIngredientsToNewRecipe) -->
-This route allows logged-in user to add ingredients to create a new recipe
+<!-- ADD RECIPE = recipeRoutes.post('/:recipe_id/:shoppingList_id', recipeControllers.addRecipeToShopping);  -->
+This route allows a logged-in user to add ingredients to shopping list.
 
 
+
+
+ 
