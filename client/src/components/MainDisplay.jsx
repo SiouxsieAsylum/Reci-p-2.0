@@ -60,6 +60,7 @@ class MainDisplay extends Component{
     console.log('showallrecipes update is : ', update);
     if(update){
       //do a fetch and then set state
+      console.log('youre dad to me');
     } else {
       this.setState({
         show: 'list',
@@ -98,7 +99,7 @@ class MainDisplay extends Component{
 
     return(
       <div className="main-display">
-        <Nav auth={this.props.auth} loginUser={this.props.loginUser} logout={this.props.logout}/>
+        <Nav auth={this.props.auth} loginUser={this.props.loginUser} logout={this.props.logout} showAllRecipes={this.showAllRecipes}/>
 
         {this.state.apiLoaded  && (
           tabShow
