@@ -16,6 +16,7 @@ class App extends Component {
       listIndex: 1, // TODO this will be dynamic maybe based on user
       listRecipes: [],
       shoppingList: [],
+      shoppingRecipes: [],
     }
 
     this.recipeToList = this.recipeToList.bind(this);
@@ -31,6 +32,10 @@ class App extends Component {
     }).then(res => res.json())
     .then(json => {
       console.log(json);
+      this.setState({
+        shoppingList: json.data.list,
+        shoppingRecipes: json.data.recipes,
+      })
     }).catch(err => console.log(err));
       
   }
@@ -78,7 +83,9 @@ class App extends Component {
             logout={this.logout} auth={this.state.auth} username={this.state.username} 
             userid={this.state.userid}
           />
-          <List shoppingList={this.state.shoppingList}/>
+          <List shoppingList={this.state.shoppingList} 
+            shoppingRecipes={this.state.shoppingRecipes}
+          />
         </div>
 
       </Router>
