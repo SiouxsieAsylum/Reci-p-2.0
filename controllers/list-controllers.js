@@ -18,7 +18,9 @@ ListController.show = (req,res,next) => {
   .then(list => {
     res.json({
       message: 'list found',
-      data:{ list }
+      data:{ 
+        list: list 
+      }
     })
     next();
   })
@@ -27,7 +29,13 @@ ListController.show = (req,res,next) => {
 
 ListController.showNames = (req,res,next) => {
   List.findNames(req.params.id)
-  .then()
+  .then(recipes => {
+    res.json({
+      data:{
+        recipes: recipes,
+      }
+    })
+  })
 }
 
 ListController.create = (req,res,next) => {

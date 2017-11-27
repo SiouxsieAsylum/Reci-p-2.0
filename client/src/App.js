@@ -21,10 +21,18 @@ class App extends Component {
     this.recipeToList = this.recipeToList.bind(this);
     this.loginUser = this.loginUser.bind(this);
     this.logout = this.logout.bind(this);
+    this.getIngredientsList = this.getIngredientsList.bind(this);
   }
 
   getIngredientsList(){
-    fetch(`/api/list/${this.state.listIndex}`)
+    //we will need to call this whenver the listindex changes and when we add a recipe to list
+    fetch(`/api/list/${this.state.listIndex}`, {
+      method: 'GET'
+    }).then(res => res.json())
+    .then(json => {
+      console.log(json);
+    }).catch(err => console.log(err));
+      
   }
 
   recipeToList(recipeId){
@@ -70,7 +78,7 @@ class App extends Component {
             logout={this.logout} auth={this.state.auth} username={this.state.username} 
             userid={this.state.userid}
           />
-          <List />
+          <List shoppingList={this.state.shoppingList}/>
         </div>
 
       </Router>
