@@ -9,8 +9,8 @@ recipeRoutes.delete('/:recipe_id',recipeControllers.removeUserRecipe)
 recipeRoutes.delete('edit/:recipe_id/:ingredient_id',recipeControllers.removeIngredient)
 
 // new recipe and ingredients in new recipe
-recipeRoutes.post('/new',recipeControllers.createRecipe)
-recipeRoutes.post('/new/:recipe_id',recipeControllers.addIngredientsToNewRecipe)
+recipeRoutes.post('/',recipeControllers.userCreateRecipe)
+// recipeRoutes.post('/new/:recipe_id',recipeControllers.addIngredientsToNewRecipe)
 
 // add and remove ingredients
 
