@@ -167,4 +167,14 @@ div{
   transform: scale(1.2);
 }
 
+.single-recipe-pic{
+  height: 300px;
+  width: 300px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: inline-block;
+  margin: 10px;
+}
+
 /**/
