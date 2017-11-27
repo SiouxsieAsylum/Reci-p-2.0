@@ -94,7 +94,6 @@ class MainDisplay extends Component{
       case "single":
         tabShow = (
           <RecipeSingle
-
             userid={this.props.userid}
             apiData={this.state.apiSingle}
             getSingleRecipe={this.getSingleRecipe}
