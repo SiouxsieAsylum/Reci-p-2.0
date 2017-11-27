@@ -61,8 +61,9 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <MainDisplay loginUser={this.loginUser} recipeToList={this.recipeToList}
-            logout={this.logout} auth={this.state.auth} username={this.state.username}
+          <MainDisplay loginUser={this.loginUser} recipeToList={this.recipeToList} 
+            logout={this.logout} auth={this.state.auth} username={this.state.username} 
+            userid={this.state.userid}
           />
           <List />
         </div>

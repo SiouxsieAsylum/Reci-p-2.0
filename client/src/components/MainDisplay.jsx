@@ -11,9 +11,10 @@ class MainDisplay extends Component{
   constructor(props){
     super(props);
     /* Prop-list */
-    //auth, username
+    //auth, username, userid
     // loginUser(logs in user in nav),
     // recipeToList(adds recipe id to shopping list)
+
 
     this.state={
       apiData:null,
