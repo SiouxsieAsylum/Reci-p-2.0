@@ -39,11 +39,21 @@ RecipeController.show = (req,res,next) => {
   }).catch(next)
 }
 
-// recipe.editIngredient (name)
-// recipe.editIngredientList(amount,unit);
-// recipe.removeIngredient(removes from ingredient_lists by ingredient.id and recipe_id)
-// need to see how the form will be formatted
-// two forms: action/recipes (create recipe) action/recipe/:id ingredients
+RecipeController.update = (req,res,next) => {
+  Recipe.update({
+    name: req.body.title,
+    image: req.body.image,
+    serving_size: req.body.serving_size
+  },req.params.recipe_id)
+  .then(recipe => {
+    res.json({
+      message: 'recipe updated',
+      data: { recipe }
+    })
+  })
+  .catch(next)
+}
+
 RecipeController.apiCreateRecipe = (req,res,next) => {
   Recipe.apiCreate({
     name: req.body.title,
