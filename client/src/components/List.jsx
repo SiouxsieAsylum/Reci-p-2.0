@@ -9,6 +9,9 @@ function List(props){
   function removeRecipeFromList(recipe_id){
     fetch(`/api/list/recipe/${recipe_id}`, {
       method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         list_id: listIndex,
       })

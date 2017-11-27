@@ -28,7 +28,7 @@ List.update = (list, id) => {
 }
 
 List.deleteRecipe = (recipe_id,list_id) => {
-  db.none(`DELETE from shopping_lists WHERE recipe_id = $1 AND id = $2`, [recipe_id, list_id])
+  return db.none(`DELETE from shopping_lists WHERE recipe_id = $1 AND id = $2`, [recipe_id, list_id])
 }
 
 List.delete = id => {
