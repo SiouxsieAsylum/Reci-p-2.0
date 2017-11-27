@@ -17,11 +17,13 @@ class MainDisplay extends Component{
 
     this.state={
       apiData:null,
+      apiSingle: null,
       apiLoaded:false,
       show: "list",
     }
     this.getAllRecipes = this.getAllRecipes.bind(this);
     this.getSingleRecipe = this.getSingleRecipe.bind(this);
+    this.showAllRecipes = this.showAllRecipes.bind(this);
   };
 
   componentDidMount(){
@@ -47,13 +49,24 @@ class MainDisplay extends Component{
     ).then(json => {
       console.log(json.data.recipe)
       this.setState({
-        apiData: json.data.recipe,
+        apiSingle: json.data.recipe,
         apiLoaded: true,
         show: 'single',
       })
     }).catch(err => console.log(err))
   }
 
+  showAllRecipes(update){
+    console.log('showallrecipes update is : ', update);
+    if(update){
+      //do a fetch and then set state
+    } else {
+      this.setState({
+        show: 'list',
+      })
+    }
+    
+  }
 
   render(){
 
@@ -72,7 +85,7 @@ class MainDisplay extends Component{
       case "single":
         tabShow = (
           <RecipeSingle
-            apiData={this.state.apiData}
+            apiData={this.state.apiSingle}
           />
         )
         break;
