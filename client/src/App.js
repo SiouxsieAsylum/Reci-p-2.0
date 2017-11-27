@@ -90,6 +90,7 @@ class App extends Component {
   listFormToggle(){
     //needs prev state
     this.setState({
+      listIndex: 1,
       addList: true,
     })
   }
