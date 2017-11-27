@@ -20,7 +20,7 @@ class MainDisplay extends Component{
       apiData:null,
       apiSingle: null,
       apiLoaded:false,
-      show: "list",
+      show: "recipelist",
 
     }
     this.getAllRecipes = this.getAllRecipes.bind(this);
@@ -96,7 +96,7 @@ class MainDisplay extends Component{
           <RecipeSingle
 
             userid={this.props.userid}
-            apiData={this.state.apiSingle}
+            apiSingle={this.state.apiSingle}
             getSingleRecipe={this.getSingleRecipe}
           />
         )
