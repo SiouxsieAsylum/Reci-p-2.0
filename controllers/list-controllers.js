@@ -3,7 +3,6 @@ const Recipe = require('../models/Recipe')
 const ListController = {};
 
 ListController.index = (req,res,next) => {
-
   List.findAll(req.user.id)
   .then(lists => {
     res.json({

@@ -1,5 +1,5 @@
 const Recipe = require('../models/Recipe');
-
+const apiController = require('./api-controller');
 const RecipeController = {};
 
 RecipeController.index = (req, res, next) => {
@@ -39,8 +39,50 @@ RecipeController.show = (req,res,next) => {
 // recipe.removeIngredient(removes from ingredient_lists by ingredient.id and recipe_id)
 // need to see how the form will be formatted
 // two forms: action/recipes (create recipe) action/recipe/:id ingredients
-RecipeController.update = (req,res,next) => {
+RecipeController.createRecipe = (req,res,next) => {
+  Recipe.create({
+    name: req.body.title,
+    image: req.body.image,
+    serving_size: req.body.serving_size
+  })
+  .then(recipe => {
+    Recipe.addUserRecipe({
+      user_id: req.user.id,
+      recipe_id: recipe.id
+    })
+    .then(userRecipe => {
+      res.json({
+        message: 'recipe created',
+        data: {recipe}
+      })
+    })
+  })
+  .catch(next)
+}
 
+RecipeController.addIngredientsToNewRecipe = (req,res,next) => {
+  Recipe.newRecipeIngredients({
+    name: req.body.name
+  })
+  .then((ingredient) => {
+    // will I be able to get that request body in the nested promise?
+    Recipe.createJoinList("\(" +
+      req.params.id
+      + ","+
+      ingredient.id
+      + ","+
+      req.body.amount
+      + ",\'"+
+      req.body.unit +
+    "\'\)" )
+    .then(join => {
+      res.json({
+        message: 'recipe created',
+        data: {ingredient,join}
+      })
+    })
+  })
+  .catch(next)
 }
 
 RecipeController.delete = (req,res,next) => {

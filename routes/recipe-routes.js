@@ -6,6 +6,10 @@ recipeRoutes.get('/', recipeControllers.index);
 
 recipeRoutes.get('/:id', recipeControllers.show);
 
+// recipeRoutes.get('/new',)
+recipeRoutes.post('/new',recipeControllers.createRecipe)
+recipeRoutes.post('/new/:id',recipeControllers.addIngredientsToNewRecipe)
+
 // get the edit
 // editing ingredients will likely be its own endpoint
 // recipeRoutes.get('/:id/edit')
