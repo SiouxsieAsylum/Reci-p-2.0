@@ -54,7 +54,7 @@ function List(props){
   addList ? (
     newList = <ListAddForm listFormToggle={listFormToggle}/>
   ) : (
-    newList = <button onClick={listFormToggle()}>Create New List!</button>
+    newList = <button onClick={listFormToggle}>Create New List!</button>
   )
   
 
