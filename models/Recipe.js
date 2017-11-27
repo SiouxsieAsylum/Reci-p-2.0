@@ -58,7 +58,6 @@ Recipe.findIngredients = id => {
 Recipe.update = (recipe,id) => {
   return db.one(`UPDATE recipes SET name = $1, serving_size=$2,image=$3 WHERE id=$4 RETURNING *`,[recipe.name,recipe.serving_size,recipe.image,id])
 }
-
 // in order to delete all ingredients associated with the recipe, we will need to write a query for each ingredient.
 // DELETE FROM ingredients USING ingredient_lists WHERE ingredient_lists.recipe_id = 6 AND ingredients.id = 55;
 Recipe.delete = (id) => {
