@@ -59,13 +59,11 @@ class MainDisplay extends Component{
   }
 
   showAllRecipes(update){
-    console.log('showallrecipes update is : ', update);
     if(update){
       //do a fetch and then set state
-      console.log('youre dad to me');
     } else {
       this.setState({
-        show: 'list',
+        show: 'recipelist',
       })
     }
 
@@ -83,7 +81,7 @@ class MainDisplay extends Component{
     let tabShow = null;
 
     switch(this.state.show){
-      case "list":
+      case "recipelist":
         tabShow = (
           <RecipeList
             recipeToList={this.props.recipeToList}
