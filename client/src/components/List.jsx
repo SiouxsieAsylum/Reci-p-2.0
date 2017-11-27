@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ListAddForm from './ListAddForm';
 import SingleList from './SingleList'
 
 function List(props){
@@ -6,6 +7,8 @@ function List(props){
   const recipes = props.shoppingRecipes;
   const listIndex = props.listIndex;
   const getIngredientsList = props.getIngredientsList;
+  const listFormToggle = props.listFormToggle;
+  const addList = props.addList;
 
   function removeRecipeFromList(recipe_id){
     fetch(`/api/list/recipe/${recipe_id}`, {
@@ -35,7 +38,6 @@ function List(props){
       })
     )
   }
-
   
   let listRecipes = null;
   if(recipes.length !== 0){
@@ -48,11 +50,20 @@ function List(props){
     )
   }
 
+  let newList = null;
+  addList ? (
+    newList = <ListAddForm listFormToggle={listFormToggle}/>
+  ) : (
+    newList = <button onClick={listFormToggle()}>Create New List!</button>
+  )
+  
+
+
   return(
     <div className='list-container'>
       {listIndex === 1 ? (
         <div >
-          <p>this will be a button to form</p>
+          {newList}
         </div>
       ) : (
         <div>

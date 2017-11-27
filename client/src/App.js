@@ -17,12 +17,14 @@ class App extends Component {
       listRecipes: [],
       shoppingList: [],
       shoppingRecipes: [],
+      addList: false,
     }
 
     this.recipeToList = this.recipeToList.bind(this);
     this.loginUser = this.loginUser.bind(this);
     this.logout = this.logout.bind(this);
     this.getIngredientsList = this.getIngredientsList.bind(this);
+    this.listFormToggle = this.listFormToggle.bind(this);
   }
 
   getIngredientsList(){
@@ -65,7 +67,6 @@ class App extends Component {
   }
 
   loginUser(username, id){
-    console.log('user is loggin in to main:', username, id);
     this.setState({
       auth:true,
       username: username,
@@ -85,6 +86,14 @@ class App extends Component {
       }).catch(err => console.log(err));
   }
 
+
+  listFormToggle(){
+    //needs prev state
+    this.setState({
+      addList: true,
+    })
+  }
+
   render() {
     return (
       <Router>
@@ -96,6 +105,7 @@ class App extends Component {
           <List shoppingList={this.state.shoppingList} 
             shoppingRecipes={this.state.shoppingRecipes} listIndex={this.state.listIndex}
             getIngredientsList={this.getIngredientsList}
+            listFormToggle={this.listFormToggle} addList={this.state.addList}
           />
         </div>
 
