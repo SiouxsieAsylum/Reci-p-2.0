@@ -29,8 +29,8 @@ This route gets all the recipes from the Spoonacular API, and populates the main
 <!-- SINGLE VIEW = recipeRoutes.get('/:id', recipeControllers.show);  -->
 This route displays a single recipe when selected from the main page, along with an add button that will create a shopping list for this specific recipe when selected.
 
-<!-- CREATE NEW  = recipeRoutes.post('/:recipe_id',recipeControllers.addIngredientsToNewRecipe) -->
-This route allows a logged-in user to create a new recipe.
+<!-- ADD NEW INGREDIENTS = recipeRoutes.post('/:recipe_id',recipeControllers.addIngredientsToNewRecipe) -->
+This route allows a logged-in user to add ingredients to a new recipe that has been created.
 
 <!-- DELETE RECIPE = recipeRoutes.delete('/:recipe_id',recipeControllers.removeUserRecipe) -->
 This route allows a logged-in user to delete a recipe they have created from their database.
@@ -38,7 +38,10 @@ This route allows a logged-in user to delete a recipe they have created from the
 <!-- DELETE INGREDIENT = recipeRoutes.delete('edit/:recipe_id/:ingredient_id',recipeControllers.removeIngredient) -->
 This route allows logged-in user to remove an ingredient from an open recipe.
 
-<!-- recipeRoutes.post('/new',recipeControllers.createRecipe) -->
+<!-- CREATE NEW SINGLE = recipeRoutes.post('/new',recipeControllers.createRecipe) -->
+This route allows logged-in user to create a new recipe.  
 
+<!-- recipeRoutes.post('/new/:recipe_id',recipeControllers.addIngredientsToNewRecipe) -->
+This route allows logged-in user to add ingredients to create a new recipe
 
 
