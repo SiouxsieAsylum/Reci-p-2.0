@@ -13,9 +13,11 @@ function RecipeThumbnail (props) {
       onClick={()=> props.getSingleRecipe(id)}
     >
 
-      <h3 className="thumbnail-title">{recipe.name}</h3>
+      <h3 className="thumbnail-title">{recipe.name.substring(0,30)}...</h3>
+
     </div>
-    <div className="add-recipe-button" onClick={() => recipeToList(id)}>+</div>
+    <div className="add-recipe-button" onClick={() => recipeToList(id)}>Quick Add</div>
+
     </div>
   )
 
