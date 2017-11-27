@@ -46,7 +46,7 @@ class App extends Component {
       headers: {
         'Content-Type': 'application/json',
       },
-      // body: JSON.stringify({recipe_id: recipeId})
+      body: JSON.stringify({body: this.state.userid})
     }).then(res => res.json())
     .then(res => {
       console.log(res);
