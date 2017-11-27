@@ -1,9 +1,15 @@
+CREATE TABLE IF NOT EXISTS users(
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(255),
+  password_hash TEXT
+);
 
 CREATE TABLE IF NOT EXISTS recipes(
   id SERIAL PRIMARY KEY,
   name VARCHAR(255),
   serving_size INTEGER,
   image VARCHAR(255)
+  created_by INTEGER REFERENCES users;
 );
 
 CREATE TABLE IF NOT EXISTS ingredients(
@@ -17,12 +23,6 @@ CREATE TABLE IF NOT EXISTS ingredient_lists(
   ingredient_id INTEGER REFERENCES ingredients,
   amount FLOAT,
   unit VARCHAR(255)
-);
-
-CREATE TABLE IF NOT EXISTS users(
-  id SERIAL PRIMARY KEY,
-  username VARCHAR(255),
-  password_hash TEXT
 );
 
 -- list_id will not autoincrement like a serial. When anyone creates a new list, the user_lists list_id will auto increment, and any additions to the shopping_lists will be associated with that list_id

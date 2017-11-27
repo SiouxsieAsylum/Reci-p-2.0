@@ -25,6 +25,7 @@ class MainDisplay extends Component{
     this.getAllRecipes = this.getAllRecipes.bind(this);
     this.getSingleRecipe = this.getSingleRecipe.bind(this);
     this.showAllRecipes = this.showAllRecipes.bind(this);
+    this.setRecipeAfterAdding = this.setRecipeAfterAdding.bind(this);
   };
 
   componentDidMount(){
@@ -67,7 +68,14 @@ class MainDisplay extends Component{
         show: 'list',
       })
     }
-    
+
+  }
+
+  setRecipeAfterAdding(id){
+    this.setState({
+      apiSingle:id,
+      show: 'single'
+    })
   }
 
   render(){
@@ -91,6 +99,13 @@ class MainDisplay extends Component{
           />
         )
         break;
+      case 'form':
+        tabShow = (
+          <RecipeForm
+          userid={this.props.userid}
+          setRecipe={this.setRecipeAfterAdding}
+          />
+          )
       default:
         tabShow=(
           <p>This is the default in switch: please seek help with DRAKE</p>

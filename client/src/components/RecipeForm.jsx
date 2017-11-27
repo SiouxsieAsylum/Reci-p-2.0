@@ -34,7 +34,7 @@ class RecipeForm extends Component {//CALL THE RECIPE NAME TITLE!!!!
       body: JSON.stringify(this.state)
     }).then(res => res.json())
       .then(res => {
-
+          this.props.setRecipe(recipe[0].id)
         }
       }).catch(err => console.log(err));
   }
