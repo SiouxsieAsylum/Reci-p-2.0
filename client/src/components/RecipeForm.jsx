@@ -22,8 +22,9 @@ class RecipeForm extends Component {//CALL THE RECIPE NAME TITLE!!!!
     return(
       <h1>form</h1>
       <form>
-        <input type="text" />
-        <input type="text" />
+        <input type="text" name="title" placeholder="Recipe Name"/>
+        <input type="text" name="serving_size" placeholder="Servings"/>
+        <input type="text" name="image" placeholder="Image URL"/>
         <input type="submit" />
       </form>
     )
