@@ -2,8 +2,8 @@ import React from 'react';
 import IngredientForm from './IngredientForm';
 
 function RecipeSingle (props) {
-  const recipeInfo = props.apiData[0];
-  const ingredients = props.apiData[1];
+  const recipeInfo = props.apiSingle[0];
+  const ingredients = props.apiSingle[1];
 
   return(
     <div className="recipe-single">

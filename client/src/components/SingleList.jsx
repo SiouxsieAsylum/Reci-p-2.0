@@ -4,9 +4,7 @@ function SingleList (props) {
   const ingredient = props.ingredient;
   return(
     <div className="single-list">
-      {ingredient.ingredientLines.map((item,index) => {
-       return  <p key={index} className="single-ingredient">{item}</p>
-      })}
+      <p className="single-ingredient">{ingredient.amount} {ingredient.unit} {ingredient.name}</p>
     </div>
   )
 }
