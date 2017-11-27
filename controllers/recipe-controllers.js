@@ -41,7 +41,7 @@ RecipeController.show = (req,res,next) => {
 // two forms: action/recipes (create recipe) action/recipe/:id ingredients
 RecipeController.createRecipe = (req,res,next) => {
   Recipe.create({
-    name: req.body.name,
+    name: req.body.title,
     image: req.body.image,
     serving_size: req.body.serving_size
   })
@@ -66,12 +66,15 @@ RecipeController.addIngredientsToNewRecipe = (req,res,next) => {
   })
   .then((ingredient) => {
     // will I be able to get that request body in the nested promise?
-    Recipe.createJoinList({
-      recipe_id: req.params.recipe_id,
-      ingredient_id: ingredient.id,
-      amount: req.body.amount,
-      unit: req.body.unit
-    })
+    Recipe.createJoinList("\(" +
+      req.params.id
+      + ","+
+      ingredient.id
+      + ","+
+      req.body.amount
+      + ",\'"+
+      req.body.unit +
+    "\'\)" )
     .then(join => {
       res.json({
         message: 'recipe created',
