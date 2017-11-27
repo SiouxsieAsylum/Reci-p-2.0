@@ -67,3 +67,5 @@ Completed model for adding recipes from api to database. Structure is as follows
 ## 11/26/17 Andrea McKenzie
 	-Wrote and rewrote recipe and List routes
 
+## 11/27/17	Steve and Oz
+- recipes button in nav goes back to recipes in main display

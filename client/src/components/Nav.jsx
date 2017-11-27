@@ -28,9 +28,9 @@ class  Nav extends Component {
   render(){
     const navLinks= (
       <div className="nav-links">
-        <div>add recipe</div>
-        <div>favorites</div>
-        <div>lists</div>
+        {this.props.auth && <div>Add Recipe</div>}
+        <div onClick={()=>this.props.showAllRecipes(false)}>Recipes</div>
+        {this.props.auth && <div>Shopping Lists</div>}
       </div>
     )
 
@@ -55,7 +55,7 @@ class  Nav extends Component {
     return(
       <div className='nav'>
         <div className="logo">LOGO</div>
-        {this.props.auth && navLinks}
+        {navLinks}
         {!this.props.auth ? login : <button onClick={this.props.logout}>Logout</button>}
       </div>
     )
