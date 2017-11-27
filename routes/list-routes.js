@@ -8,6 +8,7 @@ listRouter.get('/names/:id', listController.showNames)
 listRouter.get('/:id', listController.show)
 listRouter.post('/', listController.create)
 listRouter.put('/:id', listController.update)
+listRouter.delete('/recipe/:recipe_id', listController.deleteRecipe)
 listRouter.delete('/:id',listController.delete)
 
 module.exports = listRouter;
