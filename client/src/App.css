@@ -69,8 +69,8 @@ body {
 }
 
 div{
-  /*border: 1px dashed #BBB;*/
-  /*padding: 3px;*/
+  border: 1px dashed #BBB;
+  padding: 3px;
 }
 
 .App{
