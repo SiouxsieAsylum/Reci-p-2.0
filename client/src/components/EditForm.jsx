@@ -5,7 +5,7 @@ class EditForm extends Component{
     super(props)
     this.state={
       image: this.props.recipeInfo.image,
-      title: this.props.recipeInfo.title,
+      title: this.props.recipeInfo.name,
       serving_size: this.props.recipeInfo.serving_size,
       created_by:this.props.userid
     }
@@ -37,7 +37,9 @@ class EditForm extends Component{
     .then(res => res.json())
     .then(res => {
         console.log(res)
-          this.props.setRecipe(res.data.recipe.id)
+        this.props.setShow()
+        this.props.getSingleRecipe(res.data.recipe.id)
+
         }).catch(err => console.log(err));
   }
 

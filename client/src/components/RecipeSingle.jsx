@@ -25,7 +25,7 @@ function Single(props){
       <div className="recipe-single">
         <h3>{props.recipeInfo.name}</h3><h3>Servings: {props.recipeInfo.serving_size}</h3>
         <div className="single-recipe-pic" style={{backgroundImage: `url(${props.recipeInfo.image})`}}></div>
-        <button onClick={() => props.setEdit}>Edit</button>
+        <button onClick={() => props.setEdit()}>Edit</button>
         <ul className='recipe-ingredients'>
         {props.ingredients.map(ingredient => {
           return (<li key={ingredient.id} className='recipe-ingredient'>
@@ -37,7 +37,7 @@ function Single(props){
         })}
       </ul>
 
-      {this.recipeInfo.created_by === this.props.userid && (
+      {props.recipeInfo.created_by === props.userid && (
       <IngredientForm
         getSingleRecipe={props.getSingleRecipe}
         recipe={props.recipeInfo.id}
@@ -64,6 +64,7 @@ class RecipeSingle extends Component{
   }
 
   setEdit(){
+    console.log('clickef')
     this.setState({
       edit:true
     })
@@ -76,7 +77,7 @@ class RecipeSingle extends Component{
   }
 
 render(){
-    if (this.state.edit){
+    if (this.state.edit && this.props.userId == this.recipeInfo.created_by){
       return(<EditForm
         recipeInfo={this.recipeInfo}
         getSingleRecipe={this.props.getSingleRecipe}

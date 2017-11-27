@@ -5,7 +5,7 @@ const recipeControllers = require('../controllers/recipe-controllers.js');
 recipeRoutes.get('/', recipeControllers.index);
 recipeRoutes.get('/:id', recipeControllers.show);
 recipeRoutes.post('/:recipe_id',recipeControllers.addIngredientsToNewRecipe)
-recipeRoutes.put('/:recipe_id',recipeControllers.addIngredientsToNewRecipe)
+recipeRoutes.put('/:recipe_id',recipeControllers.update)
 recipeRoutes.delete('/:recipe_id',recipeControllers.removeUserRecipe)
 recipeRoutes.delete('/:recipe_id/:ingredient_id',recipeControllers.removeIngredient)
 
