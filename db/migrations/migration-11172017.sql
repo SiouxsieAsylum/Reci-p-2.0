@@ -19,8 +19,8 @@ CREATE TABLE IF NOT EXISTS ingredients(
 
 CREATE TABLE IF NOT EXISTS ingredient_lists(
   id SERIAL PRIMARY KEY,
-  recipe_id INTEGER REFERENCES recipes ON DELETE CASCADE,
-  ingredient_id INTEGER REFERENCES ingredients ON DELETE CASCADE,
+  recipe_id INTEGER REFERENCES recipes,
+  ingredient_id INTEGER REFERENCES ingredients,
   amount FLOAT,
   unit VARCHAR(255)
 );
