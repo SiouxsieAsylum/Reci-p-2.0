@@ -20,7 +20,7 @@ class MainDisplay extends Component{
       apiData:null,
       apiSingle: null,
       apiLoaded:false,
-      show: "form",
+      show: "recipelist",
     }
     this.getAllRecipes = this.getAllRecipes.bind(this);
     this.getSingleRecipe = this.getSingleRecipe.bind(this);
@@ -59,13 +59,11 @@ class MainDisplay extends Component{
   }
 
   showAllRecipes(update){
-    console.log('showallrecipes update is : ', update);
     if(update){
       //do a fetch and then set state
-      console.log('youre dad to me');
     } else {
       this.setState({
-        show: 'list',
+        show: 'recipelist',
       })
     }
 
@@ -83,7 +81,7 @@ class MainDisplay extends Component{
     let tabShow = null;
 
     switch(this.state.show){
-      case "list":
+      case "recipelist":
         tabShow = (
           <RecipeList
             recipeToList={this.props.recipeToList}
@@ -95,7 +93,7 @@ class MainDisplay extends Component{
       case "single":
         tabShow = (
           <RecipeSingle
-            apiData={this.state.apiSingle}
+            apiSingle={this.state.apiSingle}
           />
         )
         break;

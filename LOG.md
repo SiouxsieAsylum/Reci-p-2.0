@@ -72,3 +72,6 @@ Completed model for adding recipes from api to database. Structure is as follows
 
 ## 11/27/17 1030 Steve
 - show one recipe shows its ingredients
+
+##11/27/17 1330 Steve
+- ingredients show on the list when you add a recipe to that list 
