@@ -1,4 +1,5 @@
 import React from 'react';
+import IngredientForm from './IngredientForm';
 
 function RecipeSingle (props) {
   const recipeInfo = props.apiSingle[0];
@@ -15,6 +16,12 @@ function RecipeSingle (props) {
           </li>)
         })}
       </ul>
+      {recipeInfo.created_by === props.userid && (
+      <IngredientForm
+        getSingleRecipe={props.getSingleRecipe}
+        recipe={recipeInfo.id}
+      />
+        )}
     </div>
   )
 }
