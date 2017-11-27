@@ -46,11 +46,11 @@ class App extends Component {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({body: this.state.userid})
+      body: JSON.stringify({id: this.state.userid})
     }).then(res => res.json())
     .then(res => {
       console.log(res);
-      this.getIngredientsList();
+      // this.getIngredientsList();
     }).catch(err => console.log(err));
   }
 
