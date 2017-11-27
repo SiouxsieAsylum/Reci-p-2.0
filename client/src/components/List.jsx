@@ -4,6 +4,18 @@ import SingleList from './SingleList'
 function List(props){
   const list = props.shoppingList;
   const recipes = props.shoppingRecipes;
+  const listIndex = props.listIndex;
+
+  function removeRecipeFromList(recipe_id){
+    fetch(`/api/list/recipe/${recipe_id}`, {
+      method: 'DELETE',
+      body: JSON.stringify({
+        list_id: listIndex,
+      })
+    }).then(res => res.json())
+    .then(json => console.log(json))
+    .catch(err => console.log(err));
+  }
 
   let yourList = null;
   if(list.length === 0) {
@@ -18,11 +30,14 @@ function List(props){
     )
   }
 
+  
   let listRecipes = null;
   if(recipes.length !== 0){
     listRecipes = (
       recipes.map((recipe, index) => {
-        return <li key={index}><button>-</button>{recipe.name}</li>
+        return (<li key={index}>
+          <button onClick={() => removeRecipeFromList(recipe.id)}>-</button>{recipe.name}
+        </li>)
       })
     )
   }

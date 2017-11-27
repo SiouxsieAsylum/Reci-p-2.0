@@ -95,6 +95,7 @@ class App extends Component {
           />
           <List shoppingList={this.state.shoppingList} 
             shoppingRecipes={this.state.shoppingRecipes}
+            listIndex={this.state.listIndex}
           />
         </div>
 
