@@ -93,7 +93,7 @@ class MainDisplay extends Component{
       case "single":
         tabShow = (
           <RecipeSingle
-            apiData={this.state.apiSingle}
+            apiSingle={this.state.apiSingle}
           />
         )
         break;
