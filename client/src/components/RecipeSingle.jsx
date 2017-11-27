@@ -77,7 +77,7 @@ class RecipeSingle extends Component{
   }
 
 render(){
-    if (this.state.edit && this.props.userId == this.recipeInfo.created_by){
+    if (this.state.edit && (this.props.userid == this.recipeInfo.created_by)){
       return(<EditForm
         recipeInfo={this.recipeInfo}
         getSingleRecipe={this.props.getSingleRecipe}
