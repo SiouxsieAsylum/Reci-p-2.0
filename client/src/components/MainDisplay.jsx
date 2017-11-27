@@ -20,7 +20,7 @@ class MainDisplay extends Component{
       apiData:null,
       apiSingle: null,
       apiLoaded:false,
-      show: "list",
+      show: "recipelist",
 
     }
     this.getAllRecipes = this.getAllRecipes.bind(this);
