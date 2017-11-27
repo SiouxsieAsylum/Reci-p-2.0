@@ -22,7 +22,7 @@ function List(props){
   if(recipes.length !== 0){
     listRecipes = (
       recipes.map((recipe, index) => {
-        return <li key={index}>{recipe.name}</li>
+        return <li key={index}><button>-</button>{recipe.name}</li>
       })
     )
   }

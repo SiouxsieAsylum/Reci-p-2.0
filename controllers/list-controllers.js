@@ -64,6 +64,15 @@ ListController.update = (req,res,next)=> {
   .catch(next)
 }
 
+ListController.deleteRecipe = (req,res,next) => {
+  List.deleteRecipe(req.params.recipe_id, req.body.list_id)
+  .then(() => {
+    res.json({
+      message: 'recipe deleted',
+    })
+  }).catch(next);
+}
+
 ListController.delete = (req,res,next) => {
   List.delete(req.params.id)
   .then(() => {
