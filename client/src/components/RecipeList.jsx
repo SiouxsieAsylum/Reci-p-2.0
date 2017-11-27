@@ -9,6 +9,7 @@ function RecipeList(props){
       {recipes.map( (recipe, index) => {
         return <RecipeThumbnail recipe={recipe} key={index}
         recipeToList={props.recipeToList}
+        getSingleRecipe={props.getSingleRecipe}
       />
       })}
     </div>

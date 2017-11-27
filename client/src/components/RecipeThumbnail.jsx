@@ -10,7 +10,7 @@ function RecipeThumbnail (props) {
     <div className="thumbnail-container">
     <div className="thumbnail"
       style={{backgroundImage: `url(${recipe.image})`}}
-      onClick={null}
+      onClick={()=> props.getSingleRecipe(id)}
     >
 
       <h3 className="thumbnail-title">{recipe.name}</h3>
