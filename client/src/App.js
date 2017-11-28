@@ -14,6 +14,7 @@ class App extends Component {
       username: "",
       userid: 1,
       listIndex: 1, // TODO this will be dynamic maybe based on user
+      listName: "",
       listRecipes: [],
       shoppingList: [],
       shoppingRecipes: [],
@@ -28,28 +29,48 @@ class App extends Component {
     this.submitList = this.submitList.bind(this);
   }
 
-  getIngredientsList(){
+  getIngredientsList(newIndex){
+    let listIndex = null;
+    if(newIndex){
+      listIndex = newIndex;
+      this.setState({listIndex: newIndex});
+    } else {
+      listIndex = this.state.listIndex;
+    }
+    
     //we will need to call this whenver the listindex changes and when we add a recipe to list
-    fetch(`/api/list/${this.state.listIndex}`, {
-      method: 'GET'
+    fetch(`/api/list/listname/${listIndex}`, {
+      method: 'GET',
     }).then(res => res.json())
     .then(json => {
-      console.log(json);
       this.setState({
-        shoppingList: json.data.list,
+        listName: json.data.name.name
       })
 
-      fetch(`/api/list/names/${this.state.listIndex}`, {
+      //get all of the ingredients
+      fetch(`/api/list/${listIndex}`, {
         method: 'GET'
       }).then(res => res.json())
       .then(json => {
-        console.log(json)
+        console.log('i like what you got', json);
         this.setState({
-          shoppingRecipes: json.data.recipes,
+          shoppingList: json.data.list,
         })
-      })
-
-    }).catch(err => console.log(err));
+        
+        //get all of the recipe names
+        fetch(`/api/list/names/${listIndex}`, {
+          method: 'GET'
+        }).then(res => res.json())
+        .then(json => {
+          console.log(json)
+          this.setState({
+            shoppingRecipes: json.data.recipes,
+          })
+        })
+  
+      }).catch(err => console.log(err));
+    })
+    
 
   }
 
@@ -76,6 +97,7 @@ class App extends Component {
       auth:true,
       username: username,
       userid: id,
+      listIndex: 1,
     })
   }
 
@@ -98,9 +120,10 @@ class App extends Component {
     })
   }
 
-  submitList(listIndex){
+  submitList(listIndex, name){
     this.setState({
       listIndex: listIndex,
+      listName: name,
       addList: false,
     })
   }
@@ -111,13 +134,15 @@ class App extends Component {
         <div className="App">
           <MainDisplay loginUser={this.loginUser} recipeToList={this.recipeToList}
             logout={this.logout} auth={this.state.auth} username={this.state.username}
-            userid={this.state.userid}
+            userid={this.state.userid} getIngredientsList={this.getIngredientsList}
+            listFormOn={this.listFormOn}
           />
           <List shoppingList={this.state.shoppingList}
             shoppingRecipes={this.state.shoppingRecipes} listIndex={this.state.listIndex}
             getIngredientsList={this.getIngredientsList}
             listFormOn={this.listFormOn} addList={this.state.addList}
             userid={this.state.userid} submitList={this.submitList}
+            listName={this.state.listName}
           />
         </div>
 
