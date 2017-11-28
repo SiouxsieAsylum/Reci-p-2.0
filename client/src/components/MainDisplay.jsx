@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import RecipeForm from './RecipeForm';
 import RecipeSingle from './RecipeSingle';
 import RecipeList from './RecipeList';
+import ShoppingLists from './ShoppingLists';
 import Nav from './Nav';
 
 
@@ -27,6 +28,7 @@ class MainDisplay extends Component{
     this.getSingleRecipe = this.getSingleRecipe.bind(this);
     this.showAllRecipes = this.showAllRecipes.bind(this);
     this.setRecipeAfterAdding = this.setRecipeAfterAdding.bind(this);
+    this.getUserLists.bind(this);
   };
 
   componentDidMount(){
@@ -67,7 +69,6 @@ class MainDisplay extends Component{
         show: 'recipelist',
       })
     }
-
   }
 
   setRecipeAfterAdding(id){
@@ -75,6 +76,10 @@ class MainDisplay extends Component{
       apiSingle:id,
       show: 'single'
     })
+  }
+
+  getUserLists(id){
+    fetch('')
   }
 
   render(){
