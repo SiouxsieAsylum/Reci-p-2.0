@@ -93,3 +93,6 @@ Completed model for adding recipes from api to database. Structure is as follows
 
 ## 11/28/17 1320 Oz
 - Style nav, flex links, add tab looks, dandy and shmandy.
+
+## 11/28/17 1700 Steve
+- raise the state of mainDisplay and delete extraneous code 
