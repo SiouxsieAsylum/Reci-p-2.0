@@ -14,6 +14,18 @@ ListController.index = (req,res,next) => {
   .catch(next)
 }
 
+ListController.showListName = (req,res,next) => {
+  List.findNameById(req.params.id)
+  .then(name => {
+    res.json({
+      message: 'list name found',
+      data:{
+        name
+      }
+    })
+  }).catch(next)
+}
+
 ListController.show = (req,res,next) => {
   List.findById(req.params.id)
   .then(list => {
