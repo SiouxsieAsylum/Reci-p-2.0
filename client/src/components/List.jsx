@@ -12,15 +12,15 @@ function List(props){
   const userid = props.userid;
   const submitList = props.submitList;
 
-  function removeRecipeFromList(recipe_id){
-    fetch(`/api/list/recipe/${recipe_id}`, {
+  function removeRecipeFromList(recipe){
+    fetch(`/api/list/recipe/${recipe}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        list_id: listIndex,
-      })
+      // body: JSON.stringify({
+      //   list_id: listIndex,
+      // })
     }).then(res => res.json())
     .then(json => {
       console.log(json);
@@ -45,8 +45,9 @@ function List(props){
   if(recipes.length !== 0){
     listRecipes = (
       recipes.map((recipe, index) => {
+        console.log(recipe)
         return (<li key={index}>
-          <button onClick={() => removeRecipeFromList(recipe.id)}>-</button>{recipe.name}
+          <button onClick={() => removeRecipeFromList(recipe.recipe_added)}>-</button>{recipe.name}
         </li>)
       })
     )
