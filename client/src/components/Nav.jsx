@@ -59,7 +59,7 @@ class  Nav extends Component {
         <div className="user-form">
           {!this.props.auth ? login : <button onClick={this.props.logout}>Logout</button>}
         </div>
-        <h1 className="logo">Recipeness</h1>
+        <h1 className="logo">Reci-P 2.0</h1>
           {navLinks}
 
 
