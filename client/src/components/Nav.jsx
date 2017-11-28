@@ -28,9 +28,9 @@ class  Nav extends Component {
   render(){
     const navLinks= (
       <div className="nav-links">
-        {this.props.auth && <div>Add Recipe</div>}
-        <div onClick={()=>this.props.showAllRecipes(false)}>Recipes</div>
-        {this.props.auth && <div onClick={this.props.getUserLists}>Shopping Lists</div>}
+        {this.props.auth && <div className="link" onClick={this.props.showRecipeForm}>Add Recipe</div>}
+        <div className="link" onClick={()=>this.props.showAllRecipes(false)}>Recipes</div>
+        {this.props.auth && <div className="link">Shopping Lists</div>}
       </div>
     )
 
@@ -39,13 +39,13 @@ class  Nav extends Component {
         {this.state.postType !== 'Register' && (
           <button onClick={this.registerForm}>Register</button>
         )}
-        
+
         {this.state.postType !== 'Login' && (
           <button onClick={this.loginForm}>Login</button>
         )}
-        
+
         {this.state.postType ? (
-          <UserForm loginForm={this.loginForm} 
+          <UserForm loginForm={this.loginForm}
             postType={this.state.postType} loginUser={this.props.loginUser}
           />
         ) : null}
@@ -53,10 +53,17 @@ class  Nav extends Component {
     )
 
     return(
-      <div className='nav'>
-        <div className="logo">LOGO</div>
-        {navLinks}
-        {!this.props.auth ? login : <button onClick={this.props.logout}>Logout</button>}
+      <div className="nav-container">
+
+        <div className='nav'>
+          <div className="logo">LOGO</div>
+          {navLinks}
+        </div>
+
+        <div className="user-form">
+          {!this.props.auth ? login : <button onClick={this.props.logout}>Logout</button>}
+        </div>
+
       </div>
     )
   }

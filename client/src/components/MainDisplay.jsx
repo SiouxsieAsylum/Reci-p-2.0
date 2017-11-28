@@ -30,6 +30,7 @@ class MainDisplay extends Component{
     this.showAllRecipes = this.showAllRecipes.bind(this);
     this.setRecipeAfterAdding = this.setRecipeAfterAdding.bind(this);
     this.getUserLists = this.getUserLists.bind(this);
+    this.showRecipeForm = this.showRecipeForm.bind(this);
   };
 
   componentDidMount(){
@@ -91,6 +92,12 @@ class MainDisplay extends Component{
       }).catch(err => console.log(err))
   }
 
+  showRecipeForm(){
+    this.setState({
+      show: "form",
+    })
+  }
+
   render(){
 
     let tabShow = null;
@@ -136,8 +143,8 @@ class MainDisplay extends Component{
 
     return(
       <div className="main-display">
-        <Nav auth={this.props.auth} loginUser={this.props.loginUser} logout={this.props.logout} 
-          showAllRecipes={this.showAllRecipes} getUserLists={this.getUserLists}
+        <Nav auth={this.props.auth} loginUser={this.props.loginUser} logout={this.props.logout}
+          showAllRecipes={this.showAllRecipes} getUserLists={this.getUserLists} showRecipeForm={this.showRecipeForm}
         />
 
         {this.state.apiLoaded  && (
