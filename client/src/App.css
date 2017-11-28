@@ -298,7 +298,7 @@ NAV
   max-width: 300px;
   height: 30px;
   padding-top: 15px;
-  background-color: gray;
+  background-color: rgba(150,140,140,1);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   border: 1px solid rgba(100,100,100,0.7);
