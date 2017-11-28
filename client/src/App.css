@@ -276,6 +276,9 @@ NAV
 .user-form {
   float: right;
   display: inline-block;
+  padding-right: 5px;
+  margin-top: 5px;
+  text-align: center;
 }
 
 .nav-links {
@@ -334,15 +337,81 @@ button {
 }
 
 .input-button {
-  background-color: beige;
+  background-color: rgb(239, 95, 115);
+  /*box-shadow: 0px 1px 0px 1px rgb(255, 164, 182);*/
   height: 30px;
+  width: 70px;
   font-family: "Lato";
-  font-weight: 200;
-  border-radius: 3px;
-  border: 1px solid black;
-  color: rgba(200,10,20,1);
-
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 5px;
+  border: 0px solid black;
+  color: white;
+  margin: 2px;
 }
 
+.input-button:hover{
+  cursor: pointer;
+}
+
+.radio-login{
+  background-color: rgba(0,0,0,0);
+  height: 25px;
+  font-family: "Lato";
+  font-weight: 300;
+  font-size: 20px;
+  border-radius: 0px;
+  border: 0px solid black;
+  color: white;
+  /*text-decoration: underline;*/
+}
+
+.radio-login:hover {
+  cursor: pointer;
+}
+
+.simple-form {
+  background-color: rgba(0,0,0,0);
+  border: 0px;
+  height: 20px;
+  color: white;
+  border-bottom: 2px solid white;
+  margin-right: 5px;
+  margin-left: 10px;
+  font-size:12px;
+}
+
+.simple-form:focus{
+  border-bottom: 2px solid red;
+  outline-color: none;
+  outline-style: none;
+  /*border-bottom: red;*/
+}
+
+.create-button-center{
+  text-align: center;
+}
+
+.create-new-list-button {
+  background-color: rgb(239, 95, 115);
+  /*box-shadow: 0px 1px 0px 1px rgb(255, 164, 182);*/
+  height: 70px;
+  width: 200px;
+  font-family: "Lato";
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 5px;
+  border: 0px solid black;
+  color: white;
+  margin: 2px;
+  margin-top: calc(50vh - 35px);
+  transition: 0.2s;
+}
+
+.create-new-list-button:hover{
+  cursor: pointer;
+  transition: 0.2s;
+  transform: translateY(2px);
+}
 
 /**/

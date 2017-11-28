@@ -44,10 +44,10 @@ class UserForm extends Component {
     <div>
       <form onSubmit={this.handleSubmit}>
         {/* <span>{this.props.postType} form</span> */}
-        <input type="text" name="username" value={this.state.username}
+        <input className="simple-form" type="text" name="username" value={this.state.username}
           onChange={this.handleInputChange} placeholder="Username"
         />
-        <input type="password" name="password" value={this.state.password}
+        <input className="simple-form" type="password" name="password" value={this.state.password}
           onChange={this.handleInputChange} placeholder="Password"
         />
         <input className="input-button" type="submit" value={this.props.postType} />
