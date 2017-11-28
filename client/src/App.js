@@ -37,6 +37,7 @@ class App extends Component {
     } else {
       listIndex = this.state.listIndex;
     }
+    
     //we will need to call this whenver the listindex changes and when we add a recipe to list
     fetch(`/api/list/listname/${listIndex}`, {
       method: 'GET',
