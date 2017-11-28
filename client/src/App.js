@@ -133,13 +133,20 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <MainDisplay loginUser={this.loginUser} recipeToList={this.recipeToList}
-            logout={this.logout} auth={this.state.auth} username={this.state.username}
-            userid={this.state.userid} getIngredientsList={this.getIngredientsList}
+          <MainDisplay
+            loginUser={this.loginUser}
+            recipeToList={this.recipeToList}
+            logout={this.logout}
+            auth={this.state.auth}
+            username={this.state.username}
+            userid={this.state.userid}
+            getIngredientsList={this.getIngredientsList}
             listFormOn={this.listFormOn}
           />
-          <List shoppingList={this.state.shoppingList}
-            shoppingRecipes={this.state.shoppingRecipes} listIndex={this.state.listIndex}
+          <List
+            shoppingList={this.state.shoppingList}
+            shoppingRecipes={this.state.shoppingRecipes}
+            listIndex={this.state.listIndex}
             getIngredientsList={this.getIngredientsList}
             listFormOn={this.listFormOn} addList={this.state.addList}
             userid={this.state.userid} submitList={this.submitList}

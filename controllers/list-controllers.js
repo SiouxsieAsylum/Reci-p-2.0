@@ -31,7 +31,7 @@ ListController.show = (req,res,next) => {
   .then(list => {
     res.json({
       message: 'list found',
-      data:{list 
+      data:{list
       }
     })
   })
@@ -74,8 +74,10 @@ ListController.update = (req,res,next)=> {
   .catch(next)
 }
 
+// please be advised that this is the id of the join on the shopping_lists table, NOT the id of the recipe!!!
 ListController.deleteRecipe = (req,res,next) => {
-  List.deleteRecipe(req.params.recipe_id, req.body.list_id)
+  console.log("params=",req.params)
+  List.deleteRecipe(req.params.recipe_id)
   .then(() => {
     res.json({
       message: 'recipe deleted',
