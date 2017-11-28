@@ -10,15 +10,19 @@ class App extends Component {
   constructor(){
     super();
     this.state={
-      auth: false,
+      auth: false, // makes it easier to handle logged in / not logged users
       username: "",
-      userid: 1,
-      listIndex: 1, // TODO this will be dynamic maybe based on user
+      userid: 1, // default 1 for non-logged in user. changes when user logs in
+      listIndex: 1, // changes when new list created or user list selected
       listName: "",
-      listRecipes: [],
-      shoppingList: [],
-      shoppingRecipes: [],
-      addList: false,
+      apiData: [], // holds all of the recipes
+      apiLoaded: null,
+      apiSingle: null,
+      userShopLists: [], //an array of the user's shopping lists
+      shoppingList: [], // ingredient list for selected shopping list
+      shoppingRecipes: [], // recipes in a shopping list
+      addList: false, // should the addNewList form be open?
+      show: "recipelist", // a show string for the Main Display Controller
     }
 
     this.recipeToList = this.recipeToList.bind(this);
@@ -27,8 +31,61 @@ class App extends Component {
     this.getIngredientsList = this.getIngredientsList.bind(this);
     this.listFormOn = this.listFormOn.bind(this);
     this.submitList = this.submitList.bind(this);
+    this.getAllRecipes = this.getAllRecipes.bind(this); 
+    this.getSingleRecipe = this.getSingleRecipe.bind(this);
+    this.getUserLists = this.getUserLists.bind(this);
+    this.showRecipeForm = this.showRecipeForm.bind(this);
   }
 
+  componentDidMount(){
+    this.getAllRecipes()
+  }
+
+  //----- get data from our api -----
+
+  //get all of the recipes
+  getAllRecipes(){
+    fetch('/api/recipe',{
+      method : "GET",
+    }).then(res => res.json()
+  ).then(json => {
+      this.setState({
+        apiData: json.data.recipes,
+        apiLoaded: true,
+        show: 'recipelist'
+      })
+    }).catch(err => console.log(err))
+  }
+
+  //get a recipe by id
+  getSingleRecipe(id){
+    fetch(`api/recipe/${id}`,{
+      method: "GET",
+    }).then(res => res.json()
+    ).then(json => {
+      console.log(json.data.recipe)
+      this.setState({
+        apiSingle: json.data.recipe,
+        apiLoaded: true,
+        show: 'single'
+      })
+    }).catch(err => console.log(err))
+  }
+  
+  // get a users shopping lists for clicking in the nav
+  getUserLists(){
+    fetch(`/api/list/user/${this.state.userid}`, {
+      method: 'GET',
+    }).then(res => res.json())
+      .then(json => {
+        this.setState({
+          userShopLists: json.data.lists,
+          show: 'shoppinglist'
+        })
+      }).catch(err => console.log(err))
+  }
+
+  //we will need to call this whenever the listindex changes and when we add a recipe to list
   getIngredientsList(newIndex){
     let listIndex = null;
     if(newIndex){
@@ -38,7 +95,7 @@ class App extends Component {
       listIndex = this.state.listIndex;
     }
 
-    //we will need to call this whenver the listindex changes and when we add a recipe to list
+    //get the list name
     fetch(`/api/list/listname/${listIndex}`, {
       method: 'GET',
     }).then(res => res.json())
@@ -66,14 +123,12 @@ class App extends Component {
           this.setState({
             shoppingRecipes: json.data.recipes,
           })
-        })
-
-      }).catch(err => console.log(err));
-    })
-
-
+        }).catch(err => console.log(err))
+      }).catch(err => console.log(err))
+    }).catch(err => console.log(err))
   }
 
+  // ----- add recipe to list, call get shopping list -----
   recipeToList(recipeId){
     if(this.state.listIndex !== 1){
       fetch(`/api/recipe/${recipeId}/${this.state.listIndex}`, {
@@ -84,8 +139,6 @@ class App extends Component {
         body: JSON.stringify({id: this.state.userid})
       }).then(res => res.json())
       .then(res => {
-        // console.log(res.data.recipes.id);
-        console.log('clicked')
         this.getIngredientsList();
       }).catch(err => console.log(err));
     } else {
@@ -93,6 +146,7 @@ class App extends Component {
     }
   }
 
+  //----- functions for user login -----
   loginUser(username, id){
     this.setState({
       auth:true,
@@ -114,13 +168,16 @@ class App extends Component {
       }).catch(err => console.log(err));
   }
 
+  //----- list form functions -----
+  //-- turn on addListForm view on list component ---
   listFormOn(){
     this.setState({
       listIndex: 1,
       addList: true,
     })
-  }
 
+  }
+  //-- set the submitted list index and name to state for rendering --
   submitList(listIndex, name){
     this.setState({
       listIndex: listIndex,
@@ -129,20 +186,40 @@ class App extends Component {
     })
   }
 
+  //----- change the show for the main display -----
+  showRecipeForm(){
+    this.setState({
+      show: "form",
+    })
+  }
+
   render() {
     return (
       <Router>
         <div className="App">
           <MainDisplay
-            loginUser={this.loginUser}
-            recipeToList={this.recipeToList}
-            logout={this.logout}
+            //variables
             auth={this.state.auth}
             username={this.state.username}
             userid={this.state.userid}
+            apiData={this.state.apiData}
+            apiLoaded={this.state.apiLoaded}
+            apiSingle={this.state.apiSingle}
+            show={this.state.show}
+            userShopLists={this.state.userShopLists}
+
+            //functions
+            loginUser={this.loginUser}
+            recipeToList={this.recipeToList}
+            logout={this.logout}
             getIngredientsList={this.getIngredientsList}
             listFormOn={this.listFormOn}
+            getUserLists={this.getUserLists}
+            getAllRecipes={this.getAllRecipes}
+            getSingleRecipe={this.getSingleRecipe}
+            showRecipeForm={this.showRecipeForm}
           />
+
           <List
             shoppingList={this.state.shoppingList}
             shoppingRecipes={this.state.shoppingRecipes}

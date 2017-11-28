@@ -29,7 +29,7 @@ class  Nav extends Component {
     const navLinks= (
       <div className="nav-links">
         {this.props.auth && <div className="link" onClick={this.props.showRecipeForm}>ADD RECIPES</div>}
-        <div className="link" onClick={()=>this.props.showAllRecipes(false)}>RECIPES</div>
+        <div className="link" onClick={this.props.getAllRecipes}>RECIPES</div>
         {this.props.auth && <div className="link" onClick={this.props.getUserLists}>SHOPPING LISTS</div>}
       </div>
     )
