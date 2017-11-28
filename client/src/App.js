@@ -111,9 +111,10 @@ class App extends Component {
     })
   }
 
-  submitList(listIndex){
+  submitList(listIndex, name){
     this.setState({
       listIndex: listIndex,
+      listName: name,
       addList: false,
     })
   }

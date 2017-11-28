@@ -29,7 +29,8 @@ class ListAddForm extends Component {
       })
     }).then(res => res.json())
     .then(json => {
-      this.props.submitList(json.data.list.list_id);
+      console.log('whats the title from this???', json);
+      this.props.submitList(json.data.list.list_id, json.data.list.name);
     }).catch(err => console.log(err))
   }
 
