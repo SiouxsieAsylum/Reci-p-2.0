@@ -34,7 +34,7 @@ class App extends Component {
     this.getAllRecipes = this.getAllRecipes.bind(this); 
     this.getSingleRecipe = this.getSingleRecipe.bind(this);
     this.getUserLists = this.getUserLists.bind(this);
-    
+    this.showRecipeForm = this.showRecipeForm.bind(this);
   }
 
   componentDidMount(){
@@ -187,6 +187,11 @@ class App extends Component {
   }
 
   //----- change the show for the main display -----
+  showRecipeForm(){
+    this.setState({
+      show: "form",
+    })
+  }
 
   render() {
     return (
@@ -211,6 +216,8 @@ class App extends Component {
             listFormOn={this.listFormOn}
             getUserLists={this.getUserLists}
             getAllRecipes={this.getAllRecipes}
+            getSingleRecipe={this.getSingleRecipe}
+            showRecipeForm={this.showRecipeForm}
           />
 
           <List

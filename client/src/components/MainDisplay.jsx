@@ -28,26 +28,10 @@ class MainDisplay extends Component{
       apiLoaded:false,
       // show: "recipelist", // current page for the switch
     }
-    this.showAllRecipes = this.showAllRecipes.bind(this);
-    this.showRecipeForm = this.showRecipeForm.bind(this);
   };
+
+
   
-
-  showAllRecipes(update){
-    if(update){
-      //do a fetch and then set state
-    } else {
-      this.setState({
-        show: 'recipelist',
-      })
-    }
-  }
-
-  showRecipeForm(){
-    this.setState({
-      show: "form",
-    })
-  }
 
   render(){
 
@@ -97,7 +81,7 @@ class MainDisplay extends Component{
     return(
       <div className="main-display">
         <Nav auth={this.props.auth} loginUser={this.props.loginUser} logout={this.props.logout}
-          getAllRecipes={this.props.getAllRecipes} getUserLists={this.props.getUserLists} showRecipeForm={this.showRecipeForm}
+          getAllRecipes={this.props.getAllRecipes} getUserLists={this.props.getUserLists} showRecipeForm={this.props.showRecipeForm}
         />
 
         {this.props.apiLoaded  && (
