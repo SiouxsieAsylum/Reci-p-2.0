@@ -4,7 +4,7 @@ const ListController = {};
 
 
 ListController.index = (req,res,next) => {
-  List.findAll(req.body.userid)
+  List.findAll(req.params.userid)
   .then(lists => {
     res.json({
       message:'all user lists found',

@@ -3,7 +3,7 @@ const listController = require('../controllers/list-controllers');
 const authHelpers = require('../services/auth/auth-helpers');
 const listRouter = express.Router();
 
-listRouter.get('/', listController.index)
+listRouter.get('/user/:userid', listController.index)
 listRouter.get('/names/:id', listController.showNames)
 listRouter.get('/:id', listController.show)
 listRouter.post('/', listController.create)

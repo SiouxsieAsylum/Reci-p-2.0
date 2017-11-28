@@ -79,12 +79,8 @@ class MainDisplay extends Component{
   }
 
   getUserLists(){
-    fetch('/api/list', {
+    fetch(`/api/list/user/${this.props.userid}`, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({userid: this.props.userid}),
     }).then(res => res.json())
       .then(json => {
         console.log('got user lists: ', json)
