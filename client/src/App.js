@@ -14,6 +14,7 @@ class App extends Component {
       username: "",
       userid: 1,
       listIndex: 1, // TODO this will be dynamic maybe based on user
+      listName: "",
       listRecipes: [],
       shoppingList: [],
       shoppingRecipes: [],
@@ -34,7 +35,7 @@ class App extends Component {
       method: 'GET'
     }).then(res => res.json())
     .then(json => {
-      console.log(json);
+      console.log('i like what you got', json);
       this.setState({
         shoppingList: json.data.list,
       })
