@@ -29,6 +29,9 @@ class App extends Component {
     this.submitList = this.submitList.bind(this);
   }
 
+  //----- get data from our api -----
+
+  //we will need to call this whenever the listindex changes and when we add a recipe to list
   getIngredientsList(newIndex){
     let listIndex = null;
     if(newIndex){
@@ -38,7 +41,7 @@ class App extends Component {
       listIndex = this.state.listIndex;
     }
 
-    //we will need to call this whenver the listindex changes and when we add a recipe to list
+    //get the list name
     fetch(`/api/list/listname/${listIndex}`, {
       method: 'GET',
     }).then(res => res.json())
@@ -66,14 +69,13 @@ class App extends Component {
           this.setState({
             shoppingRecipes: json.data.recipes,
           })
-        })
-
-      }).catch(err => console.log(err));
-    })
-
+        }).catch(err => console.log(err))
+      }).catch(err => console.log(err))
+    }).catch(err => console.log(err))
 
   }
 
+  // ----- client click events -----
   recipeToList(recipeId){
     if(this.state.listIndex !== 1){
       fetch(`/api/recipe/${recipeId}/${this.state.listIndex}`, {
@@ -84,8 +86,6 @@ class App extends Component {
         body: JSON.stringify({id: this.state.userid})
       }).then(res => res.json())
       .then(res => {
-        // console.log(res.data.recipes.id);
-        console.log('clicked')
         this.getIngredientsList();
       }).catch(err => console.log(err));
     } else {

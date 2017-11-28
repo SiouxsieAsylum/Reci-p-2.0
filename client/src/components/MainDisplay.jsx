@@ -6,9 +6,9 @@ import RecipeList from './RecipeList';
 import ShoppingLists from './ShoppingLists';
 import Nav from './Nav';
 
-
+//acts as a controller for the main display
 class MainDisplay extends Component{
-
+  
   constructor(props){
     super(props);
     /* ------------------ Prop-list ------------------ */
@@ -24,11 +24,11 @@ class MainDisplay extends Component{
 
 
     this.state={
-      apiData:null,
-      apiSingle: null,
-      shoppingLists: null,
+      apiData:null, // holds all of the recipes
+      apiSingle: null, // holds a selected recipe
+      shoppingLists: null, // holds a users shopping lists
       apiLoaded:false,
-      show: "recipelist",
+      show: "recipelist", // current page for the switch
 
     }
     this.getAllRecipes = this.getAllRecipes.bind(this);
