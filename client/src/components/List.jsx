@@ -57,7 +57,7 @@ function List(props){
   addList ? (
     newList = <ListAddForm userid={userid} submitList={submitList}/>
   ) : (
-    newList = <button onClick={listFormOn}>Create New List!</button>
+    newList = <button className="create-new-list-button" onClick={listFormOn}>Create New List!</button>
   )
 
 
@@ -65,7 +65,7 @@ function List(props){
   return(
     <div className='list-container'>
       {listIndex === 1 ? (
-        <div >
+        <div className="create-button-center">
           {newList}
         </div>
       ) : (

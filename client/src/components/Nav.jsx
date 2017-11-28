@@ -36,19 +36,22 @@ class  Nav extends Component {
 
     const login=(
       <div className='login'>
-        {this.state.postType !== 'Register' && (
-          <button onClick={this.registerForm}>Register</button>
-        )}
-
-        {this.state.postType !== 'Login' && (
-          <button onClick={this.loginForm}>Login</button>
-        )}
-
+        
         {this.state.postType ? (
           <UserForm loginForm={this.loginForm}
             postType={this.state.postType} loginUser={this.props.loginUser}
           />
         ) : null}
+
+        {this.state.postType !== 'Register' && (
+          <button className="radio-login" onClick={this.registerForm}>Register</button>
+        )}
+
+        {this.state.postType !== 'Login' && (
+          <button className="radio-login" onClick={this.loginForm}>Login</button>
+        )}
+
+
       </div>
     )
 
@@ -59,7 +62,7 @@ class  Nav extends Component {
         <div className="user-form">
           {!this.props.auth ? login : <button onClick={this.props.logout}>Logout</button>}
         </div>
-        <h1 className="logo">Recipeness</h1>
+        <h1 className="logo">Reci-P 2.0</h1>
           {navLinks}
 
 
