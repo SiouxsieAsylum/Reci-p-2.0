@@ -20,6 +20,7 @@ class MainDisplay extends Component{
     this.state={
       apiData:null,
       apiSingle: null,
+      shoppingLists: null,
       apiLoaded:false,
       show: "recipelist",
 
@@ -83,7 +84,10 @@ class MainDisplay extends Component{
       method: 'GET',
     }).then(res => res.json())
       .then(json => {
-        console.log('got user lists: ', json)
+        this.setState({
+          shoppingLists: json.data.lists,
+          show: 'shoppinglist'
+        })
       }).catch(err => console.log(err))
   }
 
@@ -117,6 +121,11 @@ class MainDisplay extends Component{
           setRecipe={this.getSingleRecipe}
           />
           )
+        break;
+      case 'shoppinglist':
+        tabShow = (
+          <ShoppingLists shoppingLists={this.state.shoppingLists} />
+        )
         break;
       default:
         tabShow=(

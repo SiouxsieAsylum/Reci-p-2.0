@@ -1,13 +1,14 @@
 import React from 'react';
 
 function ShoppingLists(props) {
-  const shopping_lists = props.shopping_lists;
+  const shoppingLists = props.shoppingLists;
   return(
-    <div className='shopping_lists'>
+    <div className='shopping-lists'>
       <h2>User's Shopping Lists</h2>
+      {shoppingLists.length === 0 && <p>Add a new Shopping list!</p>}
       <ul>
-        {shopping_lists.map( (shopping_list) => {
-          return <li key={shopping_list.list_id}>{shopping_list.name}</li>
+        {shoppingLists.map( (shoppingList) => {
+          return <li key={shoppingList.list_id}>{shoppingList.name}</li>
         })}
       </ul>
     </div>
