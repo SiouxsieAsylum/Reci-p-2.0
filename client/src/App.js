@@ -135,6 +135,7 @@ class App extends Component {
           <MainDisplay loginUser={this.loginUser} recipeToList={this.recipeToList}
             logout={this.logout} auth={this.state.auth} username={this.state.username}
             userid={this.state.userid} getIngredientsList={this.getIngredientsList}
+            listFormOn={this.listFormOn}
           />
           <List shoppingList={this.state.shoppingList}
             shoppingRecipes={this.state.shoppingRecipes} listIndex={this.state.listIndex}

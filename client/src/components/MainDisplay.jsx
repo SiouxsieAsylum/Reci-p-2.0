@@ -132,7 +132,8 @@ class MainDisplay extends Component{
       case 'shoppinglist':
         tabShow = (
           <ShoppingLists shoppingLists={this.state.shoppingLists} 
-          getIngredientsList={this.props.getIngredientsList}/>
+          getIngredientsList={this.props.getIngredientsList} listFormOn={this.props.listFormOn}
+          /> 
         )
         break;
       default:
