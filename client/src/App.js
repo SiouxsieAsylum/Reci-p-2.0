@@ -37,6 +37,19 @@ class App extends Component {
 
   //----- get data from our api -----
 
+  //get all of the recipes
+  getAllRecipes(){
+    fetch('/api/recipe',{
+      method : "GET",
+    }).then(res => res.json()
+  ).then(json => {
+      this.setState({
+        apiData: json.data.recipes,
+        apiLoaded: true,
+      })
+    }).catch(err => console.log(err))
+  }
+  
   //we will need to call this whenever the listindex changes and when we add a recipe to list
   getIngredientsList(newIndex){
     let listIndex = null;
@@ -80,18 +93,7 @@ class App extends Component {
     }).catch(err => console.log(err))
   }
 
-  //get all of the recipes
-  getAllRecipes(){
-    fetch('/api/recipe',{
-      method : "GET",
-    }).then(res => res.json()
-  ).then(json => {
-      this.setState({
-        apiData: json.data.recipes,
-        apiLoaded: true,
-      })
-    }).catch(err => console.log(err))
-  }
+  
 
   // ----- add recipe to list, call get shopping list -----
   recipeToList(recipeId){
