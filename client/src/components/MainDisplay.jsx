@@ -29,14 +29,8 @@ class MainDisplay extends Component{
       // show: "recipelist", // current page for the switch
     }
     this.showAllRecipes = this.showAllRecipes.bind(this);
-    this.setRecipeAfterAdding = this.setRecipeAfterAdding.bind(this);
     this.showRecipeForm = this.showRecipeForm.bind(this);
   };
-
-  
-
-  
-
   
 
   showAllRecipes(update){
@@ -48,15 +42,6 @@ class MainDisplay extends Component{
       })
     }
   }
-
-  setRecipeAfterAdding(id){
-    this.setState({
-      apiSingle:id,
-      show: 'single'
-    })
-  }
-
-  
 
   showRecipeForm(){
     this.setState({

@@ -18,7 +18,7 @@ class App extends Component {
       apiData: [], // holds all of the recipes
       apiLoaded: null,
       apiSingle: null,
-      userShopLists: null,
+      userShopLists: [], //an array of the user's shopping lists
       shoppingList: [], // ingredient list for selected shopping list
       shoppingRecipes: [], // recipes in a shopping list
       addList: false, // should the addNewList form be open?
@@ -184,6 +184,8 @@ class App extends Component {
       addList: false,
     })
   }
+
+  //----- change the show for the main display -----
 
   render() {
     return (
