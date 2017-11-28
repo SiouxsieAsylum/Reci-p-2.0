@@ -28,9 +28,9 @@ class  Nav extends Component {
   render(){
     const navLinks= (
       <div className="nav-links">
-        {this.props.auth && <div className="link" onClick={this.props.showRecipeForm}>Add Recipe</div>}
-        <div className="link" onClick={()=>this.props.showAllRecipes(false)}>Recipes</div>
-        {this.props.auth && <div className="link" onClick={this.props.getUserLists}>Shopping Lists</div>}
+        {this.props.auth && <div className="link" onClick={this.props.showRecipeForm}>ADD RECIPES</div>}
+        <div className="link" onClick={()=>this.props.showAllRecipes(false)}>RECIPES</div>
+        {this.props.auth && <div className="link" onClick={this.props.getUserLists}>SHOPPING LISTS</div>}
       </div>
     )
 
@@ -55,14 +55,13 @@ class  Nav extends Component {
     return(
       <div className="nav-container">
 
-        <div className='nav'>
-          <div className="logo">LOGO</div>
-          {navLinks}
-        </div>
 
         <div className="user-form">
           {!this.props.auth ? login : <button onClick={this.props.logout}>Logout</button>}
         </div>
+        <h1 className="logo">Recipeness</h1>
+          {navLinks}
+
 
       </div>
     )
