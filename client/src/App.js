@@ -29,9 +29,16 @@ class App extends Component {
     this.submitList = this.submitList.bind(this);
   }
 
-  getIngredientsList(){
+  getIngredientsList(newIndex){
+    let listIndex = null;
+    if(newIndex){
+      listIndex = newIndex;
+      this.setState({listIndex: newIndex});
+    } else {
+      listIndex = this.state.listIndex;
+    }
     //we will need to call this whenver the listindex changes and when we add a recipe to list
-    fetch(`/api/list/listname/${this.state.listIndex}`, {
+    fetch(`/api/list/listname/${listIndex}`, {
       method: 'GET',
     }).then(res => res.json())
     .then(json => {
@@ -40,7 +47,7 @@ class App extends Component {
       })
 
       //get all of the ingredients
-      fetch(`/api/list/${this.state.listIndex}`, {
+      fetch(`/api/list/${listIndex}`, {
         method: 'GET'
       }).then(res => res.json())
       .then(json => {
@@ -50,7 +57,7 @@ class App extends Component {
         })
         
         //get all of the recipe names
-        fetch(`/api/list/names/${this.state.listIndex}`, {
+        fetch(`/api/list/names/${listIndex}`, {
           method: 'GET'
         }).then(res => res.json())
         .then(json => {
@@ -125,7 +132,7 @@ class App extends Component {
         <div className="App">
           <MainDisplay loginUser={this.loginUser} recipeToList={this.recipeToList}
             logout={this.logout} auth={this.state.auth} username={this.state.username}
-            userid={this.state.userid}
+            userid={this.state.userid} getIngredientsList={this.getIngredientsList}
           />
           <List shoppingList={this.state.shoppingList}
             shoppingRecipes={this.state.shoppingRecipes} listIndex={this.state.listIndex}
