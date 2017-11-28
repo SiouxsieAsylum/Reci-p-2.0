@@ -97,6 +97,7 @@ class App extends Component {
       auth:true,
       username: username,
       userid: id,
+      listIndex: 1,
     })
   }
 
