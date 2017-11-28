@@ -133,23 +133,18 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-<<<<<<< HEAD
           <MainDisplay
-            loginUser={this.loginUser}
-            recipeToList={this.recipeToList}
-            logout={this.logout}
+            //variables
             auth={this.state.auth}
             username={this.state.username}
             userid={this.state.userid}
+
+            //functions
+            loginUser={this.loginUser}
+            recipeToList={this.recipeToList}
+            logout={this.logout}
             getIngredientsList={this.getIngredientsList}
             listFormOn={this.listFormOn}
-=======
-          <MainDisplay auth={this.state.auth} username={this.state.username}
-            userid={this.state.userid}  // end variables
-            //functions
-            loginUser={this.loginUser} recipeToList={this.recipeToList} logout={this.logout} 
-            getIngredientsList={this.getIngredientsList} listFormOn={this.listFormOn}
->>>>>>> comments for state to clear some stuff up
           />
           <List
             shoppingList={this.state.shoppingList}
