@@ -30,7 +30,7 @@ class  Nav extends Component {
       <div className="nav-links">
         {this.props.auth && <div>Add Recipe</div>}
         <div onClick={()=>this.props.showAllRecipes(false)}>Recipes</div>
-        {this.props.auth && <div>Shopping Lists</div>}
+        {this.props.auth && <div onClick={this.props.getUserLists}>Shopping Lists</div>}
       </div>
     )
 

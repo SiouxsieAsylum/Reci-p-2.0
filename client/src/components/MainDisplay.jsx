@@ -28,7 +28,7 @@ class MainDisplay extends Component{
     this.getSingleRecipe = this.getSingleRecipe.bind(this);
     this.showAllRecipes = this.showAllRecipes.bind(this);
     this.setRecipeAfterAdding = this.setRecipeAfterAdding.bind(this);
-    this.getUserLists.bind(this);
+    this.getUserLists = this.getUserLists.bind(this);
   };
 
   componentDidMount(){
@@ -78,8 +78,17 @@ class MainDisplay extends Component{
     })
   }
 
-  getUserLists(id){
-    fetch('')
+  getUserLists(){
+    fetch('/api/list', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({userid: this.props.userid}),
+    }).then(res => res.json())
+      .then(json => {
+        console.log('got user lists: ', json)
+      }).catch(err => console.log(err))
   }
 
   render(){
@@ -122,7 +131,9 @@ class MainDisplay extends Component{
 
     return(
       <div className="main-display">
-        <Nav auth={this.props.auth} loginUser={this.props.loginUser} logout={this.props.logout} showAllRecipes={this.showAllRecipes}/>
+        <Nav auth={this.props.auth} loginUser={this.props.loginUser} logout={this.props.logout} 
+          showAllRecipes={this.showAllRecipes} getUserLists={this.getUserLists}
+        />
 
         {this.state.apiLoaded  && (
           tabShow
