@@ -74,7 +74,7 @@ Completed model for adding recipes from api to database. Structure is as follows
 - show one recipe shows its ingredients
 
 ##11/27/17 1330 Steve
-- ingredients show on the list when you add a recipe to that list 
+- ingredients show on the list when you add a recipe to that list
 
 ##11/27/17 2000 Steve
 - create a new list which redirect to show it
@@ -84,8 +84,11 @@ Completed model for adding recipes from api to database. Structure is as follows
 -Added created_by column to recipe database to identity both recipes created by a user and duplicates when adding to shopping list
 
 
-## 11/28/17 Andrea 
+## 11/28/17 Andrea
 - Changed the controllers for adding a recipe reference to the list to consist of the user automatically creating a single duplicate of a recipe, adding all the relevent references, and hosting that recipe as the reference in shopping lists. That allows for adding and deleting ingredients to and from the shopping_lists' recipes without affecting the original for everybody.
-  
+
 ## 11/28/17 1300 Steve
 - list should always have the name (needed a new api endpoint for this), userlists page always has a create new list button
+
+## 11/28/17 1320 Oz
+- Style nav, flex links, add tab looks, dandy and shmandy.
