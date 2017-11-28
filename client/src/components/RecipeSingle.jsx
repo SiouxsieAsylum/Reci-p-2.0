@@ -19,14 +19,6 @@ function Single(props){
     })
   }
 
-  function getRandoms(){
-    fetch('/api')
-    .then(res => res.json())
-    .then(json => {
-      console.log(json)
-    })
-  }
-
 
   // render(){
     return(
