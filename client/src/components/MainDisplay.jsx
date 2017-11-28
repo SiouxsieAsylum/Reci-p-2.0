@@ -11,10 +11,16 @@ class MainDisplay extends Component{
 
   constructor(props){
     super(props);
-    /* Prop-list */
-    //auth, username, userid
-    // loginUser(logs in user in nav),
-    // recipeToList(adds recipe id to shopping list)
+    /* ------------------ Prop-list ------------------ */
+    // Variables --
+    //  auth, username, userid
+    //
+    // Functions -- 
+    //  loginUser(logs in user in nav),
+    //  recipeToList(adds recipe id to shopping list)
+    //  logout(logs user out in nav)
+    //  getIngredientList (get the ingredients for a shopping list, needed to open shopping lists),
+    //  listFormOn (turn on the make a list form)
 
 
     this.state={

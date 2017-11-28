@@ -10,15 +10,15 @@ class App extends Component {
   constructor(){
     super();
     this.state={
-      auth: false,
+      auth: false, // makes it easier to handle logged in / not logged users
       username: "",
-      userid: 1,
-      listIndex: 1, // TODO this will be dynamic maybe based on user
+      userid: 1, // default 1 for non-logged in user. changes when user logs in
+      listIndex: 1, // changes when new list created or user list selected
       listName: "",
-      listRecipes: [],
-      shoppingList: [],
-      shoppingRecipes: [],
-      addList: false,
+      listRecipes: [], // unused for now, but we should use for api call
+      shoppingList: [], // ingredient list for selected shopping list
+      shoppingRecipes: [], // recipes in a shopping list
+      addList: false, // should the addNewList form be open?
     }
 
     this.recipeToList = this.recipeToList.bind(this);
@@ -133,6 +133,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
+<<<<<<< HEAD
           <MainDisplay
             loginUser={this.loginUser}
             recipeToList={this.recipeToList}
@@ -142,6 +143,13 @@ class App extends Component {
             userid={this.state.userid}
             getIngredientsList={this.getIngredientsList}
             listFormOn={this.listFormOn}
+=======
+          <MainDisplay auth={this.state.auth} username={this.state.username}
+            userid={this.state.userid}  // end variables
+            //functions
+            loginUser={this.loginUser} recipeToList={this.recipeToList} logout={this.logout} 
+            getIngredientsList={this.getIngredientsList} listFormOn={this.listFormOn}
+>>>>>>> comments for state to clear some stuff up
           />
           <List
             shoppingList={this.state.shoppingList}
