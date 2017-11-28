@@ -17,9 +17,11 @@ class App extends Component {
       listName: "",
       apiData: [], // holds all of the recipes
       apiLoaded: null,
+      apiSingle: null,
       shoppingList: [], // ingredient list for selected shopping list
       shoppingRecipes: [], // recipes in a shopping list
       addList: false, // should the addNewList form be open?
+      show: "recipelist", // a show string for the Main Display Controller
     }
 
     this.recipeToList = this.recipeToList.bind(this);
@@ -28,7 +30,9 @@ class App extends Component {
     this.getIngredientsList = this.getIngredientsList.bind(this);
     this.listFormOn = this.listFormOn.bind(this);
     this.submitList = this.submitList.bind(this);
-    this.getAllRecipes = this.getAllRecipes.bind(this);    
+    this.getAllRecipes = this.getAllRecipes.bind(this); 
+    this.getSingleRecipe = this.getSingleRecipe.bind(this);
+    
   }
 
   componentDidMount(){
@@ -49,7 +53,21 @@ class App extends Component {
       })
     }).catch(err => console.log(err))
   }
-  
+
+  getSingleRecipe(id){
+    fetch(`api/recipe/${id}`,{
+      method: "GET",
+    }).then(res => res.json()
+    ).then(json => {
+      console.log(json.data.recipe)
+      this.setState({
+        apiSingle: json.data.recipe,
+        apiLoaded: true,
+        show: 'single'
+      })
+    }).catch(err => console.log(err))
+  }
+
   //we will need to call this whenever the listindex changes and when we add a recipe to list
   getIngredientsList(newIndex){
     let listIndex = null;
@@ -92,8 +110,6 @@ class App extends Component {
       }).catch(err => console.log(err))
     }).catch(err => console.log(err))
   }
-
-  
 
   // ----- add recipe to list, call get shopping list -----
   recipeToList(recipeId){
@@ -164,6 +180,8 @@ class App extends Component {
             userid={this.state.userid}
             apiData={this.state.apiData}
             apiLoaded={this.state.apiLoaded}
+            apiSingle={this.state.apiSingle}
+            show={this.state.show}
 
             //functions
             loginUser={this.loginUser}

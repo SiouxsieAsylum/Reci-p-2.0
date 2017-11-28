@@ -24,13 +24,10 @@ class MainDisplay extends Component{
 
 
     this.state={
-      apiSingle: null, // holds a selected recipe
       shoppingLists: null, // holds a users shopping lists
       apiLoaded:false,
-      show: "recipelist", // current page for the switch
-
+      // show: "recipelist", // current page for the switch
     }
-    this.getSingleRecipe = this.getSingleRecipe.bind(this);
     this.showAllRecipes = this.showAllRecipes.bind(this);
     this.setRecipeAfterAdding = this.setRecipeAfterAdding.bind(this);
     this.getUserLists = this.getUserLists.bind(this);
@@ -41,19 +38,7 @@ class MainDisplay extends Component{
 
   
 
-  getSingleRecipe(id){
-    fetch(`api/recipe/${id}`,{
-      method: "GET",
-    }).then(res => res.json()
-    ).then(json => {
-      console.log(json.data.recipe)
-      this.setState({
-        apiSingle: json.data.recipe,
-        apiLoaded: true,
-        show: 'single'
-      })
-    }).catch(err => console.log(err))
-  }
+  
 
   showAllRecipes(update){
     if(update){
@@ -94,13 +79,13 @@ class MainDisplay extends Component{
 
     let tabShow = null;
 
-    switch(this.state.show){
+    switch(this.props.show){
       case "recipelist":
         tabShow = (
           <RecipeList
             recipeToList={this.props.recipeToList}
             recipes={this.props.apiData}
-            getSingleRecipe={this.getSingleRecipe}
+            getSingleRecipe={this.props.getSingleRecipe}
           />
         )
         break;
@@ -108,8 +93,8 @@ class MainDisplay extends Component{
         tabShow = (
           <RecipeSingle
             userid={this.props.userid}
-            apiSingle={this.state.apiSingle}
-            getSingleRecipe={this.getSingleRecipe}
+            apiSingle={this.props.apiSingle}
+            getSingleRecipe={this.props.getSingleRecipe}
           />
         )
         break;
@@ -117,7 +102,7 @@ class MainDisplay extends Component{
         tabShow = (
           <RecipeForm
           userid={this.props.userid}
-          setRecipe={this.getSingleRecipe}
+          setRecipe={this.props.getSingleRecipe}
           />
           )
         break;
