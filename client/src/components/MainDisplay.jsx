@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import RecipeForm from './RecipeForm';
 import RecipeSingle from './RecipeSingle';
 import RecipeList from './RecipeList';
+import ShoppingLists from './ShoppingLists';
 import Nav from './Nav';
 
 
@@ -19,6 +20,7 @@ class MainDisplay extends Component{
     this.state={
       apiData:null,
       apiSingle: null,
+      shoppingLists: null,
       apiLoaded:false,
       show: "recipelist",
 
@@ -27,6 +29,7 @@ class MainDisplay extends Component{
     this.getSingleRecipe = this.getSingleRecipe.bind(this);
     this.showAllRecipes = this.showAllRecipes.bind(this);
     this.setRecipeAfterAdding = this.setRecipeAfterAdding.bind(this);
+    this.getUserLists = this.getUserLists.bind(this);
   };
 
   componentDidMount(){
@@ -67,7 +70,6 @@ class MainDisplay extends Component{
         show: 'recipelist',
       })
     }
-
   }
 
   setRecipeAfterAdding(id){
@@ -75,6 +77,18 @@ class MainDisplay extends Component{
       apiSingle:id,
       show: 'single'
     })
+  }
+
+  getUserLists(){
+    fetch(`/api/list/user/${this.props.userid}`, {
+      method: 'GET',
+    }).then(res => res.json())
+      .then(json => {
+        this.setState({
+          shoppingLists: json.data.lists,
+          show: 'shoppinglist'
+        })
+      }).catch(err => console.log(err))
   }
 
   render(){
@@ -108,6 +122,11 @@ class MainDisplay extends Component{
           />
           )
         break;
+      case 'shoppinglist':
+        tabShow = (
+          <ShoppingLists shoppingLists={this.state.shoppingLists} />
+        )
+        break;
       default:
         tabShow=(
           <p>This is the default in switch: please seek help with DRAKE</p>
@@ -117,7 +136,9 @@ class MainDisplay extends Component{
 
     return(
       <div className="main-display">
-        <Nav auth={this.props.auth} loginUser={this.props.loginUser} logout={this.props.logout} showAllRecipes={this.showAllRecipes}/>
+        <Nav auth={this.props.auth} loginUser={this.props.loginUser} logout={this.props.logout} 
+          showAllRecipes={this.showAllRecipes} getUserLists={this.getUserLists}
+        />
 
         {this.state.apiLoaded  && (
           tabShow
