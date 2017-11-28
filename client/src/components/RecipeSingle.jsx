@@ -19,8 +19,6 @@ function Single(props){
     })
   }
 
-
-  // render(){
     return(
       <div className="recipe-single">
         <h3>{props.recipeInfo.name}</h3><h3>Servings: {props.recipeInfo.serving_size}</h3>
