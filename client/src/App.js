@@ -31,26 +31,38 @@ class App extends Component {
 
   getIngredientsList(){
     //we will need to call this whenver the listindex changes and when we add a recipe to list
-    fetch(`/api/list/${this.state.listIndex}`, {
-      method: 'GET'
+    fetch(`/api/list/listname/${this.state.listIndex}`, {
+      method: 'GET',
     }).then(res => res.json())
     .then(json => {
-      console.log('i like what you got', json);
       this.setState({
-        shoppingList: json.data.list,
+        listName: json.data.name.name
       })
 
-      fetch(`/api/list/names/${this.state.listIndex}`, {
+      //get all of the ingredients
+      fetch(`/api/list/${this.state.listIndex}`, {
         method: 'GET'
       }).then(res => res.json())
       .then(json => {
-        console.log(json)
+        console.log('i like what you got', json);
         this.setState({
-          shoppingRecipes: json.data.recipes,
+          shoppingList: json.data.list,
         })
-      })
-
-    }).catch(err => console.log(err));
+        
+        //get all of the recipe names
+        fetch(`/api/list/names/${this.state.listIndex}`, {
+          method: 'GET'
+        }).then(res => res.json())
+        .then(json => {
+          console.log(json)
+          this.setState({
+            shoppingRecipes: json.data.recipes,
+          })
+        })
+  
+      }).catch(err => console.log(err));
+    })
+    
 
   }
 
@@ -119,6 +131,7 @@ class App extends Component {
             getIngredientsList={this.getIngredientsList}
             listFormOn={this.listFormOn} addList={this.state.addList}
             userid={this.state.userid} submitList={this.submitList}
+            listName={this.state.listName}
           />
         </div>
 

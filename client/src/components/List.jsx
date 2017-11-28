@@ -69,7 +69,7 @@ function List(props){
         </div>
       ) : (
         <div>
-          <h3 className="ingredients-title">Ingredients list</h3>
+          <h3 className="ingredients-title">{props.listName}</h3>
 
           <ul className='shopping-recipes'>
             {recipes.length !== 0 && <h4>Recipes</h4>}
