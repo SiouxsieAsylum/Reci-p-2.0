@@ -100,8 +100,9 @@ div{
   display: inline-block;
   position: fixed;
   width: 300px;
+  min-height: 99%;
   float: right;
-  max-height: 95%;
+  max-height: 99%;
   overflow-y: scroll;
   right:0px;
   /*padding-right: 5px;*/
@@ -110,7 +111,7 @@ div{
   padding-left: 5px;
   padding-right: 5px;
   padding-bottom: 10px;
-  border-bottom-left-radius: 20px;
+  border-bottom-left-radius: 25px;
 }
 
 .recipe-thumbnail{

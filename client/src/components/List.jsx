@@ -76,10 +76,6 @@ function List(props){
             {listRecipes}
           </ul>
           {yourList}
-          <form className="ingredient-form">
-            <input type="text" name="addIngredient" placeholder="Add ingredient"/>
-            <input type ="submit" value="Add" />
-          </form>
         </div>
       )}
     </div>
