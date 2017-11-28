@@ -13,19 +13,9 @@ RecipeController.index = (req, res, next) => {
   .catch(next)
 };
 
-RecipeController.addRecipeToShopping = (req, res, next) => {
-  Recipe.addRecipeToShopping(req.params.shoppingList_id, req.body.id)
-    .then(recipe => {
-      Recipe.addUserRecipe(req.body.id,req.body.id)
-      .then(userlink => {
-        res.json({
-          message: 'recipe added',
-          data: { recipe,userlink }
-        });
-      })
-      .catch(err => {console.log(err)})
+RecipeController.addRecipeToShopping = (shoppingList_id, recipe_id, next) => {
+  return Recipe.addRecipeToShopping(shoppingList_id, recipe_id)
 
-    }).catch(next);
 };
 
 RecipeController.duplicateRecipeForShoppingList = (req,res,next) => {
@@ -33,7 +23,17 @@ RecipeController.duplicateRecipeForShoppingList = (req,res,next) => {
   .then(recipe => {
     Recipe.duplicateIngredientList(recipe.id,req.params.recipe_id)
     .then(ingredientList => {
-      RecipeController.addRecipeToShopping(req.params.shoppingList_id,recipe.id)
+      Recipe.addUserRecipe(req.body.id,recipe.id)
+      .then( userLink => {
+        RecipeController.addRecipeToShopping(req.params.shoppingList_id,recipe.id)
+        .then(list => {
+          res.json({
+            message: 'added to list',
+            data:({ recipe,list })
+          })
+        })
+      })
+      .catch(next)
     })
     .catch(next)
   })

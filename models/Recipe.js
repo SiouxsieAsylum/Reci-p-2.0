@@ -85,12 +85,15 @@ Recipe.addRecipeToShopping = (shoppingList_id, recipe_id) => {
     `, [shoppingList_id, recipe_id ]);
 }
 
+// prevent creation of recipe, check if recipe name exists for any of the recipe ids in your user recipies
+// SELECT * FROM user_recipes JOIN recipes ON user_recipes.recipe_id = recipes.id WHERE user_recipes.user_id = 1 AND recipes.name = (SELECT name from recipes WHERE id = 2);;
+
 Recipe.duplicateRecipe = (recipe_id,userId) => {
-  return db.one(`INSERT INTO recipes (name,serving_size,image,created_by) SELECT name, serving_size, image, $1 FROM recipes where id = $2;`,[userId,recipe_id])
+  return db.one(`INSERT INTO recipes (name,serving_size,image,created_by) SELECT name, serving_size, image, $1 FROM recipes where id = $2 RETURNING *`,[userId,recipe_id])
 }
 
-Recipe.duplicateIngredientList = (passedRecipe,originalRecipe) => {
-  return db.query(`INSERT INTO ingredient_lists (recipe_id,ingredient_id,amount,unit) SELECT $1,ingredient_id,amount,unit FROM ingredient_lists WHERE recipe_id = $2;`,[passedRecipe_id,originalRecipe_id])
+Recipe.duplicateIngredientList = (passedRecipe_id,originalRecipe_id) => {
+  return db.query(`INSERT INTO ingredient_lists (recipe_id,ingredient_id,amount,unit) SELECT $1,ingredient_id,amount,unit FROM ingredient_lists WHERE recipe_id = $2 RETURNING *`,[passedRecipe_id,originalRecipe_id])
 }
 
 //INSERT INTO recipes (name,serving_size,image,created_by) SELECT name, serving_size, image, ${userId} FROM recipes where id = $1;
