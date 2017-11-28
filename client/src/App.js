@@ -54,17 +54,21 @@ class App extends Component {
   }
 
   recipeToList(recipeId){
-    fetch(`/api/recipe/${recipeId}/${this.state.listIndex}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({id: this.state.userid})
-    }).then(res => res.json())
-    .then(res => {
-      console.log(res);
-      this.getIngredientsList();
-    }).catch(err => console.log(err));
+    if(this.state.listIndex !== 1){
+      fetch(`/api/recipe/${recipeId}/${this.state.listIndex}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({id: this.state.userid})
+      }).then(res => res.json())
+      .then(res => {
+        console.log(res);
+        this.getIngredientsList();
+      }).catch(err => console.log(err));
+    } else {
+      alert('please create a list first!');
+    }
   }
 
   loginUser(username, id){
