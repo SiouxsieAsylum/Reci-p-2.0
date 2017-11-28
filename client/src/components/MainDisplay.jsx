@@ -24,13 +24,12 @@ class MainDisplay extends Component{
 
 
     this.state={
-      shoppingLists: null, // holds a users shopping lists
+      userShopLists: null, // holds a users shopping lists
       apiLoaded:false,
       // show: "recipelist", // current page for the switch
     }
     this.showAllRecipes = this.showAllRecipes.bind(this);
     this.setRecipeAfterAdding = this.setRecipeAfterAdding.bind(this);
-    this.getUserLists = this.getUserLists.bind(this);
     this.showRecipeForm = this.showRecipeForm.bind(this);
   };
 
@@ -57,17 +56,7 @@ class MainDisplay extends Component{
     })
   }
 
-  getUserLists(){
-    fetch(`/api/list/user/${this.props.userid}`, {
-      method: 'GET',
-    }).then(res => res.json())
-      .then(json => {
-        this.setState({
-          shoppingLists: json.data.lists,
-          show: 'shoppinglist'
-        })
-      }).catch(err => console.log(err))
-  }
+  
 
   showRecipeForm(){
     this.setState({
@@ -108,7 +97,7 @@ class MainDisplay extends Component{
         break;
       case 'shoppinglist':
         tabShow = (
-          <ShoppingLists shoppingLists={this.state.shoppingLists} 
+          <ShoppingLists shoppingLists={this.props.userShopLists} 
           getIngredientsList={this.props.getIngredientsList} listFormOn={this.props.listFormOn}
           /> 
         )
@@ -123,7 +112,7 @@ class MainDisplay extends Component{
     return(
       <div className="main-display">
         <Nav auth={this.props.auth} loginUser={this.props.loginUser} logout={this.props.logout}
-          showAllRecipes={this.showAllRecipes} getUserLists={this.getUserLists} showRecipeForm={this.showRecipeForm}
+          showAllRecipes={this.showAllRecipes} getUserLists={this.props.getUserLists} showRecipeForm={this.showRecipeForm}
         />
 
         {this.props.apiLoaded  && (

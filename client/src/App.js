@@ -18,6 +18,7 @@ class App extends Component {
       apiData: [], // holds all of the recipes
       apiLoaded: null,
       apiSingle: null,
+      userShopLists: null,
       shoppingList: [], // ingredient list for selected shopping list
       shoppingRecipes: [], // recipes in a shopping list
       addList: false, // should the addNewList form be open?
@@ -32,6 +33,7 @@ class App extends Component {
     this.submitList = this.submitList.bind(this);
     this.getAllRecipes = this.getAllRecipes.bind(this); 
     this.getSingleRecipe = this.getSingleRecipe.bind(this);
+    this.getUserLists = this.getUserLists.bind(this);
     
   }
 
@@ -54,6 +56,7 @@ class App extends Component {
     }).catch(err => console.log(err))
   }
 
+  //get a recipe by id
   getSingleRecipe(id){
     fetch(`api/recipe/${id}`,{
       method: "GET",
@@ -66,6 +69,19 @@ class App extends Component {
         show: 'single'
       })
     }).catch(err => console.log(err))
+  }
+  
+  // get a users shopping lists for clicking in the nav
+  getUserLists(){
+    fetch(`/api/list/user/${this.state.userid}`, {
+      method: 'GET',
+    }).then(res => res.json())
+      .then(json => {
+        this.setState({
+          userShopLists: json.data.lists,
+          show: 'shoppinglist'
+        })
+      }).catch(err => console.log(err))
   }
 
   //we will need to call this whenever the listindex changes and when we add a recipe to list
@@ -182,6 +198,7 @@ class App extends Component {
             apiLoaded={this.state.apiLoaded}
             apiSingle={this.state.apiSingle}
             show={this.state.show}
+            userShopLists={this.state.userShopLists}
 
             //functions
             loginUser={this.loginUser}
@@ -189,7 +206,9 @@ class App extends Component {
             logout={this.logout}
             getIngredientsList={this.getIngredientsList}
             listFormOn={this.listFormOn}
+            getUserLists={this.getUserLists}
           />
+
           <List
             shoppingList={this.state.shoppingList}
             shoppingRecipes={this.state.shoppingRecipes}
