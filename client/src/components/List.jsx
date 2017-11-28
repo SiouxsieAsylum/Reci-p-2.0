@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ListAddForm from './ListAddForm';
 import SingleList from './SingleList'
 
 function List(props){
@@ -6,6 +7,10 @@ function List(props){
   const recipes = props.shoppingRecipes;
   const listIndex = props.listIndex;
   const getIngredientsList = props.getIngredientsList;
+  const listFormOn = props.listFormOn;
+  const addList = props.addList;
+  const userid = props.userid;
+  const submitList = props.submitList;
 
   function removeRecipeFromList(recipe_id){
     fetch(`/api/list/recipe/${recipe_id}`, {
@@ -35,7 +40,6 @@ function List(props){
       })
     )
   }
-
   
   let listRecipes = null;
   if(recipes.length !== 0){
@@ -48,19 +52,36 @@ function List(props){
     )
   }
 
+  let newList = null;
+  addList ? (
+    newList = <ListAddForm userid={userid} submitList={submitList}/>
+  ) : (
+    newList = <button onClick={listFormOn}>Create New List!</button>
+  )
+  
+
+
   return(
-    <div className="list-container">
-      <h3 className="soft-title">Ingredients list</h3>
-      
-      <ul className='shopping-recipes'>
-        {recipes.length !== 0 && <h4>Recipes</h4>}
-        {listRecipes}
-      </ul>
-      {yourList}
-      <form className="ingredient-form">
-        <input type="text" name="addIngredient" placeholder="Add ingredient"/>
-        <input type ="submit" value="Add" />
-      </form>
+    <div className='list-container'>
+      {listIndex === 1 ? (
+        <div >
+          {newList}
+        </div>
+      ) : (
+        <div>
+          <h3 className="soft-title">Ingredients list</h3>
+          
+          <ul className='shopping-recipes'>
+            {recipes.length !== 0 && <h4>Recipes</h4>}
+            {listRecipes}
+          </ul>
+          {yourList}
+          <form className="ingredient-form">
+            <input type="text" name="addIngredient" placeholder="Add ingredient"/>
+            <input type ="submit" value="Add" />
+          </form>
+        </div>
+      )}
     </div>
   )
 }

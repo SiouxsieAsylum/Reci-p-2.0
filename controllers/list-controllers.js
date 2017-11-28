@@ -38,10 +38,7 @@ ListController.showNames = (req,res,next) => {
 }
 
 ListController.create = (req,res,next) => {
-  List.create({
-    user_id: req.body.user_id,
-    name: req.body.name
-  })
+  List.create(req.body.user_id,req.body.name)
   // will be req.user.id
   .then(list => {
     res.json({
