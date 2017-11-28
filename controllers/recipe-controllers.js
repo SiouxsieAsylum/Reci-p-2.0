@@ -19,23 +19,31 @@ RecipeController.addRecipeToShopping = (shoppingList_id, recipe_id, next) => {
 };
 
 RecipeController.duplicateRecipeForShoppingList = (req,res,next) => {
-  Recipe.duplicateRecipe(req.params.recipe_id,req.body.id)
+    Recipe.checkForUserDuplicate(req.params.recipe_id,req.body.id)
   .then(recipe => {
-    Recipe.duplicateIngredientList(recipe.id,req.params.recipe_id)
-    .then(ingredientList => {
-      Recipe.addUserRecipe(req.body.id,recipe.id)
-      .then( userLink => {
-        RecipeController.addRecipeToShopping(req.params.shoppingList_id,recipe.id)
-        .then(list => {
-          res.json({
-            message: 'added to list',
-            data:({ recipe,list })
+    if (!recipe){
+      Recipe.duplicateRecipe(req.params.recipe_id,req.body.id)
+      .then(newRecipe => {
+        Recipe.duplicateIngredientList(newRecipe.id,req.params.recipe_id)
+          .then(ingredientList => {
+          Recipe.addUserRecipe(req.body.id,newRecipe.id)
+            .then( userLink => {
+            RecipeController.addRecipeToShopping(req.params.shoppingList_id,newRecipe.id)
+              .then(list => {
+              res.json({
+                message: 'added to list',
+                data:({ newRecipe,list })
+              })
+            })
+            .catch(next)
           })
+          .catch(next)
         })
-      })
       .catch(next)
-    })
-    .catch(next)
+      })
+    } else {
+      Recipe.addRecipeToShopping(req.params.shoppingList_id,recipe.id)
+    }
   })
   .catch(next)
 }

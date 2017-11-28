@@ -86,7 +86,12 @@ Recipe.addRecipeToShopping = (shoppingList_id, recipe_id) => {
 }
 
 // prevent creation of recipe, check if recipe name exists for any of the recipe ids in your user recipies
-// SELECT * FROM user_recipes JOIN recipes ON user_recipes.recipe_id = recipes.id WHERE user_recipes.user_id = 1 AND recipes.name = (SELECT name from recipes WHERE id = 2);;
+// SELECT * FROM user_recipes JOIN recipes ON user_recipes.recipe_id = recipes.id WHERE user_recipes.user_id = 1 AND recipes.name = (SELECT name from recipes WHERE id = 2);
+
+Recipe.checkForUserDuplicate = (recipe_id,userId) => {
+  return db.oneOrNone(`SELECT * FROM user_recipes JOIN recipes ON user_recipes.recipe_id = recipes.id WHERE user_recipes.user_id = $1 AND recipes.name = (SELECT name from recipes WHERE id = $2)`,[userId,recipe_id])
+}
+
 
 Recipe.duplicateRecipe = (recipe_id,userId) => {
   return db.one(`INSERT INTO recipes (name,serving_size,image,created_by) SELECT name, serving_size, image, $1 FROM recipes where id = $2 RETURNING *`,[userId,recipe_id])
