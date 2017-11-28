@@ -28,6 +28,13 @@ RecipeController.addRecipeToShopping = (req, res, next) => {
     }).catch(next);
 };
 
+RecipeController.duplicateRecipeForShoppingList = (req,res,next) => {
+  Recipe.duplicateRecipe(req.params.recipe_id,req.body.id)
+  .then
+}
+
+
+
 RecipeController.show = (req,res,next) => {
   Promise.all([Recipe.findRecipe(req.params.id),
     Recipe.findIngredients(req.params.id)])
