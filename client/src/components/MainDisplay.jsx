@@ -25,37 +25,37 @@ function MainDisplay(props){
   /* ------------------    end    ------------------*/
 
   let tabShow = null;
-  switch(this.props.show){
+  switch(props.show){
     case "recipelist":
       tabShow = (
         <RecipeList
-          recipeToList={this.props.recipeToList}
-          recipes={this.props.apiData}
-          getSingleRecipe={this.props.getSingleRecipe}
+          recipeToList={props.recipeToList}
+          recipes={props.apiData}
+          getSingleRecipe={props.getSingleRecipe}
         />
       )
       break;
     case "single":
       tabShow = (
         <RecipeSingle
-          userid={this.props.userid}
-          apiSingle={this.props.apiSingle}
-          getSingleRecipe={this.props.getSingleRecipe}
+          userid={props.userid}
+          apiSingle={props.apiSingle}
+          getSingleRecipe={props.getSingleRecipe}
         />
       )
       break;
     case "form":
       tabShow = (
         <RecipeForm
-        userid={this.props.userid}
-        setRecipe={this.props.getSingleRecipe}
+        userid={props.userid}
+        setRecipe={props.getSingleRecipe}
         />
         )
       break;
     case 'shoppinglist':
       tabShow = (
-        <ShoppingLists shoppingLists={this.props.userShopLists} 
-        getIngredientsList={this.props.getIngredientsList} listFormOn={this.props.listFormOn}
+        <ShoppingLists shoppingLists={props.userShopLists} 
+        getIngredientsList={props.getIngredientsList} listFormOn={props.listFormOn}
         /> 
       )
       break;
@@ -67,11 +67,11 @@ function MainDisplay(props){
   
   return(
     <div className="main-display">
-      <Nav auth={this.props.auth} loginUser={this.props.loginUser} logout={this.props.logout}
-        getAllRecipes={this.props.getAllRecipes} getUserLists={this.props.getUserLists} showRecipeForm={this.props.showRecipeForm}
+      <Nav auth={props.auth} loginUser={props.loginUser} logout={props.logout}
+        getAllRecipes={props.getAllRecipes} getUserLists={props.getUserLists} showRecipeForm={props.showRecipeForm}
       />
 
-      {this.props.apiLoaded  && (
+      {props.apiLoaded  && (
         tabShow
       )}
 
