@@ -109,9 +109,21 @@ class App extends Component {
         method: 'GET'
       }).then(res => res.json())
       .then(json => {
-        console.log('i like what you got', json);
+        // console.log('i like what you got', json);
+        // const finalizedArray = []
+        const list = json.data.list;
+
+        for (let ingred in list) {
+          for (let copy in list){
+            if (list[ingred].name == list[copy].name && ingred < copy){
+              list[ingred].amount += list[copy].amount;
+              list.splice(copy, 1);
+            }
+          }
+        }
+
         this.setState({
-          shoppingList: json.data.list,
+          shoppingList: list
         })
 
         //get all of the recipe names
@@ -119,7 +131,7 @@ class App extends Component {
           method: 'GET'
         }).then(res => res.json())
         .then(json => {
-          console.log(json)
+          // console.log(json)
           this.setState({
             shoppingRecipes: json.data.recipes,
           })
