@@ -14,7 +14,7 @@ recipeRoutes.post('/',recipeControllers.userCreateRecipe)
 // recipeRoutes.post('/new/:recipe_id',recipeControllers.addIngredientsToNewRecipe)
 
 // add and remove ingredients
-recipeRoutes.post('/:recipe_id/:shoppingList_id', recipeControllers.addRecipeToShopping);
+recipeRoutes.post('/:recipe_id/:shoppingList_id', recipeControllers.duplicateRecipeForShoppingList);
 
 
 module.exports = recipeRoutes;

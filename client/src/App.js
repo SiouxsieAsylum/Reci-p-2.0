@@ -113,7 +113,6 @@ class App extends Component {
             logout={this.logout} auth={this.state.auth} username={this.state.username}
             userid={this.state.userid}
           />
-
           <List shoppingList={this.state.shoppingList}
             shoppingRecipes={this.state.shoppingRecipes} listIndex={this.state.listIndex}
             getIngredientsList={this.getIngredientsList}

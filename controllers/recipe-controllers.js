@@ -13,20 +13,42 @@ RecipeController.index = (req, res, next) => {
   .catch(next)
 };
 
-RecipeController.addRecipeToShopping = (req, res, next) => {
-  Recipe.addRecipeToShopping(req.params.shoppingList_id, req.params.recipe_id)
-    .then(recipe => {
-      Recipe.addUserRecipe(req.body.id,req.params.recipe_id)
-      .then(userlink => {
-        res.json({
-          message: 'recipe added',
-          data: { recipe,userlink }
-        });
-      })
-      .catch(err => {console.log(err)})
+RecipeController.addRecipeToShopping = (shoppingList_id, recipe_id, next) => {
+  return Recipe.addRecipeToShopping(shoppingList_id, recipe_id)
 
-    }).catch(next);
 };
+
+RecipeController.duplicateRecipeForShoppingList = (req,res,next) => {
+    Recipe.checkForUserDuplicate(req.params.recipe_id,req.body.id)
+  .then(recipe => {
+    if (!recipe){
+      Recipe.duplicateRecipe(req.params.recipe_id,req.body.id)
+      .then(newRecipe => {
+        Recipe.duplicateIngredientList(newRecipe.id,req.params.recipe_id)
+          .then(ingredientList => {
+          Recipe.addUserRecipe(req.body.id,newRecipe.id)
+            .then( userLink => {
+            RecipeController.addRecipeToShopping(req.params.shoppingList_id,newRecipe.id)
+              .then(list => {
+              res.json({
+                message: 'added to list',
+                data:({ newRecipe,list })
+              })
+            })
+            .catch(next)
+          })
+          .catch(next)
+        })
+      .catch(next)
+      })
+    } else {
+      Recipe.addRecipeToShopping(req.params.shoppingList_id,recipe.id)
+    }
+  })
+  .catch(next)
+}
+
+
 
 RecipeController.show = (req,res,next) => {
   Promise.all([Recipe.findRecipe(req.params.id),
