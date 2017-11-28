@@ -40,7 +40,7 @@ function List(props){
       })
     )
   }
-  
+
   let listRecipes = null;
   if(recipes.length !== 0){
     listRecipes = (
@@ -58,11 +58,10 @@ function List(props){
   ) : (
     newList = <button onClick={listFormOn}>Create New List!</button>
   )
-  
+
 
 
   return(
-<<<<<<< HEAD
     <div className='list-container'>
       {listIndex === 1 ? (
         <div >
@@ -70,8 +69,8 @@ function List(props){
         </div>
       ) : (
         <div>
-          <h3 className="soft-title">Ingredients list</h3>
-          
+          <h3 className="ingredients-title">Ingredients list</h3>
+
           <ul className='shopping-recipes'>
             {recipes.length !== 0 && <h4>Recipes</h4>}
             {listRecipes}
@@ -83,15 +82,6 @@ function List(props){
           </form>
         </div>
       )}
-=======
-    <div className="list-container">
-      <h3 className="ingredients-title">Ingredients list</h3>
-      {yourList}
-      <form className="ingredient-form">
-        <input type="text" name="addIngredient" placeholder="Add ingredient"/>
-        <input type ="submit" value="Add" />
-      </form>
->>>>>>> hefty styling/ add bkgnd list
     </div>
   )
 }

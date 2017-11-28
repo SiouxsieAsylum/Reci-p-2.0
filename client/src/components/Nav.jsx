@@ -28,15 +28,9 @@ class  Nav extends Component {
   render(){
     const navLinks= (
       <div className="nav-links">
-<<<<<<< HEAD
-        {this.props.auth && <div>Add Recipe</div>}
-        <div onClick={()=>this.props.showAllRecipes(false)}>Recipes</div>
-        {this.props.auth && <div onClick={this.props.getUserLists}>Shopping Lists</div>}
-=======
         {this.props.auth && <div className="link">Add Recipe</div>}
         <div className="link" onClick={()=>this.props.showAllRecipes(false)}>Recipes</div>
         {this.props.auth && <div className="link">Shopping Lists</div>}
->>>>>>> hefty styling/ add bkgnd list
       </div>
     )
 
