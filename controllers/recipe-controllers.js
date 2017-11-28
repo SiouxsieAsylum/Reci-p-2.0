@@ -43,6 +43,13 @@ RecipeController.duplicateRecipeForShoppingList = (req,res,next) => {
       })
     } else {
       Recipe.addRecipeToShopping(req.params.shoppingList_id,recipe.id)
+      .then(recipes => {
+        res.json({
+          message: 'added duplicate to list',
+          data: recipes
+        })
+      })
+      .catch(next)
     }
   })
   .catch(next)

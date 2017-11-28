@@ -37,7 +37,7 @@ class App extends Component {
     } else {
       listIndex = this.state.listIndex;
     }
-    
+
     //we will need to call this whenver the listindex changes and when we add a recipe to list
     fetch(`/api/list/listname/${listIndex}`, {
       method: 'GET',
@@ -56,7 +56,7 @@ class App extends Component {
         this.setState({
           shoppingList: json.data.list,
         })
-        
+
         //get all of the recipe names
         fetch(`/api/list/names/${listIndex}`, {
           method: 'GET'
@@ -67,10 +67,10 @@ class App extends Component {
             shoppingRecipes: json.data.recipes,
           })
         })
-  
+
       }).catch(err => console.log(err));
     })
-    
+
 
   }
 
@@ -84,7 +84,8 @@ class App extends Component {
         body: JSON.stringify({id: this.state.userid})
       }).then(res => res.json())
       .then(res => {
-        console.log(res);
+        // console.log(res.data.recipes.id);
+        console.log('clicked')
         this.getIngredientsList();
       }).catch(err => console.log(err));
     } else {
