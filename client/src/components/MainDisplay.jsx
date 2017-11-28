@@ -13,7 +13,7 @@ class MainDisplay extends Component{
     super(props);
     /* ------------------ Prop-list ------------------ */
     // Variables --
-    //  auth, username, userid
+    //  auth, username, userid, apiData
     //
     // Functions -- 
     //  loginUser(logs in user in nav),
@@ -24,14 +24,12 @@ class MainDisplay extends Component{
 
 
     this.state={
-      apiData:null, // holds all of the recipes
       apiSingle: null, // holds a selected recipe
       shoppingLists: null, // holds a users shopping lists
       apiLoaded:false,
       show: "recipelist", // current page for the switch
 
     }
-    this.getAllRecipes = this.getAllRecipes.bind(this);
     this.getSingleRecipe = this.getSingleRecipe.bind(this);
     this.showAllRecipes = this.showAllRecipes.bind(this);
     this.setRecipeAfterAdding = this.setRecipeAfterAdding.bind(this);
@@ -39,21 +37,9 @@ class MainDisplay extends Component{
     this.showRecipeForm = this.showRecipeForm.bind(this);
   };
 
-  componentDidMount(){
-    this.getAllRecipes()
-  }
+  
 
-  getAllRecipes(){
-    fetch('/api/recipe',{
-      method : "GET",
-    }).then(res => res.json()
-  ).then(json => {
-      this.setState({
-        apiData: json.data.recipes,
-        apiLoaded: true,
-      })
-    }).catch(err => console.log(err))
-  }
+  
 
   getSingleRecipe(id){
     fetch(`api/recipe/${id}`,{
@@ -113,7 +99,7 @@ class MainDisplay extends Component{
         tabShow = (
           <RecipeList
             recipeToList={this.props.recipeToList}
-            recipes={this.state.apiData}
+            recipes={this.props.apiData}
             getSingleRecipe={this.getSingleRecipe}
           />
         )
@@ -155,7 +141,7 @@ class MainDisplay extends Component{
           showAllRecipes={this.showAllRecipes} getUserLists={this.getUserLists} showRecipeForm={this.showRecipeForm}
         />
 
-        {this.state.apiLoaded  && (
+        {this.props.apiLoaded  && (
           tabShow
         )}
 
