@@ -72,10 +72,11 @@ class App extends Component {
         }).catch(err => console.log(err))
       }).catch(err => console.log(err))
     }).catch(err => console.log(err))
-
   }
 
-  // ----- client click events -----
+  
+
+  // ----- add recipe to list, call get shopping list -----
   recipeToList(recipeId){
     if(this.state.listIndex !== 1){
       fetch(`/api/recipe/${recipeId}/${this.state.listIndex}`, {
@@ -93,6 +94,7 @@ class App extends Component {
     }
   }
 
+  //----- functions for user login -----
   loginUser(username, id){
     this.setState({
       auth:true,
@@ -114,13 +116,16 @@ class App extends Component {
       }).catch(err => console.log(err));
   }
 
+  //----- list form functions -----
+  //-- turn on addListForm view on list component ---
   listFormOn(){
     this.setState({
       listIndex: 1,
       addList: true,
     })
-  }
 
+  }
+  //-- set the submitted list index and name to state for rendering --
   submitList(listIndex, name){
     this.setState({
       listIndex: listIndex,
