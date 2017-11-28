@@ -50,7 +50,7 @@ class UserForm extends Component {
         <input type="password" name="password" value={this.state.password}
           onChange={this.handleInputChange} placeholder="Password"
         />
-        <input type="submit" value={this.props.postType} />
+        <input className="input-button" type="submit" value={this.props.postType} />
       </form>
     </div>
     )

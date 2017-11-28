@@ -289,7 +289,7 @@ NAV
 .link{
   font-size: 20px;
   flex: 1;
-  color: white;
+  color: black;
   flex-wrap: wrap;
   transition: 0.1s;
   /*text-decoration: underline;*/
@@ -298,10 +298,11 @@ NAV
   max-width: 300px;
   height: 30px;
   padding-top: 15px;
-  background-color: rgba(150,140,140,1);
+  background-color: beige;
+  box-shadow: inset 0px -4px 14px -7px rgba(0,0,0,1);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  border: 1px solid rgba(100,100,100,0.7);
+  border: 1px solid rgba(0,0,0,0.7);
   margin-left: 2px;
   margin-right: 2px;
   font-weight: 400;
@@ -315,5 +316,33 @@ NAV
   transform: translateY(-2px) scaleY(1.09);
   /*text-shadow: 0px 0px 2px white;*/
 }
+
+/*
+===================================
+BUTTON STYLES
+===================================
+*/
+
+button {
+  background-color: beige;
+  height: 30px;
+  font-family: "Lato";
+  font-weight: 200;
+  border-radius: 3px;
+  border: 1px solid black;
+  color: rgba(200,10,20,1);
+}
+
+.input-button {
+  background-color: beige;
+  height: 30px;
+  font-family: "Lato";
+  font-weight: 200;
+  border-radius: 3px;
+  border: 1px solid black;
+  color: rgba(200,10,20,1);
+
+}
+
 
 /**/
