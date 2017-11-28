@@ -65,7 +65,7 @@ Completed model for adding recipes from api to database. Structure is as follows
 - create fetch in MainDisplay to display data to RecipeList component
 
 ## 11/26/17 Andrea McKenzie
-	-Wrote and rewrote recipe and List routes
+- Wrote and rewrote recipe and List routes
 
 ## 11/27/17	0930 Steve and Oz
 - recipes button in nav goes back to recipes in main display
@@ -80,9 +80,9 @@ Completed model for adding recipes from api to database. Structure is as follows
 - create a new list which redirect to show it
 
 ##11/27/17 Andrea
--Added dynamically changing 'Add Ingredient to recipe', 'Add Recipe', and 'Edit Recipe' functionality that is only available as an authenticated user.  
--Added created_by column to recipe database to identity both recipes created by a user and duplicates when adding to shopping list
-
+- Added dynamically changing 'Add Ingredient to recipe', 'Add Recipe', and 'Edit Recipe' functionality that is only available as an authenticated user.  
+- Added created_by column to recipe database to identity both recipes created by a user and duplicates when adding to shopping list
+- Added `/api` route that will call `RAC.addRecipes()`
 
 ## 11/28/17 Andrea
 - Changed the controllers for adding a recipe reference to the list to consist of the user automatically creating a single duplicate of a recipe, adding all the relevent references, and hosting that recipe as the reference in shopping lists. That allows for adding and deleting ingredients to and from the shopping_lists' recipes without affecting the original for everybody.
