@@ -62,6 +62,7 @@ function List(props){
 
 
   return(
+<<<<<<< HEAD
     <div className='list-container'>
       {listIndex === 1 ? (
         <div >
@@ -82,6 +83,15 @@ function List(props){
           </form>
         </div>
       )}
+=======
+    <div className="list-container">
+      <h3 className="ingredients-title">Ingredients list</h3>
+      {yourList}
+      <form className="ingredient-form">
+        <input type="text" name="addIngredient" placeholder="Add ingredient"/>
+        <input type ="submit" value="Add" />
+      </form>
+>>>>>>> hefty styling/ add bkgnd list
     </div>
   )
 }
