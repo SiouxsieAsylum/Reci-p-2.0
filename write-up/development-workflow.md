@@ -21,3 +21,4 @@ Step 1: Git checkout -b new branch
         * if someone has merged, git pull --rebase origin master
 Step 2: If up-to-date and finished, push the branch
 Step 3: Submit pull request from branch, group members approve requests and merge to master
+Step 4: Edit the log
