@@ -54,7 +54,7 @@ recipeApiController.createRecipe = (res) => {
 // TODO: make function to create master dictionary object
 
 
-recipeApiController.addRecipes = () => {
+recipeApiController.addRecipes = (req,res,next) => {
   fetch('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=false&number=8',
   {headers:
     {
@@ -62,7 +62,7 @@ recipeApiController.addRecipes = () => {
       "Accept":"application/json"
     }
   })
-  .then(res => res.json())
+  .then(response => response.json())
   .then((json) => {
     recipes = json.recipes;
 
@@ -71,6 +71,7 @@ recipeApiController.addRecipes = () => {
       let recipeData = Object.values(allData[0]);
       let ingredientData = Object.values(allData[1]);
       let allDataArray = [];
+      let resolvedPromises = []
 
       for (let i = 0; i < recipeData.length; i++){
         allDataArray.push([recipeData[i],ingredientData[i]])
@@ -78,11 +79,19 @@ recipeApiController.addRecipes = () => {
 
       allDataArray.map((food,food_id) => {
         Object.values(food[1]).map((ingred,ingredient_id) => {
-          Recipe.createJoinList("\(" + food[0].id +","+ ingred.id+","+parseFloat(JSON.stringify(recipes[food_id].extendedIngredients[ingredient_id].amount))+","+"\'"+recipes[food_id].extendedIngredients[ingredient_id].unitLong+"\'"+"\)")
+          resolvedPromises.push(Recipe.createJoinList("\(" + food[0].id +","+ ingred.id+","+parseFloat(JSON.stringify(recipes[food_id].extendedIngredients[ingredient_id].amount))+","+"\'"+recipes[food_id].extendedIngredients[ingredient_id].unitLong+"\'"+"\)"))
+            })
         })
-      })
 
-    }).catch(err => {
+      Promise.all(resolvedPromises)
+        .then(everything => {
+          console.log(JSON.stringify(everything))
+          res.json({
+            message: 'everything added',
+          })
+        })
+    })
+    .catch(err => {
           console.log(err)
     })
   })
