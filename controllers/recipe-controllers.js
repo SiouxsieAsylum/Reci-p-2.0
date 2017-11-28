@@ -15,7 +15,6 @@ RecipeController.index = (req, res, next) => {
 
 RecipeController.addRecipeToShopping = (shoppingList_id, recipe_id, next) => {
   return Recipe.addRecipeToShopping(shoppingList_id, recipe_id)
-
 };
 
 RecipeController.duplicateRecipeForShoppingList = (req,res,next) => {
