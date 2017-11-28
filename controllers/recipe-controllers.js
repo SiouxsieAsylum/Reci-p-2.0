@@ -14,9 +14,9 @@ RecipeController.index = (req, res, next) => {
 };
 
 RecipeController.addRecipeToShopping = (req, res, next) => {
-  Recipe.addRecipeToShopping(req.params.shoppingList_id, req.params.recipe_id)
+  Recipe.addRecipeToShopping(req.params.shoppingList_id, req.body.id)
     .then(recipe => {
-      Recipe.addUserRecipe(req.body.id,req.params.recipe_id)
+      Recipe.addUserRecipe(req.body.id,req.body.id)
       .then(userlink => {
         res.json({
           message: 'recipe added',
@@ -30,7 +30,14 @@ RecipeController.addRecipeToShopping = (req, res, next) => {
 
 RecipeController.duplicateRecipeForShoppingList = (req,res,next) => {
   Recipe.duplicateRecipe(req.params.recipe_id,req.body.id)
-  .then
+  .then(recipe => {
+    Recipe.duplicateIngredientList(recipe.id,req.params.recipe_id)
+    .then(ingredientList => {
+      RecipeController.addRecipeToShopping(req.params.shoppingList_id,recipe.id)
+    })
+    .catch(next)
+  })
+  .catch(next)
 }
 
 
