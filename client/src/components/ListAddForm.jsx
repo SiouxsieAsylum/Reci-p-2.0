@@ -18,7 +18,7 @@ class ListAddForm extends Component {
 
   submitList(event){
     event.preventDefault();
-    fetch('', {
+    fetch('/api/list/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
