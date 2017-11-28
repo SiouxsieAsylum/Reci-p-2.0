@@ -97,7 +97,7 @@ class MainDisplay extends Component{
     return(
       <div className="main-display">
         <Nav auth={this.props.auth} loginUser={this.props.loginUser} logout={this.props.logout}
-          showAllRecipes={this.showAllRecipes} getUserLists={this.props.getUserLists} showRecipeForm={this.showRecipeForm}
+          getAllRecipes={this.props.getAllRecipes} getUserLists={this.props.getUserLists} showRecipeForm={this.showRecipeForm}
         />
 
         {this.props.apiLoaded  && (

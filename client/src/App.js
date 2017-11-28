@@ -52,6 +52,7 @@ class App extends Component {
       this.setState({
         apiData: json.data.recipes,
         apiLoaded: true,
+        show: 'recipelist'
       })
     }).catch(err => console.log(err))
   }
@@ -209,6 +210,7 @@ class App extends Component {
             getIngredientsList={this.getIngredientsList}
             listFormOn={this.listFormOn}
             getUserLists={this.getUserLists}
+            getAllRecipes={this.getAllRecipes}
           />
 
           <List
