@@ -43,7 +43,8 @@ const recipeController = require('./controllers/api-controller');
 // recipeController.addRecipes();
 
 
-
+const apiRouter = require('./routes/api-routes');
+app.use('/api',apiRouter)
 const authRouter = require('./routes/auth-routes');
 app.use('/api/auth', authRouter);
 const listRouter = require('./routes/list-routes');
