@@ -24,7 +24,8 @@ class App extends Component {
     this.loginUser = this.loginUser.bind(this);
     this.logout = this.logout.bind(this);
     this.getIngredientsList = this.getIngredientsList.bind(this);
-    this.listFormToggle = this.listFormToggle.bind(this);
+    this.listFormOn = this.listFormOn.bind(this);
+    this.submitList = this.submitList.bind(this);
   }
 
   getIngredientsList(){
@@ -86,12 +87,17 @@ class App extends Component {
       }).catch(err => console.log(err));
   }
 
-
-  listFormToggle(){
-    //needs prev state
+  listFormOn(){
     this.setState({
       listIndex: 1,
       addList: true,
+    })
+  }
+
+  submitList(listIndex){
+    this.setState({
+      listIndex: listIndex,
+      addList: false,
     })
   }
 
@@ -106,8 +112,8 @@ class App extends Component {
           <List shoppingList={this.state.shoppingList} 
             shoppingRecipes={this.state.shoppingRecipes} listIndex={this.state.listIndex}
             getIngredientsList={this.getIngredientsList}
-            listFormToggle={this.listFormToggle} addList={this.state.addList}
-            userid={this.state.userid}
+            listFormOn={this.listFormOn} addList={this.state.addList}
+            userid={this.state.userid} submitList={this.submitList}
           />
         </div>
 

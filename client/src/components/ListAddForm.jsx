@@ -7,7 +7,7 @@ class ListAddForm extends Component {
       name: "",
     }
     this.handleChange = this.handleChange.bind(this);
-    this.submitList = this.submitList.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event){
@@ -16,7 +16,7 @@ class ListAddForm extends Component {
     })
   }
 
-  submitList(event){
+  handleSubmit(event){
     event.preventDefault();
     fetch('/api/list/', {
       method: 'POST',
@@ -28,15 +28,14 @@ class ListAddForm extends Component {
         name: this.state.name
       })
     }).then(res => res.json())
-    .then(json=> {
-      console.log(json);
-      //will call a change list button
+    .then(json => {
+      this.props.submitList(json.data.list.list_id);
     }).catch(err => console.log(err))
   }
 
   render(){
     return(
-      <form onSubmit={this.submitList}>
+      <form onSubmit={this.handleSubmit}>
         <input type="text" name="name" onChange={this.handleChange} 
           value={this.state.name} placeholder="Enter List Name"
         />
